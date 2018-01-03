@@ -9,8 +9,19 @@
     <hr/>
     <h2>All medals</h2>
     <ul>
-	    {{#medals}}
-	    	<li>{{medalWon}} | {{displayName}} | {{discipline.name}} | {{startDate.0.full}} </li>
-	    {{/medals}}
+	    {{#medalsByDiscipline}}
+	    	<b>{{key}}</b>
+	    	{{#values}}
+	    		<li>{{medalWon}} | {{displayName}} | {{discipline.name}} | {{startDate.0.full}} </li>
+	    	{{/values}}
+	    {{/medalsByDiscipline}}
 	</ul>
+
+	<div class="performance">
+		<h2>Country performance</h2>
+	    {{#performance}}
+	    	<b>{{key}}</b> {{displayDiff}}
+	    	<div class="bar bar--{{class}}" style="width: {{percentage}}%; margin-left: {{margin}}%;"></div>
+	    {{/performance}}
+	</div>
 </div>

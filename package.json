@@ -13,7 +13,8 @@
     "deploypreview": "gulp deploypreview",
     "fetch": "babel-node scripts/fetch.js",
     "fetchSchedule": "babel-node scripts/schedule.js",
-    "cleanHistoric": "babel-node scripts/historicMedalsCleaner.js"
+    "cleanHistoric": "babel-node scripts/historicMedalsCleaner.js",
+    "performance": "babel-node scripts/performance.js"
   },
   "author": "",
   "license": "ISC",
@@ -51,6 +52,7 @@
     "webpack-stream": "^3.2.0"
   },
   "dependencies": {
+    "array-merge-by-key": "^1.0.1",
     "async": "^2.6.0",
     "async-sema": "^1.2.0",
     "d3": "^4.12.0",
