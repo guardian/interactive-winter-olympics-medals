@@ -1,27 +1,56 @@
 <div class="interactive">
-	{{#countries}}
-		<p>
-			<b>{{olympicCountry.name}}</b>
-			{{medalCount.gold}} - {{medalCount.silver}} - {{medalCount.bronze}} - {{medalCount.total}}
-		</p>
-    {{/countries}}
-
+    <div class="dropdown inner">
+        <select name="countries" id="countries-dropdown">
+            {{#countryCodes}}
+            <option value="{{1}}">{{0}}</option>
+            {{/countryCodes}}
+        </select>
+    </div>
+    <div class="medal-table inner">
+        {{#countries}}
+        <div class="{{olympicCountry.abbreviation}}">
+            <b>{{olympicCountry.name}}</b> {{medalCount.total}}
+            <div class="medals">
+                {{#medals}}
+                <div class="medal-block medal-block--{{.}}"></div>
+                {{/medals}}
+            </div>
+        </div>
+        {{/countries}}
+    </div>
     <hr/>
     <h2>All medals</h2>
-    <ul>
-	    {{#medalsByDiscipline}}
-	    	<b>{{key}}</b>
-	    	{{#values}}
-	    		<li>{{medalWon}} | {{displayName}} | {{discipline.name}} | {{startDate.0.full}} </li>
-	    	{{/values}}
-	    {{/medalsByDiscipline}}
-	</ul>
+    <div class="all-medals inner">
+        {{#medalsByDiscipline}}
+        <div class="row row--header">{{key}}</div>
+        {{#values}}
+        <div class="row">
+            <div class="column column--name">{{key}}</div>
+            <div class="column column--gold">{{#value.gold}}
+                <div class="column__country">
+                    <div class="om-flag om-flag--{{abbreviation}}"></div>{{abbreviation}}
+                </div>{{/value.gold}} </div>
+            <div class="column column--silver">{{#value.silver}}
+                <div class="column__country">
+                    <div class="om-flag om-flag--{{abbreviation}}"></div>{{abbreviation}}
+                </div>{{/value.silver}}
+            </div>
+            <div class="column column--bronze">{{#value.bronze}}
+                <div class="column__country">
+                    <div class="om-flag om-flag--{{abbreviation}}"></div>{{abbreviation}}
+                </div> {{/value.bronze}}</div>
+        </div>
+        <!-- <li class="{{abbreviation}}">{{medalWon}} | {{displayName}} | {{discipline.name}} | {{olympicEvent.name}} | {{startDate.0.full}} </li> -->
 
-	<div class="performance">
-		<h2>Country performance</h2>
-	    {{#performance}}
-	    	<b>{{key}}</b> {{displayDiff}}
-	    	<div class="bar bar--{{class}}" style="width: {{percentage}}%; margin-left: {{margin}}%;"></div>
-	    {{/performance}}
-	</div>
-</div>
+        <!-- </div> -->
+        {{/values}}
+        <!-- <hr/> -->
+        {{/medalsByDiscipline}}
+    </div>
+    <div class="performance inner">
+        <h2>Country performance</h2> {{#performance}}
+        <b class="{{key}}">{{key}}</b> {{displayDiff}}
+        <div class="bar bar--{{class}} {{key}}" style="width: {{percentage}}%; margin-left: {{margin}}%;"></div>
+        {{/performance}}
+    </div>
+</div>§
