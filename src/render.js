@@ -1,4 +1,5 @@
 import templateHTML from "./src/templates/main.html!text"
+import headerHTML from "./src/templates/header.html!text"
 import medalTableJson from "../src/assets/data/medalsTable.json"
 import medalListByDisciplineJson from "../src/assets/data/medalsList.json"
 import countryPerformanceJson from "../src/assets/data/performance.json"
@@ -25,6 +26,11 @@ const countryPerformanceJsonToRender = countryPerformanceJson.map((country) => {
     country.margin = country.diff >= 0 ? 50 : 50 - country.percentage;
     return country;
 });
+
+// const medalListByDisciplineJsonWithShowHide = medalListByDisciplineJson.map(medal => {
+//     const day = medal.startDate.find(d => d.dateType === "Local").date;
+//     return Object.assign({}, medal, { todayClass: (day === ) })
+// });
 
 const nestedMedalsByDiscipline = d3.nest()
     .key(d => d.discipline.name)
@@ -63,10 +69,11 @@ const medalTable = medalTableJson.map(country => {
 });
 
 export async function render() {
-    return Mustache.render(templateHTML, {
+    const header = headerHTML;
+    return "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
         "countryCodes": countries,
         "countries": medalTable,
         "medalsByDiscipline": nestedMedalsByDiscipline,
         "performance": countryPerformanceJsonToRender.sort((a, b) => b.diff - a.diff)
-    });
+    }) + "</div>";
 }

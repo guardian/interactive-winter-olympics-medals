@@ -1,5 +1,6 @@
 @import "mq";
 @import "fonts";
+@import "header";
 // Uncomment for embeds
 //@import "embed";
 // Uncomment for full screen (including immersive article main media)
@@ -9,224 +10,244 @@
     margin: 0 !important;
 }
 
-.interactive {
-    h1 {
-        @include fs-header(3);
-        margin: 0;
-    }
-    h2 {
-        @include fs-headline(3);
-        margin: 0;
-        margin-top: 12px;
-    }
-    p,
-    li {
-        @include fs-textSans(3);
-        margin: 0;
-    }
-    .event-time {
-        color: #767676;
-        &.event-time--Local {
-            display: none;
-        }
-    }
-    .medal-event {
-        display: inline-block;
-        border-radius: 12px;
-        height: 12px;
-        width: 12px;
-        vertical-align: -1px;
-        &.medal-event--Gold {
-            background-color: #ffbb00;
-        }
-        &.medal-event--Bronze {
-            background-color: #7d7569;
-        }
-    }
-}
-
-.all-medals b {
-    display: block;
-    border-top: 1px solid #eaeaea;
-    margin-top: 12px;
-}
-
-.country {
-    b {
-        display: block;
-        margin-top: 4px;
-        margin-bottom: 2px;
-        @include fs-textSans(3);
-        font-weight: normal;
-        // line-height: 0;
-        border: 0;
-    }
-}
-
-.country {
-    display: inline-block;
-    width: 120px;
-    vertical-align: top;
-    line-height: 0px;
-    padding-right: 20px;
-    margin-right: 20px;
-    border-right: 1px dotted #dcdcdc;
-}
-
-.medal-block {
-    display: inline-block;
-    height: 12px;
-    border-radius: 12px;
-    width: 12px;
-    margin-right: 0px;
-    margin-bottom: 4px;
-    background-color: lime;
-}
-
-.medal-block--gold {
-    background-color: #fadc02;
-}
-
-.medal-block--silver {
-    background-color: #d9d9d9;
-}
-
-.medal-block--bronze {
-    background-color: #f36f21;
-}
-
-.bar {
-    background-color: #1795D6;
-    height: 12px;
+.page-wrapper {
+    max-width: 1300px;
+    background-color: #fff;
+    margin: auto;
     position: relative;
-    box-sizing: border-box;
-    border-top: 4px solid #fff;
-    border-bottom: 4px solid #fff;
-    &::after {
-        margin-top: -4px;
-        display: block;
-        border-radius: 12px;
+
+    &::before {
         content: '';
-        background-color: #046CA0;
-        // border: 3px solid #1795D6;
-        box-sizing: border-box;
-        width: 12px;
-        height: 12px;
+        display: block;
+        height: 100%;
+        width: 0;
+        position: absolute;
+        top: 0;
+        border-right: 1px solid #ccf0ff;
+
+        @include mq(leftCol) {
+            left: 160px;
+        }
+
+        @include mq(wide) {
+            left: 240px;
+        }
     }
 }
 
-.bar--positive {
-    &::after {
-        float: right;
-        margin-right: -6px;
-    }
-}
+.block {
+    border-top: 1px solid #ccf0ff; 
 
-.bar--negative {
-    &::after {
-        float: left;
-        margin-left: -6px;
+    &::before {
+        content: attr(data-title);
+        display: block;
+        position: absolute;
+        left: 0px;
+        top: 0;
+        @include fs-header(3);
+        color: #000;
+        background-color: #ffe500;
+        padding: 3px 5px 3px
     }
-}
 
-.inner {
-    max-width: 620px;
     @include mq(leftCol) {
-        margin-left: 160px;
+        padding-left: 170px;
     }
+
     @include mq(wide) {
-        margin-left: 240px;
+        padding-left: 250px;
     }
 }
 
-.performance {
-    @include fs-textSans(3);
-    text-align: center;
-    color: #767676;
-    h2 {
-        text-align: left;
-    }
-    b {
-        color: #333;
-        margin-top: 12px;
-        display: inline-block;
-    }
-}
+//////
 
-.select-RUS {
-    .RUS,
-    .RUS::after {
-        color: #000;
-        background-color: #ffe500;
-        border: #ffe500;
-    }
-}
+// .medal-event {
+//     display: inline-block;
+//     border-radius: 12px;
+//     height: 12px;
+//     width: 12px;
+//     vertical-align: -1px;
+//     &.medal-event--Gold {
+//         background-color: #ffbb00;
+//     }
+//     &.medal-event--Bronze {
+//         background-color: #7d7569;
+//     }
+// }
 
-.select-GBR {
-    .GBR,
-    .GBR::after {
-        color: #000;
-        background-color: #ffe500;
-        border: #ffe500;
-    }
-}
+// .country {
+//     b {
+//         display: block;
+//         margin-top: 4px;
+//         margin-bottom: 2px;
+//         @include fs-textSans(3);
+//         font-weight: normal; // line-height: 0;
+//         border: 0;
+//     }
+// }
 
-.select-NOR {
-    .NOR,
-    .NOR::after {
-        color: #000;
-        background-color: #ffe500;
-        border: #ffe500;
-    }
-}
+// .country {
+//     display: inline-block;
+//     width: 120px;
+//     vertical-align: top;
+//     line-height: 0px;
+//     padding-right: 20px;
+//     margin-right: 20px;
+//     border-right: 1px dotted #dcdcdc;
+// }
 
-.select-GER {
-    .GER,
-    .GER::after {
-        color: #000;
-        background-color: #ffe500;
-        border: #ffe500;
-    }
-}
+// .medal-block {
+//     display: inline-block;
+//     height: 12px;
+//     border-radius: 12px;
+//     width: 12px;
+//     margin-right: 0px;
+//     margin-bottom: 4px;
+//     background-color: lime;
+// }
 
-// all medals
-.column {
-    display: block;
-    float: left;
-    width: 25%;
-    box-sizing: border-box;
-    @include fs-textSans(3);
-    color: #767676;
-    text-align: center;
-}
+// .medal-block--gold {
+//     background-color: #fadc02;
+// }
 
-.column--name {
-    color: #000;
-    text-align: left;
-    // font-weight: bold;
-}
+// .medal-block--silver {
+//     background-color: #d9d9d9;
+// }
 
-.row {
-    border-top: 1px solid #f6f6f6;
-    width: 100%;
-    overflow: hidden;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
+// .medal-block--bronze {
+//     background-color: #f36f21;
+// }
 
-.row--header {
-    padding-top: 12px;
-    @include fs-header(2);
-}
+// .bar {
+//     background-color: #1795D6;
+//     height: 12px;
+//     position: relative;
+//     box-sizing: border-box;
+//     border-top: 4px solid #fff;
+//     border-bottom: 4px solid #fff;
+//     &::after {
+//         margin-top: -4px;
+//         display: block;
+//         border-radius: 12px;
+//         content: '';
+//         background-color: #046CA0; // border: 3px solid #1795D6;
+//         box-sizing: border-box;
+//         width: 12px;
+//         height: 12px;
+//     }
+// }
 
-.column__country {
-    display: block;
-    vertical-align: middle;
-    .om-flag {
-        display: inline-block;
-        vertical-align: bottom;
-        margin-right: 5px;
-    }
-}
+// .bar--positive {
+//     &::after {
+//         float: right;
+//         margin-right: -6px;
+//     }
+// }
 
-@import "flags"
+// .bar--negative {
+//     &::after {
+//         float: left;
+//         margin-left: -6px;
+//     }
+// }
+
+// .inner {
+//     max-width: 620px;
+//     @include mq(leftCol) {
+//         margin-left: 160px;
+//     }
+//     @include mq(wide) {
+//         margin-left: 240px;
+//     }
+// }
+
+// .performance {
+//     @include fs-textSans(3);
+//     text-align: center;
+//     color: #767676;
+//     h2 {
+//         text-align: left;
+//     }
+//     b {
+//         color: #333;
+//         margin-top: 12px;
+//         display: inline-block;
+//     }
+// }
+
+// .select-RUS {
+//     .RUS,
+//     .RUS::after {
+//         color: #000;
+//         background-color: #ffe500;
+//         border: #ffe500;
+//     }
+// }
+
+// .select-GBR {
+//     .GBR,
+//     .GBR::after {
+//         color: #000;
+//         background-color: #ffe500;
+//         border: #ffe500;
+//     }
+// }
+
+// .select-NOR {
+//     .NOR,
+//     .NOR::after {
+//         color: #000;
+//         background-color: #ffe500;
+//         border: #ffe500;
+//     }
+// }
+
+// .select-GER {
+//     .GER,
+//     .GER::after {
+//         color: #000;
+//         background-color: #ffe500;
+//         border: #ffe500;
+//     }
+// }
+
+// // all medals
+// .column {
+//     display: block;
+//     float: left;
+//     width: 25%;
+//     box-sizing: border-box;
+//     @include fs-textSans(3);
+//     color: #767676;
+//     text-align: center;
+// }
+
+// .column--name {
+//     color: #000;
+//     text-align: left; // font-weight: bold;
+// }
+
+// .row {
+//     border-top: 1px solid #f6f6f6;
+//     width: 100%;
+//     overflow: hidden;
+//     padding-top: 2px;
+//     padding-bottom: 2px;
+// }
+
+// .row--header {
+//     padding-top: 12px;
+//     @include fs-header(2);
+// }
+
+// .column__country {
+//     display: block;
+//     vertical-align: middle;
+//     .om-flag {
+//         display: inline-block;
+//         vertical-align: bottom;
+//         margin-right: 5px;
+//     }
+// }
+
+// @import "flags"
