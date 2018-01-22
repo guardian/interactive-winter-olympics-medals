@@ -7,12 +7,25 @@
 </div> -->
 <div class="block" data-title="Leaderboard">
     {{#countries}}
-    <div class="{{olympicCountry.abbreviation}}">
-        <b>{{olympicCountry.name}}</b> {{medalCount.total}}
-        <div class="medals">
-            {{#medals}}
-            <div class="medal-block medal-block--{{.}}"></div>
-            {{/medals}}
+    <div class="country-block {{olympicCountry.abbreviation}}">
+        <img class="number" src="<%= path %>/assets/numbers/{{rank}}.svg" />
+        <div class="country-header">
+            {{olympicCountry.name}}
+        </div>
+        <div class="gold-medals">
+            {{#goldMedals}}
+            <div class="medal-block medal-block--gold"></div>
+            {{/goldMedals}}
+        </div>
+        <div class="silver-medals">
+            {{#silverMedals}}
+            <div class="medal-block medal-block--silver"></div>
+            {{/silverMedals}}
+        </div>
+        <div class="bronze-medals">
+            {{#bronzeMedals}}
+            <div class="medal-block medal-block--bronze"></div>
+            {{/bronzeMedals}}
         </div>
     </div>
     {{/countries}}

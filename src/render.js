@@ -56,16 +56,20 @@ const nestedMedalsByDiscipline = d3.nest()
 
 // fs.writeFileSync("./src/assets/data/test.json", JSON.stringify(nestedMedalsByDiscipline))
 
-const medalTable = medalTableJson.map(country => {
-    var medals = [];
+const medalTable = medalTableJson.map((country, i) => {
+    var goldMedals = [];
+    var silverMedals = [];
+    var bronzeMedals = [];
 
     ["gold", "silver", "bronze"].forEach(type => {
         new Array(country.medalCount[type]).fill(null).forEach(medal => {
-            medals.push(type);
+            type === 'gold' && goldMedals.push(type);
+            type === 'silver' && silverMedals.push(type);
+            type === 'bronze' && bronzeMedals.push(type);
         });
     });
-
-    return Object.assign({}, country, { medals: medals });
+    
+    return Object.assign({}, country, { goldMedals: goldMedals, silverMedals: silverMedals, bronzeMedals: bronzeMedals, rank: i + 1 });
 });
 
 export async function render() {

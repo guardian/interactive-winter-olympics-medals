@@ -5,6 +5,15 @@
 //@import "embed";
 // Uncomment for full screen (including immersive article main media)
 //@import "fullscreen";
+
+
+//Colours
+$gold: #f9db32;
+$silver: #dcdcdc;
+$bronze: #e58b48;
+
+
+//Main
 .element-atom,
 .interactive-atom {
     margin: 0 !important;
@@ -36,7 +45,8 @@
 }
 
 .block {
-    border-top: 1px solid #ccf0ff; 
+    border-top: 1px solid #ccf0ff;
+    width: 940px;
 
     &::before {
         content: attr(data-title);
@@ -57,4 +67,38 @@
     @include mq(wide) {
         padding-left: 250px;
     }
+}
+
+.country-block {
+    width: 220px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.country-header { 
+    padding-bottom: 60px;
+    display: inline;
+    position: relative;
+}
+
+.medal-block {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+
+    &--gold {
+        background: $gold;
+    }
+    &--silver {
+        background: $silver;
+    }
+    &--bronze {
+        background: $bronze;
+    }
+}
+
+.number {
+    display: inline;
+    padding-right: 5px;
 }
