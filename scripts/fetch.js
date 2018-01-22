@@ -7,7 +7,7 @@ import * as d3 from "d3"
 import schedule from "../src/assets/data/schedule.json"
 
 const generateMedalsTable = async() => {
-    const data = await rp({ uri: "http://api.stats.com/v1/stats/oly/wntr_oly/medals/?accept=json&api_key=gmqfer9bzzufxr2w84v52xqt&sig=3d6c4719d61d8b23edcbba94904f93fc2fad921cd6e6486444b923d590063c5a", json: true });
+    const data = await rp({ uri: "http://api.stats.com/v1/stats/oly/wntr_oly/medals/?season=2014&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt&sig=3d6c4719d61d8b23edcbba94904f93fc2fad921cd6e6486444b923d590063c5a", json: true });
 
     const medalsData = data.apiResults[0].league.medals;
 
@@ -41,7 +41,7 @@ const loadData = (disciplineCodes) => {
         async.map(disciplineCodes, async.asyncify(async(sport) => {
             await lim();
             console.log("medals:" + sport + " ...")
-            const response = await rp({ "uri": `http://api.stats.com/v1/stats/oly/wntr_oly/${sport}/medals/?accept=json&api_key=gmqfer9bzzufxr2w84v52xqt`, "json": true });
+            const response = await rp({ "uri": `http://api.stats.com/v1/stats/oly/wntr_oly/${sport}/medals/?season=2014&season=2014&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt`, "json": true });
             console.log("medals:" + sport + " ✓")
             return response;
         }), (err, results) => {
@@ -84,7 +84,7 @@ const loadScheduleData = (disciplineCombinations) => {
         async.map(disciplineCombinations, async.asyncify(async(sportArr) => {
             await lim();
             console.log("schedule: " + sportArr[0] + " on " + sportArr[1] + " ...")
-            const response = await rp({ "uri": `http://api.stats.com/v1/stats/oly/wntr_oly/${sportArr[0]}/events/?date=${sportArr[1]}&api_key=gmqfer9bzzufxr2w84v52xqt`, "json": true });
+            const response = await rp({ "uri": `http://api.stats.com/v1/stats/oly/wntr_oly/${sportArr[0]}/events/?season=2014&date=${sportArr[1]}&api_key=gmqfer9bzzufxr2w84v52xqt`, "json": true });
             console.log("schedule: " + sportArr[0] + " on " + sportArr[1] + " ✓")
             return response;
         }), (err, results) => {
@@ -96,7 +96,7 @@ const loadScheduleData = (disciplineCombinations) => {
 
 const generator = async() => {
     // get the list of disciplines and the days those disciplines have events
-    const scheduleResp = await rp({uri: "http://api.stats.com/v1/stats/oly/wntr_oly/schedule/?accept=json&api_key=gmqfer9bzzufxr2w84v52xqt&sig=b340ae69d5e6ba22c7a9dc1e9afab79ba24c210c39544ff423f4e2036fea7a94", json: true});
+    const scheduleResp = await rp({uri: "http://api.stats.com/v1/stats/oly/wntr_oly/schedule/?season=2014&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt&sig=b340ae69d5e6ba22c7a9dc1e9afab79ba24c210c39544ff423f4e2036fea7a94", json: true});
     const disciplineData = scheduleResp.apiResults[0].league.season.schedule[0].disciplines;
 
     const disciplineCodes = disciplineData.map(d => d.abbreviation);
