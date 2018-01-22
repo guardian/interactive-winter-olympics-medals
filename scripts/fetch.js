@@ -41,7 +41,7 @@ const loadData = (disciplineCodes) => {
         async.map(disciplineCodes, async.asyncify(async(sport) => {
             await lim();
             console.log("medals:" + sport + " ...")
-            const response = await rp({ "uri": `http://api.stats.com/v1/stats/oly/wntr_oly/${sport}/medals/?season=2014&season=2014&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt`, "json": true });
+            const response = await rp({ "uri": `http://api.stats.com/v1/stats/oly/wntr_oly/${sport}/medals/?season=2014&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt`, "json": true });
             console.log("medals:" + sport + " ✓")
             return response;
         }), (err, results) => {
