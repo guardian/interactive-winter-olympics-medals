@@ -6,53 +6,86 @@
     </select>
 </div> -->
 <div class="block" data-title="Leaderboard">
-    {{#countries}}
+    {{#topCountries}}
     <div class="country-block {{olympicCountry.abbreviation}}">
         <img class="number" src="<%= path %>/assets/numbers/{{rank}}.svg" />
         <div class="country-header">
-            {{olympicCountry.name}}
+            {{preferableName}}
         </div>
-        <div class="gold-medals">
-            {{#goldMedals}}
-            <div class="medal-block medal-block--gold"></div>
-            {{/goldMedals}}
-        </div>
-        <div class="silver-medals">
-            {{#silverMedals}}
-            <div class="medal-block medal-block--silver"></div>
-            {{/silverMedals}}
-        </div>
-        <div class="bronze-medals">
-            {{#bronzeMedals}}
-            <div class="medal-block medal-block--bronze"></div>
-            {{/bronzeMedals}}
+        <div class="medals">
+            <div class="gold-medals">
+                {{#goldMedals}}
+                <div class="medal-block medal-block--gold"></div>
+                {{/goldMedals}}
+            </div>
+            <div class="silver-medals">
+                {{#silverMedals}}
+                <div class="medal-block medal-block--silver"></div>
+                {{/silverMedals}}
+            </div>
+            <div class="bronze-medals">
+                {{#bronzeMedals}}
+                <div class="medal-block medal-block--bronze"></div>
+                {{/bronzeMedals}}
+            </div>
         </div>
     </div>
-    {{/countries}}
+    {{/topCountries}}
+    <button class="expand-leaderboard">
+        <img src="<%= path %>/assets/plus.svg" />
+        Full Leaderboard
+    </button>
+    <div class="other-country-block hidden {{olympicCountry.abbreviation}}">
+        {{#otherCountries}}
+            <strong>{{olympicCountry.name}}</strong>: {{goldMedals}} {{silverMedals}} {{bronzeMedals}}
+        {{/otherCountries}}
+    </div>
 </div>
-<div class="block" data-title="All medals">
+<div class="block" data-title="Medals by sport">
     {{#medalsByDiscipline}}
-    <div class="row row--header">{{key}}</div>
-    {{#values}}
-    <div class="row">
-        <div class="column column--name">{{key}}</div>
-        <div class="column column--gold">{{#value.gold}}
-            <div class="column__country">
-                <div class="om-flag om-flag--{{abbreviation}}"></div>{{abbreviation}}
-            </div>{{/value.gold}} </div>
-        <div class="column column--silver">{{#value.silver}}
-            <div class="column__country">
-                <div class="om-flag om-flag--{{abbreviation}}"></div>{{abbreviation}}
-            </div>{{/value.silver}}
-        </div>
-        <div class="column column--bronze">{{#value.bronze}}
-            <div class="column__country">
-                <div class="om-flag om-flag--{{abbreviation}}"></div>{{abbreviation}}
-            </div> {{/value.bronze}}</div>
+    <div class="row row--header row--header--closed">
+        {{key}}
+        <button class="item-button item-button--expand">
+            <img src="<%= path %>/assets/plus-black.svg" />
+            <div></div>
+        </button>
     </div>
-    <!-- <li class="{{abbreviation}}">{{medalWon}} | {{displayName}} | {{discipline.name}} | {{olympicEvent.name}} | {{startDate.0.full}} </li> -->
-    <!-- </div> -->
-    {{/values}}
+    <div class="sports-category sports-category--hide">
+        {{#values}}
+        <div class="row">
+            <div class="column column--discipline">{{key}}</div>
+            <div class="column column--gold">
+                {{#value.gold}}
+                <div class="column__athlete">
+                    <span class="om-flag om-flag--{{abbreviation}}"><img src="http://www.countryflags.io/be/flat/64.png"></span>
+                    <span class="medal-block medal-block--gold medal-block--small"></span>
+                    <span class="athlete-name">{{firstName}} {{lastName}}</span>
+                </div>
+                {{/value.gold}}
+            </div>
+            <div class="column column--silver">
+                {{#value.silver}}
+                <div class="column__athlete">
+                    <span class="om-flag om-flag--{{abbreviation}}"><img src="http://www.countryflags.io/be/flat/64.png"></span>
+                    <span class="medal-block medal-block--silver medal-block--small"></span>
+                    <span class="athlete-name">{{firstName}} {{lastName}}</span>
+                </div>
+                {{/value.silver}}
+            </div>
+            <div class="column column--bronze">
+                {{#value.bronze}}
+                <div class="column__athlete">
+                    <span class="om-flag om-flag--{{abbreviation}}"><img src="http://www.countryflags.io/be/flat/64.png"></span>
+                    <span class="medal-block medal-block--bronze medal-block--small"></span>
+                    <span class="athlete-name">{{firstName}} {{lastName}}</span>
+                </div>
+                {{/value.bronze}}
+            </div>
+        </div>
+        <!-- <li class="{{abbreviation}}">{{medalWon}} | {{displayName}} | {{discipline.name}} | {{olympicEvent.name}} | {{startDate.0.full}} </li> -->
+        <!-- </div> -->
+        {{/values}}
+    </div>
     <!-- <hr/> -->
     {{/medalsByDiscipline}}
 </div>

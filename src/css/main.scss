@@ -46,7 +46,8 @@ $bronze: #e58b48;
 
 .block {
     border-top: 1px solid #ccf0ff;
-    width: 940px;
+    width: 1300px;
+    box-sizing: border-box;
 
     &::before {
         content: attr(data-title);
@@ -70,13 +71,28 @@ $bronze: #e58b48;
 }
 
 .country-block {
-    width: 220px;
+    width: 300px;
+    margin-top: 20px;
+    padding: 0 10px 0 10px;
     display: inline-block;
     vertical-align: top;
 }
 
+.sports-category {
+    &--hide {
+        display: none !important;
+    }
+    &--show {
+        display: block;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
 .country-header { 
-    padding-bottom: 60px;
+    @include fs-header(5);
     display: inline;
     position: relative;
 }
@@ -87,6 +103,12 @@ $bronze: #e58b48;
     border-radius: 50%;
     display: inline-block;
 
+    &--small {
+        width: 12px;
+        height: 12px;
+        margin: 0 5px;
+    }
+    
     &--gold {
         background: $gold;
     }
@@ -98,7 +120,123 @@ $bronze: #e58b48;
     }
 }
 
+.medals {
+    margin-top: 10px;
+    // margin-bottom: 30px;
+}
+
 .number {
     display: inline;
+    height: 60px;
     padding-right: 5px;
 }
+
+.expand-leaderboard {
+    display: flex;
+    align-items: center;
+    @include fs-textSans(1);
+    height: 42px;
+    color: #FFFFFF;
+    background: #121212;
+    border-radius: 100px;
+    font-weight: 700;
+    letter-spacing: 0;
+    vertical-align: middle;
+    padding: 0 20px 0 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.expand-leaderboard img {
+    vertical-align: middle;
+    display: inline;
+    fill: #fff;
+    padding-right: 5px;
+}
+
+.row {
+    @include fs-textSans(1);
+    border-top: 1px solid #ccf0ff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &--header {
+        @include fs-header(5);
+        cursor: pointer;
+        padding-bottom: 32px;
+    }
+
+    &--closed {
+        padding-bottom: 14px;
+    }
+}
+
+// .closed {
+//     padding-bottom: 14px;
+// }
+
+.item-button {
+    border: 1px solid #979797;
+    border-radius: 50%;
+    height: 33px;
+    width: 33px;
+
+    &--expand {
+        background: #fff;
+
+        >img {
+            display: block;
+        }
+
+        >div {
+            display: none !important;
+        }
+    }
+
+    &--collapse {
+        background: #121212;
+        border-color: #121212;
+
+        >img {
+            display: none !important;
+        }
+
+        >div {
+            display: block;
+            background: #FFFFFF;
+            height: 2px;
+        }
+    }
+}
+
+.athlete-name {
+    @include fs-textSans(1);
+    vertical-align: top;
+}
+
+.column {
+    display: flex;
+    min-width: 200px;
+
+    &--discipline {
+        font-weight: 700;
+        width: 240px;
+    }
+
+    &__athlete {
+        display: flex;
+        flex-grow: 1;
+    }
+}
+
+.om-flag img {
+    width: 40px;
+    margin-top: -7px;
+    display: inline;
+}
+
+// .minus {
+//     background: #FFFFFF;
+//     height: 2px;
+// }

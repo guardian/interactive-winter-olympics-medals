@@ -57,9 +57,11 @@ const nestedMedalsByDiscipline = d3.nest()
 // fs.writeFileSync("./src/assets/data/test.json", JSON.stringify(nestedMedalsByDiscipline))
 
 const medalTable = medalTableJson.map((country, i) => {
-    var goldMedals = [];
-    var silverMedals = [];
-    var bronzeMedals = [];
+    let goldMedals = [];
+    let silverMedals = [];
+    let bronzeMedals = [];
+
+    const preferableName = country.olympicCountry.name.length > 21 ? country.olympicCountry.abbreviation : country.olympicCountry.name;
 
     ["gold", "silver", "bronze"].forEach(type => {
         new Array(country.medalCount[type]).fill(null).forEach(medal => {
@@ -69,14 +71,21 @@ const medalTable = medalTableJson.map((country, i) => {
         });
     });
     
-    return Object.assign({}, country, { goldMedals: goldMedals, silverMedals: silverMedals, bronzeMedals: bronzeMedals, rank: i + 1 });
+    return Object.assign({}, country, {
+        goldMedals: goldMedals,
+        silverMedals: silverMedals,
+        bronzeMedals: bronzeMedals,
+        rank: i + 1,
+        preferableName: preferableName
+    });
 });
 
 export async function render() {
     const header = headerHTML;
     return "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
         "countryCodes": countries,
-        "countries": medalTable,
+        "otherCountries": medalTable.slice(6),
+        "topCountries": medalTable.slice(0, 6),
         "medalsByDiscipline": nestedMedalsByDiscipline,
         "performance": countryPerformanceJsonToRender.sort((a, b) => b.diff - a.diff)
     }) + "</div>";
