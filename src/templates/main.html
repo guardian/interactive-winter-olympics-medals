@@ -46,7 +46,18 @@
     </button>
     <div class="other-country-block hidden {{olympicCountry.abbreviation}}">
         {{#otherCountries}}
-            <strong>{{olympicCountry.name}}</strong>: {{goldMedals}} {{silverMedals}} {{bronzeMedals}}
+            <div class="other-country-name">
+                {{rank}} {{olympicCountry.name}}
+            </div>
+            <div class="other-country-medals">
+                <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-2x"></span>
+                <span class="medal-block medal-block--gold medal-block--small"></span>
+                {{goldMedals.total}}
+                <span class="medal-block medal-block--silver medal-block--small"></span>
+                {{silverMedals.total}}
+                <span class="medal-block medal-block--bronze medal-block--small"></span>
+                {{bronzeMedals.total}}
+            </div>
         {{/otherCountries}}
     </div>
 </div>
@@ -98,6 +109,9 @@
     </div>
     <!-- <hr/> -->
     {{/medalsByDiscipline}}
+</div>
+<div class="block" data-title="Performance">
+<h1>Overperforming vs Underperforming</h1>
 </div>
 <!-- <div class="performance inner">
     <h2>Country performance</h2> {{#performance}}

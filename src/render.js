@@ -34,8 +34,6 @@ const countryPerformanceJsonToRender = countryPerformanceJson.map((country) => {
 
 const mappedDisciplines = medalListByDisciplineJson.map(discip => Object.assign({}, discip, { lowerCaseAbbreviation: discip.abbreviation.toLowerCase()}))
 
-console.log(countryPerformanceJsonToRender)
-
 const nestedMedalsByDiscipline = d3.nest()
     .key(d => d.discipline.name)
     .key(d => d.olympicEvent.name)
@@ -89,11 +87,13 @@ const medalTable = medalTableJson.map((country, i) => {
             total: bronzeMedals.length
         },
         rank: i + 1,
-        preferableName: preferableName
+        preferableName: preferableName,
+        lowerCaseAbbreviation: country.olympicCountry.abbreviation.toLowerCase()
     });
 });
 
 export async function render() {    
+    
     const header = headerHTML;
     return "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
         "countryCodes": countries,

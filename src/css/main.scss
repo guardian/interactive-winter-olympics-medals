@@ -21,6 +21,11 @@ $bronze: #e58b48;
     margin: 0 !important;
 }
 
+h1 {
+    @include fs-headline(8);
+    font-weight: 700;
+}
+
 .page-wrapper {
     max-width: 1300px;
     background-color: #fff;
@@ -111,7 +116,7 @@ $bronze: #e58b48;
     &--small {
         width: 12px;
         height: 12px;
-        margin: 0 5px;
+        margin: 0 5px 0 10px;
     }
     
     &--gold {
@@ -246,4 +251,16 @@ $bronze: #e58b48;
         display: flex;
         flex-grow: 1;
     }
+}
+
+.other-country-name {
+    @include fs-headline(5);
+    font-weight: bold;
+}
+
+.other-country-medals {
+    display: flex;
+    align-items: center;
+    @include fs-textSans(1);
+    font-weight: 700;
 }
