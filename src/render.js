@@ -32,6 +32,10 @@ const countryPerformanceJsonToRender = countryPerformanceJson.map((country) => {
 //     return Object.assign({}, medal, { todayClass: (day === ) })
 // });
 
+const mappedDisciplines = medalListByDisciplineJson.map(discip => Object.assign({}, discip, { lowerCaseAbbreviation: discip.abbreviation.toLowerCase()}))
+
+console.log(countryPerformanceJsonToRender)
+
 const nestedMedalsByDiscipline = d3.nest()
     .key(d => d.discipline.name)
     .key(d => d.olympicEvent.name)
@@ -42,7 +46,7 @@ const nestedMedalsByDiscipline = d3.nest()
             "bronze": leaves.filter(d => d.medalWon === "bronze")
         }
     })
-    .entries(medalListByDisciplineJson
+    .entries(mappedDisciplines
         .sort((a, b) => {
             if (a.medalWon === "gold") {
                 return -1;
@@ -72,15 +76,24 @@ const medalTable = medalTableJson.map((country, i) => {
     });
     
     return Object.assign({}, country, {
-        goldMedals: goldMedals,
-        silverMedals: silverMedals,
-        bronzeMedals: bronzeMedals,
+        goldMedals: {
+            list: goldMedals,
+            total: goldMedals.length
+        },
+        silverMedals: {
+            list: silverMedals,
+            total: silverMedals.length
+        },
+        bronzeMedals: {
+            list: bronzeMedals,
+            total: bronzeMedals.length
+        },
         rank: i + 1,
         preferableName: preferableName
     });
 });
 
-export async function render() {
+export async function render() {    
     const header = headerHTML;
     return "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
         "countryCodes": countries,

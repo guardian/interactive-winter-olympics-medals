@@ -15,17 +15,26 @@
         <div class="medals">
             <div class="gold-medals">
                 {{#goldMedals}}
-                <div class="medal-block medal-block--gold"></div>
+                    {{#list}}
+                    <div class="medal-block medal-block--gold"></div>
+                    {{/list}}
+                    <span class="medals-total">{{total}}</span>
                 {{/goldMedals}}
             </div>
             <div class="silver-medals">
                 {{#silverMedals}}
+                 {{#list}}
                 <div class="medal-block medal-block--silver"></div>
+                 {{/list}}
+                <span class="medals-total">{{total}}</span>
                 {{/silverMedals}}
             </div>
             <div class="bronze-medals">
                 {{#bronzeMedals}}
+                 {{#list}}
                 <div class="medal-block medal-block--bronze"></div>
+                 {{/list}}
+                <span class="medals-total">{{total}}</span>
                 {{/bronzeMedals}}
             </div>
         </div>
@@ -44,7 +53,7 @@
 <div class="block" data-title="Medals by sport">
     {{#medalsByDiscipline}}
     <div class="row row--header row--header--closed">
-        {{key}}
+        <span class="discipline-header">{{key}}</span>
         <button class="item-button item-button--expand">
             <img src="<%= path %>/assets/plus-black.svg" />
             <div></div>
@@ -53,11 +62,12 @@
     <div class="sports-category sports-category--hide">
         {{#values}}
         <div class="row">
+            {{value.country}}
             <div class="column column--discipline">{{key}}</div>
             <div class="column column--gold">
                 {{#value.gold}}
                 <div class="column__athlete">
-                    <span class="om-flag om-flag--{{abbreviation}}"><img src="http://www.countryflags.io/be/flat/64.png"></span>
+                    <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-2x"></span>
                     <span class="medal-block medal-block--gold medal-block--small"></span>
                     <span class="athlete-name">{{firstName}} {{lastName}}</span>
                 </div>
@@ -66,7 +76,7 @@
             <div class="column column--silver">
                 {{#value.silver}}
                 <div class="column__athlete">
-                    <span class="om-flag om-flag--{{abbreviation}}"><img src="http://www.countryflags.io/be/flat/64.png"></span>
+                    <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-2x"></span>
                     <span class="medal-block medal-block--silver medal-block--small"></span>
                     <span class="athlete-name">{{firstName}} {{lastName}}</span>
                 </div>
@@ -75,7 +85,7 @@
             <div class="column column--bronze">
                 {{#value.bronze}}
                 <div class="column__athlete">
-                    <span class="om-flag om-flag--{{abbreviation}}"><img src="http://www.countryflags.io/be/flat/64.png"></span>
+                    <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-2x"></span>
                     <span class="medal-block medal-block--bronze medal-block--small"></span>
                     <span class="athlete-name">{{firstName}} {{lastName}}</span>
                 </div>

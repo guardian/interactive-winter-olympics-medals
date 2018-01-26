@@ -1,6 +1,8 @@
 @import "mq";
 @import "fonts";
 @import "header";
+@import "flag-css";
+
 // Uncomment for embeds
 //@import "embed";
 // Uncomment for full screen (including immersive article main media)
@@ -55,7 +57,8 @@ $bronze: #e58b48;
         position: absolute;
         left: 0px;
         top: 0;
-        @include fs-header(3);
+        @include fs-headline(4);
+        font-weight: 700;
         color: #000;
         background-color: #ffe500;
         padding: 3px 5px 3px
@@ -92,7 +95,8 @@ $bronze: #e58b48;
 }
 
 .country-header { 
-    @include fs-header(5);
+    @include fs-headline(8);
+    font-weight: 700;
     display: inline;
     position: relative;
 }
@@ -102,6 +106,7 @@ $bronze: #e58b48;
     height: 20px;
     border-radius: 50%;
     display: inline-block;
+    margin-right: 1px;
 
     &--small {
         width: 12px;
@@ -123,6 +128,13 @@ $bronze: #e58b48;
 .medals {
     margin-top: 10px;
     // margin-bottom: 30px;
+}
+
+.medals-total {
+    @include fs-textSans(1);
+    margin-left: 4px;
+    font-weight: 700;
+    vertical-align: super;
 }
 
 .number {
@@ -160,27 +172,32 @@ $bronze: #e58b48;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 4px 0 18px 0;
 
     &--header {
-        @include fs-header(5);
         cursor: pointer;
-        padding-bottom: 32px;
-    }
+        align-items: baseline;
 
-    &--closed {
-        padding-bottom: 14px;
+        &--closed {
+            padding-bottom: 14px;
+        }
+        &--open {
+            padding-bottom: 32px;
+        }
     }
 }
 
-// .closed {
-//     padding-bottom: 14px;
-// }
+.discipline-header {
+    @include fs-headline(4);
+    font-weight: 700;
+}
 
 .item-button {
     border: 1px solid #979797;
     border-radius: 50%;
     height: 33px;
     width: 33px;
+    // margin-top: 7px;
 
     &--expand {
         background: #fff;
@@ -218,6 +235,7 @@ $bronze: #e58b48;
 .column {
     display: flex;
     min-width: 200px;
+    flex-direction: column;
 
     &--discipline {
         font-weight: 700;
@@ -229,14 +247,3 @@ $bronze: #e58b48;
         flex-grow: 1;
     }
 }
-
-.om-flag img {
-    width: 40px;
-    margin-top: -7px;
-    display: inline;
-}
-
-// .minus {
-//     background: #FFFFFF;
-//     height: 2px;
-// }
