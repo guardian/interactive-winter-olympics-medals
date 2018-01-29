@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="190px" height="92px" viewBox="0 0 190 92" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Series</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="01-Winter-Olympics-Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-82.000000, -44.000000)">
+        <g id="Left-Col-Copy" transform="translate(0.000000, 41.000000)">
+            <g id="Series" transform="translate(81.000000, 0.000000)">
+                <g id="Group-2" transform="translate(8.000000, 0.000000)" font-size="32" font-weight="bold" line-spacing="40">
+                    <text id="Winter" font-family="GHGuardianHeadline-Bold, GH Guardian Headline" fill="#056DA1">
+                        <tspan x="0" y="26">Winter</tspan>
+                    </text>
+                    <text id="Olympics" font-family="GHGuardianHeadline-Bold, GH Guardian Headline" fill="#1896D7">
+                        <tspan x="39" y="56">Olympics</tspan>
+                    </text>
+                    <text id="2018" font-family="GHFGuardianDisplayFigures-Bold, GHF Guardian Display Figures" fill="#056DA1">
+                        <tspan x="1" y="84">2018</tspan>
+                    </text>
+                </g>
+                <path d="M1.5,4.36363636 L1.5,36.6397245" id="Line" stroke="#ABBFC6" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>
