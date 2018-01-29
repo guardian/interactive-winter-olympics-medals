@@ -10,9 +10,11 @@
 
 
 //Colours
-$gold: #f9db32;
+$gold: #FADD04;
 $silver: #dcdcdc;
-$bronze: #e58b48;
+$bronze: #E78B40;
+
+$highlight: #FFE500;
 
 
 //Main
@@ -87,13 +89,37 @@ h1 {
 }
 
 .sports-category {
+    img {
+        background: #00b2ff;
+        height: 300px;
+        width: 300px;
+        border-radius: 50%;
+        margin-left: 20px;
+        margin-top: -45px;
+    }
+
     &--hide {
         display: none !important;
     }
     &--show {
-        display: block;
+        display: flex;
     }
 }
+
+.sport-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-athlete {
+    @include fs-textSans(3);
+    margin-top: -40px;
+    margin-left: 20px;
+    max-width: 120px;
+    background: $highlight;
+}
+
 
 .hidden {
     display: none !important;
@@ -132,7 +158,10 @@ h1 {
 
 .medals {
     margin-top: 10px;
-    // margin-bottom: 30px;
+}
+
+.top-medals {
+    width: 290px;
 }
 
 .medals-total {
@@ -239,12 +268,14 @@ h1 {
 
 .column {
     display: flex;
-    min-width: 200px;
+    width: 180px;
     flex-direction: column;
 
     &--discipline {
         font-weight: 700;
-        width: 240px;
+        // width: 240px;
+        width: 100px;
+        padding: 20px;
     }
 
     &__athlete {
@@ -255,12 +286,32 @@ h1 {
 
 .other-country-name {
     @include fs-headline(5);
-    font-weight: bold;
+    font-weight: 700;
+    margin-top: 9px;
 }
 
-.other-country-medals {
+.other-country-details {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     @include fs-textSans(1);
+    font-weight: 700;
+}
+
+.other-country-block {
+    margin-top: 16px;
+}
+
+.countries-performance {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16px;
+
+    p {
+        @include fs-bodyCopy(2);
+    }
+}
+
+.performance-header {
+    @include fs-headline(4);
     font-weight: 700;
 }

@@ -1,157 +1,183 @@
 [
 {
-    "key": "BLR",
+    "key": "Bulgaria",
     "currMedalsCount": 9,
     "prevMedalsCount": 3,
-    "diff": 6
+    "diff": 6,
+    "abbreviation": "usa"
 },
 {
-    "key": "AUT",
+    "key": "Austria",
     "currMedalsCount": 16,
     "prevMedalsCount": 17,
-    "diff": -1
+    "diff": -1,
+    "abbreviation": "usa"
 },
 {
-    "key": "SUI",
+    "key": "Switzerland",
     "currMedalsCount": 11,
     "prevMedalsCount": 11,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
-    "key": "GER",
+    "key": "Germany",
     "currMedalsCount": 19,
     "prevMedalsCount": 19,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
-    "key": "NOR",
+    "key": "Norway",
     "currMedalsCount": 26,
     "prevMedalsCount": 26,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
-    "key": "SLO",
+    "key": "Slovenia",
     "currMedalsCount": 8,
     "prevMedalsCount": 8,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
-    "key": "FRA",
+    "key": "France",
     "currMedalsCount": 15,
     "prevMedalsCount": 15,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "ITA",
     "currMedalsCount": 8,
     "prevMedalsCount": 8,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "CRO",
     "currMedalsCount": 1,
     "prevMedalsCount": 1,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "CAN",
     "currMedalsCount": 25,
     "prevMedalsCount": 25,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "RUS",
     "currMedalsCount": 33,
     "prevMedalsCount": 33,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "LAT",
     "currMedalsCount": 4,
     "prevMedalsCount": 4,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "CZE",
     "currMedalsCount": 8,
     "prevMedalsCount": 8,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
-    "key": "USA",
+    "key": "United States of America",
     "currMedalsCount": 28,
     "prevMedalsCount": 28,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "UKR",
     "currMedalsCount": 2,
     "prevMedalsCount": 2,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "SVK",
     "currMedalsCount": 1,
     "prevMedalsCount": 1,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "SWE",
     "currMedalsCount": 15,
     "prevMedalsCount": 15,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "FIN",
     "currMedalsCount": 5,
     "prevMedalsCount": 5,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "POL",
     "currMedalsCount": 6,
     "prevMedalsCount": 6,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "GBR",
     "currMedalsCount": 4,
     "prevMedalsCount": 4,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "AUS",
     "currMedalsCount": 3,
     "prevMedalsCount": 3,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "CHN",
     "currMedalsCount": 9,
     "prevMedalsCount": 9,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "JPN",
     "currMedalsCount": 8,
     "prevMedalsCount": 8,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
-    "key": "KOR",
+    "key": "Republic of Korea",
     "currMedalsCount": 8,
     "prevMedalsCount": 8,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
     "key": "KAZ",
     "currMedalsCount": 1,
     "prevMedalsCount": 1,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 },
 {
-    "key": "NED",
+    "key": "Netherlands",
     "currMedalsCount": 24,
     "prevMedalsCount": 24,
-    "diff": 0
+    "diff": 0,
+    "abbreviation": "usa"
 }]

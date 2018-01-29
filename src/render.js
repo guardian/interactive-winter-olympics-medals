@@ -20,12 +20,18 @@ const countries = [
 ];
 
 const countryPerformanceJsonToRender = countryPerformanceJson.map((country) => {
+    // console.log(country)
+    country.name = country.name;
     country.percentage = scale(Math.abs(country.diff));
     country.class = country.diff >= 0 ? "positive" : "negative";
     country.displayDiff = (country.diff > 0) ? "+" + country.diff : country.diff;
     country.margin = country.diff >= 0 ? 50 : 50 - country.percentage;
     return country;
 });
+console.log(countryPerformanceJsonToRender)
+const sortedByPerformance = countryPerformanceJsonToRender.sort((a, b) => b.diff - a.diff);
+const topOverPerforming = sortedByPerformance.slice(0, 3);
+const topUnderPerforming = sortedByPerformance.slice(- 3);
 
 // const medalListByDisciplineJsonWithShowHide = medalListByDisciplineJson.map(medal => {
 //     const day = medal.startDate.find(d => d.dateType === "Local").date;
@@ -92,14 +98,14 @@ const medalTable = medalTableJson.map((country, i) => {
     });
 });
 
-export async function render() {    
-    
+export async function render() {
     const header = headerHTML;
     return "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
         "countryCodes": countries,
         "otherCountries": medalTable.slice(6),
         "topCountries": medalTable.slice(0, 6),
         "medalsByDiscipline": nestedMedalsByDiscipline,
-        "performance": countryPerformanceJsonToRender.sort((a, b) => b.diff - a.diff)
+        "topOverPerforming": topOverPerforming,
+        "topUnderPerforming": topUnderPerforming
     }) + "</div>";
 }
