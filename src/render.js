@@ -20,18 +20,56 @@ const countries = [
 ];
 
 const countryPerformanceJsonToRender = countryPerformanceJson.map((country) => {
-    // console.log(country)
-    country.name = country.name;
-    country.percentage = scale(Math.abs(country.diff));
-    country.class = country.diff >= 0 ? "positive" : "negative";
-    country.displayDiff = (country.diff > 0) ? "+" + country.diff : country.diff;
-    country.margin = country.diff >= 0 ? 50 : 50 - country.percentage;
+    // country.percentage = scale(Math.abs(country.diff));
+    // country.margin = country.diff >= 0 ? 50 : 50 - country.percentage;
+    // country.name = country.key;
+    country.abbreviation = country.abbreviation.toLowerCase();
+    // country.class = country.diff >= 0 ? "positive" : "negative";
+    // country.diff = country.diff
+    console.log(country)
     return country;
 });
-console.log(countryPerformanceJsonToRender)
+
+
+const relevantCountries = countryPerformanceJsonToRender.filter(country => !country.diff === 0);
+// console.log(countryPerformanceJson)
+console.log(relevantCountries)
+
 const sortedByPerformance = countryPerformanceJsonToRender.sort((a, b) => b.diff - a.diff);
 const topOverPerforming = sortedByPerformance.slice(0, 3);
 const topUnderPerforming = sortedByPerformance.slice(- 3);
+
+const pluraliseMedals = medalCount => medalCount > 1 || medalCount === 0 ? 'medals' : 'medal';
+
+const generateNegativePhrase = country => {
+    const negativePhrases = [
+        `A mountain to climb for ${country.name} who only have ${country.currentMedals} ${pluraliseMedals(country.currentMedals)}.`,
+        `Compared to Sochi, ${country.name} has ${-1 * country.diff} less ${pluraliseMedals(country.diff * -1)} so far.`,
+        `Disappointingly, only ${country.currentMedals} ${pluraliseMedals(country.currentMedals)} so far in comparison to the ${country.previousMedals} ${pluraliseMedals(country.previousMedals)} in the last Olympics.`
+    ];
+
+    return negativePhrases[Math.floor(Math.random() * negativePhrases.length)];
+}
+
+const generatePositivePhrases = country => {
+    const positivePhrases = [
+        `${country.name} is up ${country.diff} ${pluraliseMedals(country.diff)} compared to last time`,
+        `On the rise, ${country.name} has ${medals.diff} more ${pluraliseMedals(country.diff)} than 4 years ago`
+    ];
+
+    const doubled = `${country.name} has doubled the number of medals they had won so far in Sochi`;
+    const moreThanDoubled = `${country.name} has more than doubled the number of medals they had won so far in Sochi`;
+
+    if (country.currentMedals > 2 * country.previousMedals) {
+        positivePhrases.push(moreThanDoubled);
+    } else if (country.currentMedals === 2 * country.previousMedals) {
+        positivePhrases.push(doubled);
+    }
+
+    return positivePhrases[Math.floor(Math.random() * positivePhrases.length)];
+}
+
+
 
 // const medalListByDisciplineJsonWithShowHide = medalListByDisciplineJson.map(medal => {
 //     const day = medal.startDate.find(d => d.dateType === "Local").date;
