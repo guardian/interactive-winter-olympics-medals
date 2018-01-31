@@ -3,6 +3,7 @@
 	font-size: 50px;
 	margin: 0;
 	font-weight: 700;
+	line-height: 54px;
 	display: inline;
 	// padding-bottom: 4px;
 	box-decoration-break: clone;
@@ -11,8 +12,11 @@
 }
 
 .ol-subtitle {
-	background-color: #ffe500;
 	line-height: 54px;
+}
+
+.subtitle-wrapper {
+	background-color: #ffe500;
 }
 
 .ol-title {
@@ -55,20 +59,27 @@
 	padding-top: 95px;
 
 	@include mq(wide) {
-		margin-left: 250px;
+		margin-left: 240px;
 	}
 }
 
 .ol-circle {
 	background-color: #00b2ff;
-	height: 460px;
-	width: 460px;
-	border-radius: 460px;
+	height: 441px;
+	width: 441px;
+	border-radius: 50%;
 	display: block;
 	position: absolute;
-	right: 0;
-	top: -60px;
+	right: 5%;
+	top: -36px;
 	z-index: 0;
+
+	img {
+		height: 425px;
+		position: absolute;
+		top: 12%;
+		right: -3%;
+	}
 }
 
 .ol-logo {
