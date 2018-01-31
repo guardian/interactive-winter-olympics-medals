@@ -20,6 +20,14 @@ const countries = [
     ["Germany", "GER"]
 ];
 
+const toTitleCase = (str, force) => {
+    str = force ? str.toLowerCase() : str;
+    return str.replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g,
+        (firstLetter) => firstLetter.toUpperCase()
+    );
+}
+
+
 const countryPerformanceJsonToRender = countryPerformanceJson.map((country) => {
     // country.percentage = scale(Math.abs(country.diff));
     // country.margin = country.diff >= 0 ? 50 : 50 - country.percentage;
@@ -40,7 +48,7 @@ const pluraliseMedals = medalCount => medalCount > 1 || medalCount === 0 ? 'meda
 
 const generateNegativePhrase = country => {
     const phrases = [
-        `A mountain to climb for ${country.key} who only have ${country.currMedalsCount} ${pluraliseMedals(country.currMedalsCount)}.`,
+        `A mountain to climb for ${country.key}, who only have ${country.currMedalsCount} ${pluraliseMedals(country.currMedalsCount)}.`,
         `Compared to Sochi, ${country.key} has ${-1 * country.diff} less ${pluraliseMedals(country.diff * -1)} so far.`,
         `Disappointingly, only ${country.currMedalsCount} ${pluraliseMedals(country.currMedalsCount)} so far in comparison to the ${country.prevMedalsCount} ${pluraliseMedals(country.prevMedalsCount)} in the last Olympics.`
     ];
@@ -50,12 +58,12 @@ const generateNegativePhrase = country => {
 
 const generatePositivePhrase = country => {
     const phrases = [
-        `${country.key} is up ${country.diff} ${pluraliseMedals(country.diff)} compared to last time`,
-        `On the rise, ${country.key} has ${country.diff} more ${pluraliseMedals(country.diff)} than 4 years ago`
+        `Up ${country.diff} ${pluraliseMedals(country.diff)} compared to last time.`,
+        `On the rise, ${country.key} has ${country.diff} more ${pluraliseMedals(country.diff)} than 4 years ago.`
     ];
 
-    const doubled = `${country.key} has doubled the number of medals they had won so far in Sochi`;
-    const moreThanDoubled = `${country.key} has more than doubled the number of medals they had won so far in Sochi`;
+    const doubled = `Have doubled the number of medals they had won so far in Sochi.`;
+    const moreThanDoubled = `Have more than doubled the number of medals they had won so far in Sochi.`;
 
     if (country.currMedalsCount > 2 * country.prevMedalsCount) {
         phrases.push(moreThanDoubled);
@@ -73,9 +81,12 @@ topOverPerforming.map(country => country.phrase = generatePositivePhrase(country
 const topUnderPerforming = sortedByPerformance.slice(- 3)
 topUnderPerforming.map(country => country.phrase = generateNegativePhrase(country));
 
-console.log(topUnderPerforming)
-
-const mappedDisciplines = medalListByDisciplineJson.map(discip => Object.assign({}, discip, { lowerCaseAbbreviation: discip.abbreviation.toLowerCase()}))
+const mappedDisciplines = medalListByDisciplineJson.map(discip => {
+        discip.lowerCaseAbbreviation = discip.abbreviation.toLowerCase();
+    discip.winnerName = discip.lastName ? `${toTitleCase(discip.firstName)} ${toTitleCase(discip.lastName)}` : `Team ${discip.displayName}`;
+        return discip
+    }
+);
 
 const nestedMedalsByDiscipline = d3.nest()
     .key(d => d.discipline.name)

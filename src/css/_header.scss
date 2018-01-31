@@ -29,6 +29,25 @@
 	margin-top: 24px;
 	margin-bottom: 60px;
 	max-width: 360px;
+
+	// &::before {
+    // 	content: '';
+    //     display: block;
+	// 	position: absolute;
+	// 	height: 2px;
+	// 	border-top: 1px solid #ccf0ff;
+	// 	border-bottom: 1px solid #ccf0ff;
+    //     margin-bottom: 3px;
+	// 	width: 220px;
+	// 	left: 9px;
+    //     // @include mq(leftCol) {
+    //     //     left: 160px;
+    //     // }
+
+    //     // @include mq(wide) {
+    //     //     left: 240px;
+    //     // }
+	// }
 }
 
 .ol-wrapper {
@@ -54,8 +73,6 @@
 
 .ol-logo {
 	position: absolute;
-	top: 10px;
-	
 }
 
 header {

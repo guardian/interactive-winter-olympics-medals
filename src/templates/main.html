@@ -8,9 +8,12 @@
 <div class="block" data-title="Leaderboard">
     {{#topCountries}}
     <div class="country-block {{olympicCountry.abbreviation}}">
-        <img class="number" src="<%= path %>/assets/numbers/{{rank}}.svg" />
-        <div class="country-header">
-            {{preferableName}}
+        <div class="country-header-wrapper">
+            <img class="number" src="<%= path %>/assets/numbers/{{rank}}.svg" />
+            <div class="country-header">
+                <div class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-large"></div>
+                <div>{{preferableName}}</div>
+            </div>
         </div>
         <div class="medals">
             <div class="top-medals">
@@ -63,6 +66,9 @@
         {{/otherCountries}}
     </div>
 </div>
+<div class="breaker"></div>
+<div class="breaker"></div>
+<div class="breaker"></div>
 <div class="block" data-title="Medals by sport">
     {{#medalsByDiscipline}}
     <div class="row row--header row--header--closed">
@@ -83,7 +89,7 @@
                     <div class="column__athlete">
                         <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-medium flag-discipline"></span>
                         <span class="medal-block medal-block--gold medal-block--small"></span>
-                        <span class="athlete-name">{{firstName}} {{lastName}}</span>
+                        <span class="athlete-name">{{winnerName}}</span>
                     </div>
                     {{/value.gold}}
                 </div>
@@ -92,7 +98,7 @@
                     <div class="column__athlete">
                         <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-medium flag-discipline"></span>
                         <span class="medal-block medal-block--silver medal-block--small"></span>
-                        <span class="athlete-name">{{firstName}} {{lastName}}</span>
+                        <span class="athlete-name">{{winnerName}}</span>
                     </div>
                     {{/value.silver}}
                 </div>
@@ -101,7 +107,7 @@
                     <div class="column__athlete">
                         <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-medium flag-discipline"></span>
                         <span class="medal-block medal-block--bronze medal-block--small"></span>
-                        <span class="athlete-name">{{firstName}} {{lastName}}</span>
+                        <span class="athlete-name">{{winnerName}}</span>
                     </div>
                     {{/value.bronze}}
                 </div>
@@ -115,10 +121,13 @@
     </div>
     {{/medalsByDiscipline}}
 </div>
+<div class="breaker"></div>
+<div class="breaker"></div>
+<div class="breaker"></div>
 <div class="block" data-title="Performance">
-    <h1>Overperforming vs Underperforming</h1>
+    <h1>Who's up and who's down</h1>
     <div class="countries-performance">
-        <div>
+        <div class="top-performing">
             {{#topOverPerforming}}
             <div class="performance-header">
                 <span class="flag flag-ioc-{{abbreviation}} flag-medium"></span>
@@ -127,7 +136,7 @@
             <p>{{phrase}}</p>
             {{/topOverPerforming}}
         </div>
-        <div>
+        <div class="top-performing">
             {{#topUnderPerforming}}
             <div class="performance-header">
                 <span class="flag flag-ioc-{{abbreviation}} flag-medium"></span>
