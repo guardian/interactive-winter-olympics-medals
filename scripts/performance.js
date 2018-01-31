@@ -10,9 +10,6 @@ const prevMedalsThatHaveBeenAwardedSoFar = prevMedals.filter(p => {
 	return matches.length > 0;
 });
 
-console.log(prevMedals.length)
-console.log(currMedals.length)
-
 const currMedalsByCountry = d3.nest()
 	.key(d => d.displayName)
 	// .rollup(leaves => leaves.length)

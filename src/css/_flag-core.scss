@@ -11,8 +11,9 @@
   background-repeat: no-repeat;
   position: relative;
   display: inline-block;
-  width: $flag-width;
-  line-height: $flag-line-height;
+  // width: $flag-width;
+  // line-height: $flag-line-height;
+  border: 1px solid #CCF0FF;
 }
 .flag:before {
   content: "\00a0";
@@ -25,16 +26,37 @@
   }
 }
 
-@include flag-x(1);
-@include flag-x(2);
-@include flag-x(3);
-@include flag-x(4);
-@include flag-x(5);
-@include flag-x(6);
-@include flag-x(7);
-@include flag-x(8);
-@include flag-x(9);
-@include flag-x(10);
+.flag-small {
+  width: 27px;
+  // height: 18px;
+}
+
+.flag-medium {
+  width: 40px;
+  height: 22px;
+}
+
+.flag-large {
+  width: 50px;
+  // height: 34px;
+}
+
+.flag-discipline {
+  margin-top: -5px;
+}
+
+
+
+// @include flag-x(1);
+// @include flag-x(2);
+// @include flag-x(3);
+// @include flag-x(4);
+// @include flag-x(5);
+// @include flag-x(6);
+// @include flag-x(7);
+// @include flag-x(8);
+// @include flag-x(9);
+// @include flag-x(10);
 
 .flag-rotate-90 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);

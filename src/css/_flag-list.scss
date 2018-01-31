@@ -65,6 +65,9 @@
 @include flag(can, ca, 124, can, can);
 @include flag(cck, cc, 166, null, cck);
 @include flag(che, ch, 756, sui, sui);
+@include flag(che, ch, 756, swi, swi);
+@include flag(swi, swi, 756, swi, swi);
+@include flag(sui, sui, 756, sui, sui);
 @include flag(chl, cl, 152, chi, chi);
 @include flag(chn, cn, 156, chn, chn);
 @include flag(civ, ci, 384, civ, civ);
@@ -83,6 +86,7 @@
 @include flag(cyp, cy, 196, cyp, cyp);
 @include flag(cze, cz, 203, cze, cze);
 @include flag(deu, de, 276, ger, ger);
+@include flag(ger, ger, 276, ger, ger);
 @include flag(dji, dj, 262, dji, dji);
 @include flag(dma, dm, 212, dma, dma);
 @include flag(dnk, dk, 208, den, den);
