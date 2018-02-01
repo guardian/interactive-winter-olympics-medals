@@ -41,10 +41,10 @@ $highlight: #FFE500;
         width: 0;
         position: absolute;
         top: 0;
-        border-right: 1px solid #ccf0ff;
 
         @include mq(leftCol) {
             left: 160px;
+            border-right: 1px solid #ccf0ff;
         }
 
         @include mq(wide) {

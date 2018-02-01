@@ -1,62 +1,68 @@
 .ol-title, .ol-subtitle {
-	@include fs-headline(9);
-	font-size: 50px;
-	margin: 0;
-	font-weight: 700;
-	line-height: 54px;
 	display: inline;
-	// padding-bottom: 4px;
-	box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-    padding: 0px 10px 0px 10px;
+
+	@include mq(mobile) {
+		@include fs-headline(6);
+		font-weight: 700;
+		margin-top: -12px;
+	}
+
+	@include mq(desktop) {
+		@include fs-headline(9);
+		font-size: 50px;
+		line-height: 54px;
+		font-weight: 700;
+		margin-top: 20px;
+	}
 }
 
-.ol-subtitle {
-	line-height: 54px;
-}
-
-.subtitle-wrapper {
+.subtitle-highlight {
 	background-color: #ffe500;
+	padding: 0 5px 4px 10px;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
+	position: relative;
+	z-index: 2;
+
+	& >span {
+		position: relative;
+		z-index: 1;
+	}
 }
 
 .ol-title {
 	background: #1896D7;
 	color: #ffffff;
-	line-height: 40px;
+	position: relative;
+	display: inline-block;
+	padding: 0 10px 4px 10px;
 }
 
-.ol-standfirst {
-	@include fs-headline(3);
-	font-weight: 300;
-	color: #767676;
-	max-width: 620px;
+.ol-standfirst {	
+	color: #121212;
 	margin-top: 24px;
 	margin-bottom: 60px;
-	max-width: 360px;
+	padding-left: 10px;
+	@include fs-headline(3);
+	font-weight: 300;
 
-	// &::before {
-    // 	content: '';
-    //     display: block;
-	// 	position: absolute;
-	// 	height: 2px;
-	// 	border-top: 1px solid #ccf0ff;
-	// 	border-bottom: 1px solid #ccf0ff;
-    //     margin-bottom: 3px;
-	// 	width: 220px;
-	// 	left: 9px;
-    //     // @include mq(leftCol) {
-    //     //     left: 160px;
-    //     // }
 
-    //     // @include mq(wide) {
-    //     //     left: 240px;
-    //     // }
-	// }
+	@include mq(mobile) {
+		max-width: 50%;
+		line-height: 22px;
+		font-size: 18px;
+	}
+
+	@include mq(desktop) {
+		max-width: 410px;
+		font-size: 20px;
+		line-height: 24px;
+	}
 }
 
 .ol-wrapper {
 	max-width: 500px;
-	padding-top: 95px;
+	padding-top: 93px;
 
 	@include mq(wide) {
 		margin-left: 240px;
@@ -65,25 +71,58 @@
 
 .ol-circle {
 	background-color: #00b2ff;
-	height: 441px;
-	width: 441px;
 	border-radius: 50%;
 	display: block;
 	position: absolute;
-	right: 5%;
-	top: -36px;
 	z-index: 0;
 
 	img {
-		height: 425px;
-		position: absolute;
-		top: 12%;
-		right: -3%;
+		@include mq(mobile) {
+			position: absolute;
+			height: 220px;
+			top: 35px;
+			right: -30px;
+		}
+
+		@include mq(desktop) {
+			height: 425px;
+			top: 60px;
+			right: -20px;
+		}
+	}
+
+	@include mq(mobile) {
+		height: 232px;
+		width: 232px;
+		top: 148px;
+		left: 220px;
+	}
+
+	@include mq(desktop) {
+		height: 441px;
+		width: 441px;
+		top: -36px;
+		left: 560px;
+	}
+	
+	@include mq(leftCol) {
+		left: 750px;
 	}
 }
 
 .ol-logo {
 	position: absolute;
+
+	img {
+		@include mq(mobile) {
+			height: 62px;
+			margin-left: 9px;
+		}
+
+		@include mq(desktop) {
+			height: auto;
+		}
+	}
 }
 
 header {
