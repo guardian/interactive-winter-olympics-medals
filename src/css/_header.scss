@@ -42,6 +42,39 @@
 	}
 }
 
+.share-buttons {
+	@include mq(mobile) {
+		position: relative;
+		padding-top: 10px;
+		padding-bottom: 40px;
+		margin-left: 10px;
+	}
+
+	@include mq(leftCol) {
+		padding-top: 0;
+		padding-bottom: 0;
+		top: 262px;
+		position: absolute;
+		left: 10px;
+		margin-left: 0;
+	}
+
+	@include mq(wide) {
+		top: 290px;
+	}
+
+	img {
+		display: inline;
+		height: 32px;
+		cursor: pointer;
+    	margin-top: 6px;
+	}
+
+	a {
+		text-decoration: none;
+	}
+}
+
 .ol-title {
 	background: #1896D7;
 	color: #ffffff;
@@ -70,7 +103,6 @@
 .ol-standfirst {	
 	color: #121212;
 	margin-top: 24px;
-	margin-bottom: 60px;
 	padding-left: 10px;
 	@include fs-headline(3);
 	font-weight: 300;
@@ -82,6 +114,14 @@
 		font-size: 18px;
 	}
 
+	@include mq(tablet) {
+		max-width: 70%;
+	}
+
+ 	@include mq(leftCol) {
+		 padding-bottom: 80px;
+	 }
+  
 	@include mq(desktop) {
 		max-width: 410px;
 		font-size: 20px;
@@ -117,6 +157,11 @@
 			right: -30px;
 		}
 
+		@include mq(tablet) {
+			height: 280px;
+			right: -10px
+		}
+
 		@include mq(desktop) {
 			height: 425px;
 			top: 60px;
@@ -129,6 +174,13 @@
 		width: 232px;
 		top: 148px;
 		left: 54%;
+	}
+
+	@include mq(tablet) {
+		height: 300px;
+		width: 300px;
+		top: 60px;
+		left: 50%
 	}
 
 	@include mq(desktop) {

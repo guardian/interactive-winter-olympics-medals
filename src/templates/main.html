@@ -89,43 +89,64 @@
 <div class="breaker"></div>
 <div class="block" data-title="Medals by sport">
     {{#medalsByDiscipline}}
-    <div class="row row--header row--header--closed">
-        <span class="discipline-header">{{key}}</span>
+    <div class="row row--header row--header--closed row-with-border">
+        <span class="discipline-header"><img src="<%= path %>/assets/sports/{{disciplineAbbreviation}}.svg" alt="" />{{key}}</span>
         <button class="item-button item-button--expand">
             <img src="<%= path %>/assets/plus-black.svg" />
             <div></div>
         </button>
     </div>
     <div class="sports-category sports-category--hide">
-        <div>
+        <div class="medals-tab">
             {{#values}}
-            <div class="row">
-                {{value.country}}
+            <div class="row row-with-border">
+                <!-- {{value.country}} -->
                 <div class="column column--discipline">{{key}}</div>
                 <div class="column column--gold">
                     {{#value.gold}}
                     <div class="column__athlete">
-                        <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-medium flag-discipline"></span>
-                        <span class="medal-block medal-block--gold medal-block--small"></span>
-                        <span class="athlete-name">{{winnerName}}</span>
+                        <span class="medal-block medal-block--gold medal-block--small no-margin"></span>
+                        <div class="athlete-country">
+                            <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-small flag-discipline"></span>
+                            <span class="winner-abbreviation">{{abbreviation}}</span>
+                        </div>
+                        <div class="athlete-name">
+                            <span>{{firstName}}</span>
+                            <span class="name-padding"></span>
+                            <span>{{lastName}}</span>
+                        </div>
                     </div>
                     {{/value.gold}}
                 </div>
                 <div class="column column--silver">
                     {{#value.silver}}
                     <div class="column__athlete">
-                        <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-medium flag-discipline"></span>
-                        <span class="medal-block medal-block--silver medal-block--small"></span>
-                        <span class="athlete-name">{{winnerName}}</span>
+                        <span class="medal-block medal-block--silver medal-block--small no-margin"></span>
+                        <div class="athlete-country">
+                            <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-small flag-discipline"></span>
+                            <span class="winner-abbreviation">{{abbreviation}}</span>
+                        </div>
+                        <div class="athlete-name">
+                            <span>{{firstName}}</span>
+                            <span class="name-padding"></span>
+                            <span>{{lastName}}</span>
+                        </div>
                     </div>
                     {{/value.silver}}
                 </div>
                 <div class="column column--bronze">
                     {{#value.bronze}}
                     <div class="column__athlete">
-                        <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-medium flag-discipline"></span>
-                        <span class="medal-block medal-block--bronze medal-block--small"></span>
-                        <span class="athlete-name">{{winnerName}}</span>
+                        <span class="medal-block medal-block--bronze medal-block--small no-margin"></span>
+                        <div class="athlete-country">
+                            <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-small flag-discipline"></span>
+                            <span class="winner-abbreviation">{{abbreviation}}</span>
+                        </div>
+                        <div class="athlete-name">
+                            <span>{{firstName}}</span>
+                            <span class="name-padding"></span>
+                            <span>{{lastName}}</span>
+                        </div>
                     </div>
                     {{/value.bronze}}
                 </div>
@@ -133,8 +154,9 @@
             {{/values}}
         </div>
         <div class="sport-image">
-            <img src="" id="{{key}}" alt="" />
-            <div class="img-athlete">{{key}}</div>
+            <img src="{{url}}" id="{{key}}" alt="" />
+            <div class="img-athlete">{{captionLineTwo}}</div>
+            <div class="img-athlete">{{captionLineOne}}</div>
         </div>
     </div>
     {{/medalsByDiscipline}}
@@ -144,25 +166,23 @@
 <div class="breaker"></div>
 <div class="breaker"></div>
 <div class="block" data-title="Who's up? Who's down?">
-    <h1>Who's up, who's down</h1>
     <div class="countries-performance">
-        <div class="top-performing">
-            {{#topOverPerforming}}
-            <div class="performance-header">
-                <span class="flag flag-ioc-{{abbreviation}} flag-medium"></span>
-                <span>{{key}}</span>
+        {{#countriesByPeformance}}
+            <div class="performer">
+                <div class="performance-header">
+                    <img class="performance-arrow" src="<%= path %>/assets/{{arrow}}Arrow.png" alt="" />
+                    <span>{{key}}</span>
+                </div>
+                <p>{{phrase}}</p>
             </div>
-            <p>{{phrase}}</p>
-            {{/topOverPerforming}}
-        </div>
-        <div class="top-performing">
-            {{#topUnderPerforming}}
-            <div class="performance-header">
-                <span class="flag flag-ioc-{{abbreviation}} flag-medium"></span>
-                <span>{{key}}</span>
-            </div>
-            <p>{{phrase}}</p>
-            {{/topUnderPerforming}}
-        </div>
+        {{/countriesByPeformance}}
     </div>
+</div>
+<div class="breaker"></div>
+<div class="block schedule-block" data-title="More Olympics"></div>
+<div class="more-olympics">
+    <a href="" target="_blank">
+        <img class="schedule-desktop" src="<%= path %>/assets/more-olympics.svg" alt="">
+        <img class="schedule-mobile" src="<%= path %>/assets/more-olympics-small.svg" alt="">
+    </a>
 </div>

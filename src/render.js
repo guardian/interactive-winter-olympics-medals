@@ -41,11 +41,9 @@ const countryPerformanceJsonToRender = countryPerformanceJson.map((country) => {
     return country;
 });
 
-const relevantCountries = countryPerformanceJsonToRender.filter(country => country.diff !== 0)
+const relevantCountries = countryPerformanceJsonToRender.filter(country => country.diff !== 0);
 
 const sortedByPerformance = relevantCountries.sort((a, b) => b.diff - a.diff);
-// const topOverPerforming = sortedByPerformance.slice(0, 3);
-// const topUnderPerforming = sortedByPerformance.slice(- 3);
 
 const pluraliseMedals = medalCount => medalCount > 1 || medalCount === 0 ? 'medals' : 'medal';
 
@@ -79,26 +77,40 @@ const generatePositivePhrase = country => {
 
 
 const topOverPerforming = sortedByPerformance.slice(0, 3)
-topOverPerforming.map(country => country.phrase = generatePositivePhrase(country));
-
 const topUnderPerforming = sortedByPerformance.slice(- 3)
-topUnderPerforming.map(country => country.phrase = generateNegativePhrase(country));
+topOverPerforming.map(country => {
+    country.phrase = generatePositivePhrase(country);
+    country.arrow = 'up';
+    return country;
+});
+topUnderPerforming.map(country => {
+    country.phrase = generateNegativePhrase(country)
+    country.arrow = 'down';
+    return country;
+});
+
+const countriesByPerformance = [].concat.apply([], topOverPerforming.map((e, i) => [e, topUnderPerforming[i]]));
+
+console.log(countriesByPerformance)
 
 const mappedDisciplines = medalListByDisciplineJson.map(discip => {
         discip.lowerCaseAbbreviation = discip.abbreviation.toLowerCase();
-    discip.winnerName = discip.lastName ? `${toTitleCase(discip.firstName)} ${toTitleCase(discip.lastName)}` : `Team ${discip.displayName}`;
+        discip.firstName = discip.firstName ? `${toTitleCase(discip.firstName)}` : 'Team';
+        discip.lastName = discip.lastName ? `${toTitleCase(discip.lastName)}` : `${discip.displayName}`;
         return discip
     }
 );
 
-const nestedMedalsByDiscipline = d3.nest()
+const nestedMedalsByDiscipline = (d3.nest()
     .key(d => d.discipline.name)
+    // .key(d => d.discipline.abbreviation)
     .key(d => d.olympicEvent.name)
     .rollup(leaves => {
         return {
             "gold": leaves.filter(d => d.medalWon === "gold"),
             "silver": leaves.filter(d => d.medalWon === "silver"),
-            "bronze": leaves.filter(d => d.medalWon === "bronze")
+            "bronze": leaves.filter(d => d.medalWon === "bronze"),
+            "all": leaves
         }
     })
     .entries(mappedDisciplines
@@ -111,7 +123,10 @@ const nestedMedalsByDiscipline = d3.nest()
                 return 1;
             }
         })
-    )
+    )).map(d => {
+        d.disciplineAbbreviation = d.values[0].value.all[0].discipline.abbreviation.toUpperCase()
+        return d
+    })
 
 // fs.writeFileSync("./src/assets/data/test.json", JSON.stringify(nestedMedalsByDiscipline))
 
@@ -183,13 +198,20 @@ export async function render() {
 
     }))
 
+    const images = await rp({ uri: "https://interactive.guim.co.uk/docsdata-test/1rLKvNSIY8MAn0ZSM6aHcR2b3t_beRdPEu-EEavcGQHM.json", json: true});
+    
+    const medalsWithUrls = nestedMedalsByDiscipline.map(discipline => {
+        const matchAbbrev = images.sheets.Sheet1.find(item => item.abbreviation === discipline.disciplineAbbreviation);
+
+        return matchAbbrev ? Object.assign({}, discipline, { url: matchAbbrev.url, captionLineOne: matchAbbrev.caption_line_1, captionLineTwo: matchAbbrev.caption_line_2 }) : discipline;
+    })
+
     const html = "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
         "countryCodes": countries,
         "otherCountries": medalTable.slice(6),
         "topCountries": medalTable.slice(0, 6),
-        "medalsByDiscipline": nestedMedalsByDiscipline,
-        "topOverPerforming": topOverPerforming,
-        "topUnderPerforming": topUnderPerforming
+        "medalsByDiscipline": medalsWithUrls,
+        "countriesByPeformance": countriesByPerformance
     }) + "</div>";
 
     Logger.setLastRender()

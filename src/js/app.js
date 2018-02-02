@@ -26,7 +26,7 @@ rowHeaders.forEach(header => header.addEventListener('click', e => {
 	const collapseButtons = document.querySelectorAll('.item-button--collapse');
 
 	if (button.className === 'item-button item-button--expand') {
-		header.className = 'row row--header row--header--open';
+		header.className = 'row row--header row--header--open row-with-border';
 		button.className = ('item-button item-button--collapse');
 		selectedSportsCategory.classList.remove('sports-category--hide');
 		selectedSportsCategory.className = 'sports-category sports-category--show';
@@ -34,7 +34,7 @@ rowHeaders.forEach(header => header.addEventListener('click', e => {
 		collapseButtons.forEach(button => button.className = 'item-button item-button--expand');
 
 	} else {
-		header.className = 'row row--header row--header--closed';
+		header.className = 'row row--header row--header--closed row-with-border';
 		button.className = 'item-button item-button--expand';
 		selectedSportsCategory.className = 'sports-category sports-category--hide';
 	}
