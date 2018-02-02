@@ -129,7 +129,7 @@ const medalTable = medalTableJson.map((country, i) => {
     
     return Object.assign({}, country, {
         goldMedals: {
-            list: goldMedals,
+            list: ['gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold', 'gold',],
             total: goldMedals.length
         },
         silverMedals: {

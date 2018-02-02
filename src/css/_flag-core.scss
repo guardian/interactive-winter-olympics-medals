@@ -38,8 +38,15 @@
 }
 
 .flag-large {
-  width: 50px;
-  height: 28px;
+  @include mq(mobile) {
+    width: 43px;
+    height: 24px;
+  }
+  
+  @include mq(tablet) {
+    width: 50px;
+    height: 28px;
+  }
 }
 
 .flag-discipline {
