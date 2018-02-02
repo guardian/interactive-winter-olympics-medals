@@ -14,6 +14,18 @@
 		font-weight: 700;
 		margin-top: 20px;
 	}
+
+	@include mq(leftCol) {
+		margin-top: -28px;
+	}
+
+	@include mq(wide) {
+		margin-top: 0;
+	}
+
+	// @include mq(leftCol) {
+	// 	margin-left: 160px;
+	// }
 }
 
 .subtitle-highlight {
@@ -34,8 +46,25 @@
 	background: #1896D7;
 	color: #ffffff;
 	position: relative;
+	z-index: 3;
 	display: inline-block;
 	padding: 0 10px 4px 10px;
+
+	@include mq(mobile) {
+		margin-top: -12px;
+	}
+
+	@include mq(desktop) {
+		margin-top: 20px;
+	}
+		
+	@include mq(leftCol) {
+		margin-top: -28px;
+	}
+
+	@include mq(wide) {
+		margin-top: 0;
+	}
 }
 
 .ol-standfirst {	
@@ -63,6 +92,10 @@
 .ol-wrapper {
 	max-width: 500px;
 	padding-top: 93px;
+
+	@include mq(leftCol) {
+		margin-left: 160px;
+	}
 
 	@include mq(wide) {
 		margin-left: 240px;
@@ -95,7 +128,7 @@
 		height: 232px;
 		width: 232px;
 		top: 148px;
-		left: 220px;
+		left: 54%;
 	}
 
 	@include mq(desktop) {
@@ -120,7 +153,15 @@
 		}
 
 		@include mq(desktop) {
-			height: auto;
+			height: 90px;
+		}
+
+		@include mq(leftCol) {
+			height: 62px;
+		}
+
+		@include mq(wide) {
+			height: 90px;
 		}
 	}
 }

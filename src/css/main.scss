@@ -26,6 +26,15 @@ $highlight: #FFE500;
 .breaker {
     border-top: 1px solid #ccf0ff;
     margin-bottom: 1px;
+    width: 200vw;
+    margin-left: -100%;
+
+    // &::before {
+    //     content: '';
+    //     display: block;
+    //     border-top: 1px solid #ccf0ff;
+    //     margin-bottom: 1px;
+    // }
 }
 
 .page-wrapper {
