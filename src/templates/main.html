@@ -5,44 +5,50 @@
         {{/countryCodes}}
     </select>
 </div> -->
+<div class="breaker"></div>
+<div class="breaker"></div>
+<div class="breaker"></div>
+<div class="breaker"></div>
 <div class="block" data-title="Leaderboard">
+    <div class=leaderboard-top>
     {{#topCountries}}
-    <div class="country-block {{olympicCountry.abbreviation}}">
-        <div class="country-header-wrapper">
-            <img class="number" src="<%= path %>/assets/numbers/{{rank}}.svg" />
-            <div class="country-header">
-                <div class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-large"></div>
-                <div>{{preferableName}}</div>
+        <div class="country-block {{olympicCountry.abbreviation}}">
+            <div class="country-header-wrapper">
+                <img class="number" src="<%= path %>/assets/numbers/{{rank}}.svg" />
+                <div class="country-header">
+                    <div class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-large"></div>
+                    <div>{{preferableName}}</div>
+                </div>
             </div>
-        </div>
-        <div class="medals">
-            <div class="top-medals">
-                {{#goldMedals}}
+            <div class="medals">
+                <div class="top-medals">
+                    {{#goldMedals}}
+                        {{#list}}
+                        <div class="medal-block medal-block--gold"></div>
+                        {{/list}}
+                        <span class="medals-total">{{total}}</span>
+                    {{/goldMedals}}
+                </div>
+                <div class="top-medals">
+                    {{#silverMedals}}
                     {{#list}}
-                    <div class="medal-block medal-block--gold"></div>
+                    <div class="medal-block medal-block--silver"></div>
                     {{/list}}
                     <span class="medals-total">{{total}}</span>
-                {{/goldMedals}}
-            </div>
-            <div class="top-medals">
-                {{#silverMedals}}
-                 {{#list}}
-                <div class="medal-block medal-block--silver"></div>
-                 {{/list}}
-                <span class="medals-total">{{total}}</span>
-                {{/silverMedals}}
-            </div>
-            <div class="top-medals">
-                {{#bronzeMedals}}
-                 {{#list}}
-                <div class="medal-block medal-block--bronze"></div>
-                {{/list}}
-                <span class="medals-total">{{total}}</span>
-                {{/bronzeMedals}}
+                    {{/silverMedals}}
+                </div>
+                <div class="top-medals">
+                    {{#bronzeMedals}}
+                    {{#list}}
+                    <div class="medal-block medal-block--bronze"></div>
+                    {{/list}}
+                    <span class="medals-total">{{total}}</span>
+                    {{/bronzeMedals}}
+                </div>
             </div>
         </div>
-    </div>
     {{/topCountries}}
+    </div>
     <button class="expand-leaderboard">
         <img src="<%= path %>/assets/plus.svg" />
         Full Leaderboard
@@ -66,6 +72,7 @@
         {{/otherCountries}}
     </div>
 </div>
+<div class="breaker"></div>
 <div class="breaker"></div>
 <div class="breaker"></div>
 <div class="breaker"></div>
@@ -124,7 +131,8 @@
 <div class="breaker"></div>
 <div class="breaker"></div>
 <div class="breaker"></div>
-<div class="block" data-title="Performance">
+<div class="breaker"></div>
+<div class="block" data-title="Who's up? Who's down?">
     <h1>Who's up, who's down</h1>
     <div class="countries-performance">
         <div class="top-performing">

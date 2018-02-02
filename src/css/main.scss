@@ -24,17 +24,10 @@ $highlight: #FFE500;
 }
 
 .breaker {
-    border-top: 1px solid #ccf0ff;
+    border-top: 1px dotted #ccf0ff;
     margin-bottom: 1px;
     width: 200vw;
     margin-left: -100%;
-
-    // &::before {
-    //     content: '';
-    //     display: block;
-    //     border-top: 1px solid #ccf0ff;
-    //     margin-bottom: 1px;
-    // }
 }
 
 .page-wrapper {
@@ -63,7 +56,7 @@ $highlight: #FFE500;
 }
 
 .block {
-    border-top: 1px solid #ccf0ff;
+    // border-top: 1px solid #ccf0ff;
     width: 1300px;
     box-sizing: border-box;
     margin-bottom: 40px;
@@ -80,20 +73,65 @@ $highlight: #FFE500;
         display: block;
         position: absolute;
         left: 0px;
-        top: 0;
+        top: -8px;
         @include fs-headline(4);
+        width: 151px;
         font-weight: 700;
         color: #000;
         background-color: #ffe500;
         padding: 3px 5px 3px
     }
 
+    @include mq(mobile) {
+        padding-left: 10px;
+    }
+
+    @include mq(tablet) {
+        padding-left: 20px;
+        padding-right: 40px;
+    }
+
+    @include mq(desktop) {
+        padding-right: 40px;
+    }
+
     @include mq(leftCol) {
         padding-left: 170px;
+        padding-right: 20px; 
     }
 
     @include mq(wide) {
         padding-left: 250px;
+        padding-right: 20px;
+    }
+}
+
+.leaderboard-top {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    @include mq(mobile) {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    @include mq(tablet) {
+        flex-direction: row;
+        width: 80vw;
+        justify-content: space-between;
+    }
+
+    @include mq(desktop) {
+        width: calc(100vw - 20px);
+        // justify-content: space-between;
+        
+    }
+
+    @include mq(leftCol) {
+        padding-top: 0;
+        width: calc(90vw);
+        justify-content: flex-start;
+
     }
 }
 
@@ -203,6 +241,7 @@ $highlight: #FFE500;
     flex-shrink: 0;
     flex-grow: 0;
 }
+
 
 .expand-leaderboard {
     display: flex;
