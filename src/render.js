@@ -10,6 +10,7 @@ import Mustache from "mustache"
 import * as d3 from "d3"
 import fs from "fs"
 import _filter from 'lodash/filter'
+import Logger from '../scripts/logger.js'
 
 const maxDiff = d3.max(countryPerformanceJson, d => Math.abs(d.diff));
 
@@ -160,7 +161,7 @@ export async function render() {
 
     }))
 
-    return "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
+    const html = "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
         "countryCodes": countries,
         "otherCountries": medalTable.slice(6),
         "topCountries": medalTable.slice(0, 6),
@@ -168,4 +169,7 @@ export async function render() {
         "topOverPerforming": topOverPerforming,
         "topUnderPerforming": topUnderPerforming
     }) + "</div>";
+
+    Logger.setLastRender()
+    return html
 }

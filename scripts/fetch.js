@@ -6,9 +6,10 @@ import Sema from "async-sema"
 import * as d3 from "d3"
 import schedule from "../src/assets/data/schedule.json"
 import mkdirp from 'mkdirp'
+import moment from 'moment'
+import Logger from './logger.js'
 
-
-const season = 2018
+const season = 2014
 
 const rateLimit = (rps) => {
     const sema = new Sema(rps);
@@ -64,6 +65,8 @@ const safeApi = (url, substitute = []) => {
                 if(Number(err.statusCode) === 404) {
                     resolve(substitute)
                 } else {
+
+                    Logger.log('error', `unexpected error: ${err.message} at ${url}`)
                     reject(err.message)
                 }
 
@@ -91,6 +94,9 @@ const generateFullMedalsList = async(disciplineCodes) => {
     const medalsNestedByDiscipline = d3.nest()
         .key(d => d.discipline.abbreviation)
         .entries(cleanedMedals);
+
+
+    Logger.log('info', `total no. of medals: ${cleanedMedals.length}`)
 
     fs.writeFileSync("./src/assets/data/medalsList.json", JSON.stringify(cleanedMedals));
     fs.writeFileSync("./src/assets/data/medalsListByDiscipline.json", JSON.stringify(medalsNestedByDiscipline));
@@ -157,9 +163,7 @@ const loadScheduleData = (disciplineCombinations) => {
             console.log("schedule: " + sportArr[0] + " on " + sportArr[1] + " ✓")
             return response;
         }), (err, results) => {
-            //if (err) throw err;
-
-            console.log('errored ...')
+            if (err) throw err;
 
             resolve(results);
         })
@@ -178,6 +182,11 @@ const generator = async() => {
     await generateSchedule(disciplineCombinations);
     await generateMedalsTable();
     await generateFullMedalsList(disciplineCodes);
+
+    Logger.setLastUpdate()
+
 }
 
 generator();
+
+const log = () => {}
