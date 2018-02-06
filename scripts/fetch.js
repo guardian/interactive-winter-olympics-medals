@@ -5,14 +5,37 @@ import fs from 'fs'
 import Sema from "async-sema"
 import * as d3 from "d3"
 import schedule from "../src/assets/data/schedule.json"
+import mkdirp from 'mkdirp'
 
 
-const season = 2014
+const season = 2018
+
+const rateLimit = (rps) => {
+    const sema = new Sema(rps);
+
+    return async function rl() {
+        await sema.v();
+        setTimeout(() => sema.p(), 1000);
+    }
+}
+
+const lim = rateLimit(4);
+
+
+const retryExponential = func => {
+    return async.retryable({
+        times : 10,
+        interval : i => 100*i*Math.pow(2, i)
+    }, async.asyncify(func))
+}
+
 
 const generateMedalsTable = async() => {
 
-    const data = await safeApi("http://api.stats.com/v1/stats/oly/wntr_oly/medals/?season=${season}&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt&sig=3d6c4719d61d8b23edcbba94904f93fc2fad921cd6e6486444b923d590063c5a", null)
-    const medalsData = data === null ? {} : data.apiResults[0].league.medals
+    const data = await safeApi(`http://api.stats.com/v1/stats/oly/wntr_oly/medals/?season=${season}&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt&sig=3d6c4719d61d8b23edcbba94904f93fc2fad921cd6e6486444b923d590063c5a`, null)
+    const medalsData = data === null ? [] : data.apiResults[0].league.medals
+
+    console.log(data === null ? 'EMPTY medals table loaded' : 'medals table loaded')
 
     fs.writeFileSync("./src/assets/data/medalsTable.json", JSON.stringify(medalsData));
 }
@@ -21,7 +44,7 @@ const safeApi = (url, substitute = []) => {
 
     return new Promise((resolve, reject) => {
 
-        rp({ uri : url, json : true })
+        return rp({ uri : url, json : true })
 
             .then(resp => {
 
@@ -36,12 +59,12 @@ const safeApi = (url, substitute = []) => {
             })
             .catch(err => {
 
-                console.log('Error during request:', err.message)
+                console.log('Error during request:', err.message, url)
 
-                if(Number(err.statusCode) === 403) { // rate limit
-                    reject(err)
-                } else {
+                if(Number(err.statusCode) === 404) {
                     resolve(substitute)
+                } else {
+                    reject(err.message)
                 }
 
             })
@@ -52,7 +75,8 @@ const safeApi = (url, substitute = []) => {
 
 const generateFullMedalsList = async(disciplineCodes) => {
     const data = await loadData(disciplineCodes);
-    const cleanedMedals = _.flatten(_.flatten(data.map(a => a.apiResults[0].league.medals)).map(b => b.medalEvents));
+
+    const cleanedMedals = _.flatten(_.flatten(data.filter(d => d !== null).map(a => a.apiResults[0].league.medals)).map(b => b.medalEvents));
 
     cleanedMedals.map((m) => {
         const fullEvent = schedule.find(b => b.olympicEventId === m.olympicEvent.olympicEventId);
@@ -73,39 +97,38 @@ const generateFullMedalsList = async(disciplineCodes) => {
 }
 
 
+const rateLimited = func => {
+    return (...args) => {
+        return lim().then(() => func(args))
+    }
+}
+
 const loadData = (disciplineCodes) => {
     return new Promise((resolve, reject) => {
-        async.map(disciplineCodes, async.asyncify(async(sport) => {
+        return async.map(disciplineCodes, retryExponential(async(sport) => {
             await lim();
             console.log("medals:" + sport + " ...")
-            const response = await safeApi(`http://api.stats.com/v1/stats/oly/wntr_oly/${sport}/medals/?season=${season}&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt`, [])
+            const response = await safeApi(`http://api.stats.com/v1/stats/oly/wntr_oly/${sport}/medals/?season=${season}&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt`, null)
+
             console.log("medals:" + sport + " ✓")
+
             return response;
         }), (err, results) => {
             if (err) {
                 // need to do something real with errors here, retry?
                 throw err;
             }
+
+            console.log(results)
             resolve(results);
         })
     });
 }
 
-const rateLimit = (rps) => {
-    const sema = new Sema(rps);
-
-    return async function rl() {
-        await sema.v();
-        setTimeout(() => sema.p(), 1000);
-    }
-}
-
-const lim = rateLimit(4);
-
 const generateSchedule = async(disciplineCombinations) => {
     const data = await loadScheduleData(disciplineCombinations);
 
-    const cleanedData = _.flatten(data.map(a => a.apiResults[0].league.season).map(b => _.flatten(b.eventType.map(c => c.events)).map(c => Object.assign({}, c, { "discipline": b.discipline })))).map((d) => {
+    const cleanedData = _.flatten(data.filter( d => d !== null).map(a => a.apiResults[0].league.season).map(b => _.flatten(b.eventType.map(c => c.events)).map(c => Object.assign({}, c, { "discipline": b.discipline })))).map((d) => {
         // just getting rid of results to shrink the json size
         delete d["olympicResults"];
         return d;
@@ -113,24 +136,34 @@ const generateSchedule = async(disciplineCombinations) => {
 
     const sortedData = cleanedData.sort((a, b) => new Date(a.startDate[0].full) >= new Date(b.startDate[0].full) ? 1 : -1);
 
+    const built = await (new Promise((resolve, reject) => mkdirp('./.build/assets/data', () => resolve('WE\'RE DONE'))))
+
+    console.log('about to write schedule')
+
     fs.writeFileSync("./.build/assets/data/schedule.json", JSON.stringify(sortedData));
 }
 
 const loadScheduleData = (disciplineCombinations) => {
+
     return new Promise((resolve, reject) => {
-        async.map(disciplineCombinations, async.asyncify(async(sportArr) => {
+
+        async.map(disciplineCombinations, retryExponential(async(sportArr) => {
+
+            console.log(sportArr)
+
             await lim();
             console.log("schedule: " + sportArr[0] + " on " + sportArr[1] + " ...")
-            const response = await safeApi(`http://api.stats.com/v1/stats/oly/wntr_oly/${sportArr[0]}/events/?season=${season}&date=${sportArr[1]}&api_key=gmqfer9bzzufxr2w84v52xqt`, [])
+            const response = await safeApi(`http://api.stats.com/v1/stats/oly/wntr_oly/${sportArr[0]}/events/?season=${season}&date=${sportArr[1]}&api_key=gmqfer9bzzufxr2w84v52xqt`, null, true)
             console.log("schedule: " + sportArr[0] + " on " + sportArr[1] + " ✓")
             return response;
         }), (err, results) => {
             //if (err) throw err;
 
-            console.log(err)
+            console.log('errored ...')
 
             resolve(results);
         })
+    
     });
 }
 
