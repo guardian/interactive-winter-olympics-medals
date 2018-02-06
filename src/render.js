@@ -1,5 +1,7 @@
 import templateHTML from "./src/templates/main.html!text"
 import headerHTML from "./src/templates/header.html!text"
+import snapTemplate from './src/templates/snap_medals.html!text'
+
 import medalTableJson from "../src/assets/data/medalsTable.json"
 import medalListByDisciplineJson from "../src/assets/data/medalsList.json"
 import countryPerformanceJson from "../src/assets/data/performance.json"
@@ -148,6 +150,16 @@ const medalTable = medalTableJson.map((country, i) => {
 
 export async function render() {
     const header = headerHTML;
+
+
+    console.log(medalTable)
+
+    fs.writeFileSync('./src/assets/snap_medals.html', Mustache.render(snapTemplate, {
+
+        medalTable
+
+    }))
+
     return "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
         "countryCodes": countries,
         "otherCountries": medalTable.slice(6),

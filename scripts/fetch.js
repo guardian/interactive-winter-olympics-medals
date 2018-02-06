@@ -7,11 +7,44 @@ import * as d3 from "d3"
 import schedule from "../src/assets/data/schedule.json"
 
 const generateMedalsTable = async() => {
-    const data = await rp({ uri: "http://api.stats.com/v1/stats/oly/wntr_oly/medals/?season=2014&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt&sig=3d6c4719d61d8b23edcbba94904f93fc2fad921cd6e6486444b923d590063c5a", json: true });
+    const data = await safeApi("http://api.stats.com/v1/stats/oly/wntr_oly/medals/?season=2014&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt&sig=3d6c4719d61d8b23edcbba94904f93fc2fad921cd6e6486444b923d590063c5a", null)
 
-    const medalsData = data.apiResults[0].league.medals;
+    const medalsData = data === null ? {} : data.apiResults[0].league.medals
 
     fs.writeFileSync("./src/assets/data/medalsTable.json", JSON.stringify(medalsData));
+}
+
+const safeApi = (url, substitute = []) => {
+
+    return new Promise((resolve, reject) => {
+
+        rp({ uri : url, json : true })
+
+            .then(resp => {
+
+                if(resp.message && resp.message === 'Data not found') { 
+
+                    console.log('Response seems to contain no data ...')
+                    resolve(substitute)
+                } else {
+                    resolve(resp)
+                }
+
+            })
+            .catch(err => {
+
+                console.log('Error during request:', err.message)
+
+                if(Number(err.statusCode) === 403) { // rate limit
+                    reject(err)
+                } else {
+                    resolve(substitute)
+                }
+
+            })
+
+    })
+
 }
 
 const generateFullMedalsList = async(disciplineCodes) => {
@@ -41,7 +74,7 @@ const loadData = (disciplineCodes) => {
         async.map(disciplineCodes, async.asyncify(async(sport) => {
             await lim();
             console.log("medals:" + sport + " ...")
-            const response = await rp({ "uri": `http://api.stats.com/v1/stats/oly/wntr_oly/${sport}/medals/?season=2014&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt`, "json": true });
+            const response = await safeApi(`http://api.stats.com/v1/stats/oly/wntr_oly/${sport}/medals/?season=2014&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt`, [])
             console.log("medals:" + sport + " ✓")
             return response;
         }), (err, results) => {
@@ -76,7 +109,7 @@ const generateSchedule = async(disciplineCombinations) => {
 
     const sortedData = cleanedData.sort((a, b) => new Date(a.startDate[0].full) >= new Date(b.startDate[0].full) ? 1 : -1);
 
-    fs.writeFileSync("./src/assets/data/schedule.json", JSON.stringify(sortedData));
+    fs.writeFileSync("./.build/assets/data/schedule.json", JSON.stringify(sortedData));
 }
 
 const loadScheduleData = (disciplineCombinations) => {
@@ -84,11 +117,14 @@ const loadScheduleData = (disciplineCombinations) => {
         async.map(disciplineCombinations, async.asyncify(async(sportArr) => {
             await lim();
             console.log("schedule: " + sportArr[0] + " on " + sportArr[1] + " ...")
-            const response = await rp({ "uri": `http://api.stats.com/v1/stats/oly/wntr_oly/${sportArr[0]}/events/?season=2014&date=${sportArr[1]}&api_key=gmqfer9bzzufxr2w84v52xqt`, "json": true });
+            const response = await safeApi(`http://api.stats.com/v1/stats/oly/wntr_oly/${sportArr[0]}/events/?season=2014&date=${sportArr[1]}&api_key=gmqfer9bzzufxr2w84v52xqt`, [])
             console.log("schedule: " + sportArr[0] + " on " + sportArr[1] + " ✓")
             return response;
         }), (err, results) => {
-            if (err) throw err;
+            //if (err) throw err;
+
+            console.log(err)
+
             resolve(results);
         })
     });
