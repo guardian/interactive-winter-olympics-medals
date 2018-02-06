@@ -9,7 +9,7 @@ import mkdirp from 'mkdirp'
 import moment from 'moment'
 import Logger from './logger.js'
 
-const season = 2014
+const season = 2018
 
 const rateLimit = (rps) => {
     const sema = new Sema(rps);
