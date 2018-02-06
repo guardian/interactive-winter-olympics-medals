@@ -11,17 +11,19 @@ const prevMedalsThatHaveBeenAwardedSoFar = prevMedals.filter(p => {
 });
 
 const currMedalsByCountry = d3.nest()
-	.key(d => d.abbreviation)
-	.rollup(leaves => leaves.length)
+	.key(d => d.displayName)
+	// .rollup(leaves => leaves.length)
 	.entries(currMedals)
 	.map(d => {
-		d.currMedalsCount = d.value
-		delete d.value
+		d.currMedalsCount = d.values.length
+		d.abbreviation = d.values.length > 0 && d.values[0].abbreviation
+		// delete d.value
+		delete d.values
 		return d;
 	})
 
 const prevMedalsByCountry = d3.nest()
-	.key(d => d.abbreviation)
+	.key(d => d.displayName)
 	.rollup(leaves => leaves.length)
 	.entries(prevMedalsThatHaveBeenAwardedSoFar)
 	.map(d => {

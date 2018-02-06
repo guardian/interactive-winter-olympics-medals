@@ -1,0 +1,14 @@
+<div class='pye-snap'>
+	
+	{{#medalTable}}
+    <div class="pye-country">
+        <b>{{olympicCountry.name}}</b> {{medalCount.total}}
+        <div class="medals">
+            {{#medals}}
+            <div class="medal-block medal-block--{{.}}"></div>
+            {{/medals}}
+        </div>
+    </div>
+    {{/medalTable}}
+
+</div>
