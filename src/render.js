@@ -133,17 +133,18 @@ const medalTable = medalTableJson.map((country, i) => {
     return Object.assign({}, country, {
         goldMedals: {
             list: goldMedals,
-            total: goldMedals.length
+            total: goldMedals.length === 0 ? '' : goldMedals.length
         },
         silverMedals: {
             list: silverMedals,
-            total: silverMedals.length
+            total: silverMedals.length === 0 ? '' : silverMedals.length
         },
         bronzeMedals: {
             list: bronzeMedals,
-            total: bronzeMedals.length
+            total: bronzeMedals.length === 0 ? '' : bronzeMedals.length
         },
-        rank: i + 1,
+        rank: country.medalCount.total === 0 ? '–' : i + 1,
+        noMedals : country.medalCount.total === 0,
         preferableName: preferableName,
         lowerCaseAbbreviation: country.olympicCountry.abbreviation.toLowerCase()
     });

@@ -83,8 +83,6 @@ const generateMedalsTable = async() => {
         })
         .value()
 
-    console.log(table)
-
     fs.writeFileSync("./src/assets/data/medalsTable.json", JSON.stringify(table));
 }
 

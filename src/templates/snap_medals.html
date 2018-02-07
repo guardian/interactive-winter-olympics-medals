@@ -18,9 +18,13 @@
 
 .pye-country {
     float: left;
-    margin-right: 10px;
-    min-width: 250px;
-    margin: 3px 0 ;
+    min-width: 122px;
+    width: 50%;
+    margin: 3px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 160px);
 }
 
 .pye-rank {
@@ -33,13 +37,17 @@
 
     padding-left: 38px;
 
+    display: inline-block;
+
     font-family: "Guardian Text Egyptian Web", Georgia, serif;
     font-weight: 900;
     font-size: 20px;
+    min-width: 100px;
+    max-width: 100%;
 }
 
 .pye-medals {
-    float: left;
+    float: right;
     margin: 3px 0;
 }
 
@@ -63,6 +71,18 @@
     min-width: 16px;
 }
 
+.pye-num:last-of-type {
+    padding-right: 0;
+}
+
+@media (max-width: 740px) {
+
+    .pye-num {
+        padding-right: 0px;
+    }
+}
+
+
 .pye-medal {
 
     transform: translateY(2px);
@@ -79,7 +99,7 @@
 }
 
 .pye-medal--stacked {
-    margin-left: -11px;
+    margin-left: -12px;
 }
 
 .pye-medal--stacked:first-of-type {
@@ -99,6 +119,16 @@
 .pye-bronze {
     background: #E78B40;
     z-index: 0;
+}
+
+@media(max-width: 739px) {
+
+    .pye-rank {
+        font-size: 16px;
+    }
+    .pye-name {
+        font-size: 16px;
+    }
 }
 
 </style>

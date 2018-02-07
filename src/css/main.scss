@@ -232,6 +232,11 @@ $highlight: #FFE500;
     }
 }
 
+.pye-rank-dash {
+    @include fs-headline(4);
+    font-size: 116px;
+}
+
 .number {
     padding-right: 5px;
     flex-shrink: 0;

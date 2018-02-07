@@ -14,13 +14,23 @@
     {{#topCountries}}
         <div class="country-block {{olympicCountry.abbreviation}}">
             <div class="country-header-wrapper">
+
+                {{#noMedals}}
+                <span class='pye-rank-dash'>–</span>
+                {{/noMedals}}
+
+                {{^noMedals}}
                 <img class="number" src="<%= path %>/assets/numbers/{{rank}}.svg" />
+                {{/noMedals}}
+
+
                 <div class="country-header">
                     <div class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-large"></div>
                     <div>{{preferableName}}</div>
                 </div>
             </div>
             <div class="medals">
+
                 <div class="top-medals">
                     {{#goldMedals}}
                         {{#list}}
@@ -45,6 +55,7 @@
                     <span class="medals-total">{{total}}</span>
                     {{/bronzeMedals}}
                 </div>
+
             </div>
         </div>
     {{/topCountries}}
