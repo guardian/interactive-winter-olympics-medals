@@ -14,7 +14,8 @@
     "fetch": "babel-node scripts/fetch.js",
     "fetchSchedule": "babel-node scripts/schedule.js",
     "cleanHistoric": "babel-node scripts/historicMedalsCleaner.js",
-    "performance": "babel-node scripts/performance.js"
+    "performance": "babel-node scripts/performance.js",
+    "nations" : "babel-node scripts/get_nations.js"
   },
   "author": "",
   "license": "ISC",

@@ -8,8 +8,12 @@ import schedule from "../src/assets/data/schedule.json"
 import mkdirp from 'mkdirp'
 import moment from 'moment'
 import Logger from './logger.js'
+import nations from '../src/assets/data/nations.json'
+import nationsLookup from '../src/assets/data/nations_lookup.json'
+import possibleCountries from '../src/assets/data/possible_countries.json'
 
-const season = 2014
+const season = 2018
+const lastSeason = 2014
 
 const rateLimit = (rps) => {
     const sema = new Sema(rps);
@@ -34,11 +38,54 @@ const retryExponential = func => {
 const generateMedalsTable = async() => {
 
     const data = await safeApi(`http://api.stats.com/v1/stats/oly/wntr_oly/medals/?season=${season}&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt&sig=3d6c4719d61d8b23edcbba94904f93fc2fad921cd6e6486444b923d590063c5a`, null)
-    const medalsData = data === null ? [] : data.apiResults[0].league.medals
+    const mt = data === null ? [] : data.apiResults[0].league.medals
 
-    console.log(data === null ? 'EMPTY medals table loaded' : 'medals table loaded')
+    // set up sorting helpers ...
 
-    fs.writeFileSync("./src/assets/data/medalsTable.json", JSON.stringify(medalsData));
+    const sort2018 = code => {
+        const entry = mt.find(e => e.olympicCountry.abbreviation === code)
+        return entry ? entry.medalCount.gold + entry.medalCount.silver/100 + entry.medalCount.bronze/10000 : 0
+    }
+    const sort2014 = code => nationsLookup[code]
+
+    const alphabetical = code => possibleCountries.find( c => c.abbreviation === code).displayName
+
+    // ... get all participating countries ...
+
+    const table = _(nations)
+
+    // ... sort them by 2018 medals, then by 2014 medals ...
+        .orderBy([ sort2018, sort2014, alphabetical ], ['desc', 'desc', 'asc'])
+
+    // ... map them to proper objects ...
+        .map( code => {
+
+            const entry = possibleCountries.find( c => c.abbreviation === code)
+
+            return {
+                "olympicCountry":
+                    {
+                        "countryId": entry.teamId,
+                        "name": entry.displayName,
+                        "abbreviation": entry.abbreviation
+                    }
+                }
+        })
+
+    // ... and add the current medal counts
+
+        .map( obj => {
+
+            const entry = mt.find(e => e.olympicCountry.abbreviation === obj.olympicCountry.abbreviation)
+            const medalCount = entry ? entry.medalCount : { 'gold' : 0, 'silver' : 0, 'bronze' : 0, 'total' : 0 }
+            return Object.assign({}, obj, { medalCount })
+
+        })
+        .value()
+
+    console.log(table)
+
+    fs.writeFileSync("./src/assets/data/medalsTable.json", JSON.stringify(table));
 }
 
 const safeApi = (url, substitute = []) => {
@@ -179,7 +226,7 @@ const generator = async() => {
     const disciplineCodes = disciplineData.map(d => d.abbreviation);
     const disciplineCombinations = _.flatten(disciplineData.map(d => d.eventDates.map(e => [d.abbreviation, e.date.full])));
 
-    await generateSchedule(disciplineCombinations);
+    //await generateSchedule(disciplineCombinations);
     await generateMedalsTable();
     await generateFullMedalsList(disciplineCodes);
 
