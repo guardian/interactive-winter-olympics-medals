@@ -157,7 +157,17 @@ export async function render() {
 
     fs.writeFileSync('./src/assets/snap_medals.html', Mustache.render(snapTemplate, {
 
-        medalTable
+        snapTable : medalTable.slice(0, 3)
+            .map( o => {
+                return {
+                    rank : o.rank,
+                    name : o.preferableName,
+                    gold : o.medalCount.gold,
+                    silver : o.medalCount.silver,
+                    bronze : o.medalCount.bronze,
+                    total : o.medalCount.total
+                }
+            })
 
     }))
 
