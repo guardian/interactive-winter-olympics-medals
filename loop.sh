@@ -1,9 +1,11 @@
 while true
 do
-   npm run fetch
-   npm run cleanHistoric
-   npm run deploylive
-   echo "Waiting 60 minutes"
-   sleep 3600
-   echo "Running..."
+    SECONDS=0
+    npm run fetch
+    npm run performance
+    npm run deploylive
+    echo "$SECONDS"
+    echo "Waiting..."
+    sleep 300-$SECONDS
+    echo "Running..."
 done
