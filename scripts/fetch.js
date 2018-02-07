@@ -226,7 +226,7 @@ const generator = async() => {
     const disciplineCodes = disciplineData.map(d => d.abbreviation);
     const disciplineCombinations = _.flatten(disciplineData.map(d => d.eventDates.map(e => [d.abbreviation, e.date.full])));
 
-    //await generateSchedule(disciplineCombinations);
+    await generateSchedule(disciplineCombinations);
     await generateMedalsTable();
     await generateFullMedalsList(disciplineCodes);
 
