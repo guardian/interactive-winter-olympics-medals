@@ -189,11 +189,25 @@ const generateSchedule = async(disciplineCombinations) => {
 
     const sortedData = cleanedData.sort((a, b) => new Date(a.startDate[0].full) >= new Date(b.startDate[0].full) ? 1 : -1);
 
-    const built = await (new Promise((resolve, reject) => mkdirp('./.build/assets/data', () => resolve('WE\'RE DONE'))))
+    const deduped = _.flatten(d3.nest()
+        .key(d => d.olympicEventId+d.startDate[0].full)
+        .entries(sortedData)
+        // .filter(d => d.values.length > 1)
+        .map(row => {
+            if(row.values.length > 1) {
+                row.values = row.values.sort((a,b) => {
+                    return b.eventRound.name.length - a.eventRound.name.length;
+                }); 
+            }
+            return row.values.slice(0, 1);            
+        }));
 
-    console.log('about to write schedule')
+    const nestedByDay = d3.nest()
+        .key(d => d.startDate[0].date)
+        .key(d => d.discipline.name)
+        .entries(deduped);
 
-    fs.writeFileSync("./.build/assets/data/schedule.json", JSON.stringify(sortedData));
+    fs.writeFileSync("./schedule.json", JSON.stringify(nestedByDay));
 }
 
 const loadScheduleData = (disciplineCombinations) => {
