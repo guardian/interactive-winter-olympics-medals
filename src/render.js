@@ -174,6 +174,7 @@ export async function render() {
                 return {
                     rank : o.rank,
                     name : o.preferableName,
+                    code : o.lowerCaseAbbreviation,
                     gold : o.medalCount.gold,
                     silver : o.medalCount.silver,
                     bronze : o.medalCount.bronze,
