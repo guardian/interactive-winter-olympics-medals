@@ -27,6 +27,7 @@ rowHeaders.forEach(header => header.addEventListener('click', e => {
 
 	if (button.className === 'item-button item-button--expand') {
 		header.className = 'row row--header row--header--open row-with-border';
+		firstRowHeader.className = 'row row--header row--header--open';
 		button.className = ('item-button item-button--collapse');
 		selectedSportsCategory.classList.remove('sports-category--hide');
 		selectedSportsCategory.className = 'sports-category sports-category--show';
@@ -35,6 +36,7 @@ rowHeaders.forEach(header => header.addEventListener('click', e => {
 
 	} else {
 		header.className = 'row row--header row--header--closed row-with-border';
+		firstRowHeader.className = 'row row--header';
 		button.className = 'item-button item-button--expand';
 		selectedSportsCategory.className = 'sports-category sports-category--hide';
 	}
