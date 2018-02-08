@@ -19,10 +19,26 @@ $highlight: #FFE500;
 }
 
 .breaker {
-    border-top: 1px dotted #ccf0ff;
-    margin-bottom: 1px;
+    border-top: 1px dotted #7BD7FF;
+    margin-bottom: 3px;
     width: 200vw;
     margin-left: -100%;
+
+    &--short {
+        @include mq(mobile) {
+            display: none;
+        }
+
+        @include mq(leftCol) {
+            display: block;
+            width: 140px;
+            margin-left: 0px;
+        }
+
+        @include mq(wide) {
+            width: 220px;
+        }
+    }
 }
 
 .page-wrapper {
@@ -39,7 +55,7 @@ $highlight: #FFE500;
         top: 0;
         @include mq(leftCol) {
             left: 160px;
-            border-right: 1px solid #ccf0ff;
+            border-right: 1px solid #7BD7FF ;
         }
         @include mq(wide) {
             left: 240px;
@@ -72,16 +88,18 @@ $highlight: #FFE500;
         padding: 3px 5px 3px
     }
     @include mq(mobile) {
-        padding-left: 10px;
+        padding-left: 20px;
+        padding-top: 45px;
+        margin-top: -8px;
     }
     @include mq(tablet) {
-        padding-left: 20px;
         padding-right: 40px;
     }
     @include mq(desktop) {
         padding-right: 40px;
     }
     @include mq(leftCol) {
+        padding-top: 0;
         padding-left: 170px;
         padding-right: 20px;
     }
@@ -89,15 +107,59 @@ $highlight: #FFE500;
         padding-left: 250px;
         padding-right: 20px;
     }
+
+    &::before {
+        content: attr(data-title);
+        @include fs-headline(4);
+        font-weight: 700;
+        color: #121212;;
+        background-color: #ffe500;
+        padding: 3px 5px 0px;
+        z-index: 3;
+        
+        @include mq(mobile) {
+            font-size: 32px;
+            line-height: 34px;
+            padding-bottom: 4px;
+            padding-top: 4px;
+            left: 0px;
+            top: -8px;
+            max-width: 280px;
+
+            display: inline-block;
+            position: absolute;
+        }
+
+        @include mq(tablet) {
+           max-width: 600px 
+        }
+
+        @include mq(leftCol) {
+            font-size: 24px;
+            line-height: 24px;
+            width: 151px;
+            top: -8px;
+            left: -1px;
+        }
+
+        @include mq(wide) {
+            left: 20px;
+            width: auto;
+            display: inline-block;
+            max-width: 180px;
+            padding-bottom: 8px;
+        }
+    }
 }
 
 .leaderboard-top {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 40px;
+    // padding-top: 40px;
     @include mq(mobile) {
         flex-direction: column;
         width: 100%;
+        // margin-top: -30px;
     }
     @include mq(tablet) {
         flex-direction: row;
@@ -115,14 +177,26 @@ $highlight: #FFE500;
     @include mq(wide) {
         width: 100%
     }
+
+    @include mq(wide) {
+        width: 100%
+    }
 }
 
 .country-block {
     width: 300px;
     margin-top: 20px;
-    padding: 0 10px 0 10px;
+    padding-right: 10px;
     display: inline-block;
     vertical-align: top;
+
+    @include mq(mobile) {
+        width: 90vw;
+    }
+    
+    @include mq(tablet) {
+        width: 300px;
+    }
 }
 
 .sports-category {
@@ -132,7 +206,8 @@ $highlight: #FFE500;
         width: 300px;
         border-radius: 50%;
         margin-left: 20px;
-        margin-top: -45px;
+        margin-top: -40px;
+        margin-bottom: 60px;
     }
     &--hide {
         display: none !important;
@@ -143,15 +218,21 @@ $highlight: #FFE500;
 }
 
 .sport-image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 40px;
+    @include mq(mobile) {
+        display: none;
+    }
+
+    @include mq(desktop) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+    }
 }
 
 .img-athlete {
     @include fs-textSans(3);
-    margin-top: -40px;
+    margin-top: -60px;
     margin-left: 20px;
     max-width: 120px;
     background: $highlight;
@@ -163,7 +244,6 @@ $highlight: #FFE500;
 
 .country-header {
     display: flex;
-    margin-left: 10px;
     flex-direction: column;
     position: relative;
     @include mq(mobile) {
@@ -195,9 +275,17 @@ $highlight: #FFE500;
         height: 20px;
     }
     &--small {
-        width: 12px;
-        height: 12px;
-        margin: 0 5px 0 10px;
+
+        @include mq(mobile) {
+            width: 12px;
+            height: 12px;
+            margin: 0 1px 0 10px;
+        }
+
+        @include mq(tablet) {
+            width: 12px;
+            height: 12px;
+        }
     }
     &--gold {
         background: $gold;
@@ -210,12 +298,28 @@ $highlight: #FFE500;
     }
 }
 
+.no-margin {
+    @include mq(mobile) {
+        margin-left: 0 !important;
+        margin-top: 2px;
+    }
+    @include mq(tablet) {
+        margin-top: 0;
+    }
+}
+
 .medals {
     margin-top: 10px;
 }
 
 .top-medals {
-    width: 290px;
+    @include mq(mobile) {
+        width: 90vw;
+    }
+
+    @include mq(tablet) {
+        width: 290px;
+    }
 }
 
 .medals-total {
@@ -235,7 +339,6 @@ $highlight: #FFE500;
 .pye-rank-dash {
     @include fs-headline(4);
     font-size: 116px;
-    transform: translateY(36px);
 }
 
 .number {
@@ -273,22 +376,65 @@ $highlight: #FFE500;
     padding-right: 5px;
 }
 
+.row-with-border {
+    border-top: 1px solid #7BD7FF;
+}
+
 .row {
     @include fs-textSans(1);
-    border-top: 1px solid #ccf0ff;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     padding: 4px 0 8px 0;
     margin-top: -1px;
+
+    @include mq(mobile) {
+        @include fs-textSans(3);
+        flex-direction: column;
+    }
+
+    @include mq(tablet) {
+        flex-direction: row;
+    }
+    
+    @include mq(tablet) {
+        @include fs-textSans(1);
+    }
+    
     &--header {
         cursor: pointer;
         align-items: baseline;
+        padding-bottom: 14px;
+
+        @include mq(mobile) {
+            width: 93vw;
+            flex-direction: row;
+        }
+
+        @include mq(leftCol) {
+            width: 84vw;
+        }
+
+        @include mq(wide) {
+            width: auto;
+        }
+
         &--closed {
             padding-bottom: 14px;
         }
         &--open {
-            padding-bottom: 32px;
+
+            @include mq(mobile) {
+                // padding-bottom: 14px;
+                width: 93vw;
+            }
+
+            @include mq(leftCol) {
+                width: 84vw;
+            }
+
+            @include mq(wide) {
+                width: auto;
+            }
         }
     }
 }
@@ -296,6 +442,16 @@ $highlight: #FFE500;
 .discipline-header {
     @include fs-headline(4);
     font-weight: 700;
+
+    img {
+        display: inline;
+        height: 32px;
+        width: 32px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        vertical-align: text-bottom;
+        margin-right: 5px;
+    }
 }
 
 .item-button {
@@ -328,23 +484,106 @@ $highlight: #FFE500;
 }
 
 .athlete-name {
-    @include fs-textSans(1);
-    vertical-align: top;
+    @include mq(mobile) {
+        display: flex;
+        flex-direction: row;
+        @include fs-textSans(3);
+        margin-top: 0;
+    }
+    
+    @include mq(tablet) {
+        flex-direction: column;
+        @include fs-textSans(1);
+        margin-top: -2px;
+    }
+
+}
+
+.name-padding {
+    @include mq(mobile) {
+        padding: 2px;
+    }
+
+    @include mq(tablet) {
+        display: none;
+    }
+}
+
+.athlete-country {
+    margin-right: 10px;
+    margin-left: 5px;
+
+    @include mq(mobile) {
+        width: 60px;
+        display: flex;
+        align-items: center;
+    }
+
+    @include mq(tablet) {
+        display: inline;
+        width: 30px;
+    }
+}
+
+.winner-abbreviation {
+    @include mq(mobile) {
+        @include fs-textSans(3);
+        margin-top: 0;
+        margin-left: 4px;
+    }
+
+    @include mq(tablet) {
+        @include fs-textSans(1);
+        margin-left: 0;
+        margin-top: -2px;
+    }
+}
+
+.medals-tab {
+    @include mq(mobile) {
+        width: 95vw;
+    }
+
+    @include mq(desktop) {
+        width: auto;
+    }
 }
 
 .column {
     display: flex;
-    width: 180px;
     flex-direction: column;
+
+    @include mq(mobile) {
+        width: auto;
+    }
+
+    @include mq(tablet) {
+        width: 180px;
+    }
+
     &--discipline {
-        font-weight: 700;
-        // width: 240px;
-        width: 100px;
-        padding-right: 20px;
+        @include mq(mobile) {
+            font-weight: 700;
+            width: auto;
+            padding-bottom: 10px;
+        }
+
+        @include mq(tablet) {
+            width: 150px;
+            padding-right: 5px;
+        }
+
+        @include mq(desktop) {
+            width: 100px;
+            padding-right: 20px;
+        }
     }
     &__athlete {
+        margin-top: 5px;
+        margin-bottom: 4px;
         display: flex;
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
+        align-items: end;
         flex-grow: 1;
     }
 }
@@ -353,6 +592,11 @@ $highlight: #FFE500;
     @include fs-headline(5);
     font-weight: 700;
     margin-top: 9px;
+
+    @include mq(mobile) {
+        width: 90vw;
+        margin-bottom: 5px;
+    }
 }
 
 .other-country-details {
@@ -360,33 +604,174 @@ $highlight: #FFE500;
     align-items: flex-end;
     @include fs-textSans(1);
     font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .other-country-block {
     margin-top: 16px;
-    padding-left: 10px;
 }
 
 .countries-performance {
-    display: flex;
-    flex-direction: row;
-    margin-top: 22px;
+    @include mq(mobile) {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    @include mq(tablet) {
+        margin-top: 0;
+    }
+
+    @include mq(desktop) {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    @include mq(leftCol) {
+        padding-top: 22px;
+        padding-right: 10px;
+    }
+
+    @include mq(wide) {
+        justify-content: space-between;
+    }
+    
     p {
         @include fs-bodyCopy(2);
         line-height: 22px;
+        margin-top: 4px;
     }
+}
+
+.performer {
+    @include mq(mobile) {
+        width: 90vw;
+    }
+
+    @include mq(tablet) {
+        width: 90%;
+    }
+
+    @include mq(desktop) {
+        width: 450px;
+        padding-right: 40px;
+    }
+}
+
+.performance-arrow {
+    flex-shrink: 0;
+    flex-grow: 0;
+    height: 11px;
+    width: 19px;
+    margin-right: 6px;
 }
 
 .performance-header {
     @include fs-headline(4);
     font-weight: 700;
     display: flex;
-    &>span {
+    align-items: center;
+
+    & >span {
         margin-right: 10px;
     }
 }
 
-.top-performing {
-    width: 400px;
-    padding-right: 80px;
+.more-olympics {
+    @include mq(mobile) {
+        background-color: #00B2FF;
+        height: 250px;
+        // margin-top: -43px;
+        // width: 2000px;
+        // margin-left: -800px;
+        margin-bottom: 40px;
+        // margin-top: -93px;
+        width: 100%;
+    }
+
+    @include mq(tablet) {
+        height: 170px;
+        margin-top: -43px;
+        width: 2000px;
+        margin-left: -800px;
+        // margin-bottom: 40px;
+        margin-top: -93px;
+    }
+
+    @include mq(leftCol) {
+        position: relative;
+        z-index: 9;
+    }
+
+    @include mq(desktop) {
+        height: 190px;
+        width: 200vw;
+        margin-bottom: 100px;
+        margin-left: -600px;
+    }
+
+    @include mq(leftCol) {
+        margin-top: -48px;
+    }
+
+    @include mq(wide) {
+        margin-left: -1000px;
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+.schedule-desktop {
+    @include mq(mobile) {
+        display: none;
+    }
+
+    @include mq(tablet) {
+        display: block;
+        height: 110px;
+        margin-left: 820px;
+        padding-top: 42px;
+    }
+
+    @include mq(desktop) {
+        cursor: pointer;
+        height: 126px;
+        margin-left: 650px;
+        padding-top: 42px;
+    }
+
+    @include mq(leftCol) {
+        margin-left: 800px;
+        padding-top: 20px;
+    }
+
+    @include mq(wide) {
+        margin-left: 1300px;
+    }
+}
+
+.schedule-mobile {
+    @include mq(mobile) {
+        display: block;
+        height: 250px;
+        margin-left: -10px;
+        margin-top: -5px;
+    }
+
+    @include mq(tablet) {
+        display: none;
+    }
+}
+
+.schedule-block {
+    @include mq(mobile) {
+        display: none;
+    }
+
+    @include mq(tablet) {
+        display: block;
+    }
 }

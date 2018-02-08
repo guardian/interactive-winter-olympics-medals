@@ -20,7 +20,7 @@
 
 .pye-country {
     float: left;
-    min-width: 122px;
+    min-width: 100px;
     width: 50%;
     margin: 3px 0;
     overflow: hidden;
@@ -67,7 +67,7 @@
     .pye-flag {
         min-width: 24px;
         position: absolute;
-        left: 18px;
+        left: 16px;
         min-height: 13.33px;
         top: 6px;
         background: #767676;
@@ -160,6 +160,14 @@
     text-decoration: initial;
 }
 
+.pye-snap {
+    border-top: 1px solid #a2e3ff;
+    padding-top: 3px;
+    box-sizing: border-box;
+    min-height: 132px;
+    max-height: 132px;
+}
+
 @media(max-width: 740px) {
 
     .pye-rank {
@@ -167,7 +175,7 @@
     }
     .pye-name {
         font-size: 16px;
-        padding-left: 34px;
+        padding-left: 32px;
     }
 
     .pye-arrow {
@@ -179,6 +187,28 @@
         font-size: 13px;
         line-height: 17px;
     }
+}
+
+@media (max-width: 350px) {
+
+    .pye-flag {
+        min-width: 20px;
+        position: absolute;
+        left: 13px;
+        min-height: 12px;
+        top: 6px;
+        background: #767676;
+        display: inline-block;
+    }
+
+    .pye-name {
+        padding-left: 25px;
+    }
+
+    .pye-country {
+        min-width: 90px;
+    }
+
 }
 
 .flag-abw, .flag-aw, .flag-533, .flag-ioc-aru, .flag-fifa-aru {
