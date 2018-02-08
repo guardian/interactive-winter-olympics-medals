@@ -28,6 +28,16 @@
 	// }
 }
 
+.headline-wrapper {
+	@include mq(mobile) {
+		max-width: 270px;
+	}
+
+	@include mq(desktop) {
+		max-width: 420px;
+	}
+}
+
 .subtitle-highlight {
 	background-color: #ffe500;
 	padding: 0 5px 4px 10px;
