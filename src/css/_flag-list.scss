@@ -42,14 +42,14 @@
 @include flag(bes, bq, 535, aho, ant);
 @include flag(bfa, bf, 854, bur, bfa);
 @include flag(bgd, bd, 50, ban, ban);
-@include flag(bgr, bg, 100, bul, bul);
+@include flag(bul, bg, 100, bul, bul);
 @include flag(bhr, bh, 48, brn, bhr);
 @include flag(bhs, bs, 44, bah, bah);
 @include flag(bih, ba, 70, bih, bih);
 @include flag(blm, bl, 652, null, null);
 @include flag(blr, by, 112, blr, blr);
 @include flag(blz, bz, 84, biz, blz);
-@include flag(bmu, bm, 60, ber, ber);
+@include flag(ber, bm, 60, ber, ber);
 @include flag(bol, bo, 68, bol, bol);
 @include flag(bra, br, 76, bra, bra);
 @include flag(brb, bb, 52, bar, brb);
@@ -64,7 +64,7 @@
 @include flag(che, ch, 756, swi, swi);
 @include flag(swi, swi, 756, swi, swi);
 @include flag(sui, sui, 756, sui, sui);
-@include flag(chl, cl, 152, chi, chi);
+@include flag(chi, cl, 152, chi, chi);
 @include flag(chn, cn, 156, chn, chn);
 @include flag(civ, ci, 384, civ, civ);
 @include flag(cmr, cm, 120, cmr, cmr);
@@ -85,7 +85,7 @@
 @include flag(ger, ger, 276, ger, ger);
 @include flag(dji, dj, 262, dji, dji);
 @include flag(dma, dm, 212, dma, dma);
-@include flag(dnk, dk, 208, den, den);
+@include flag(den, dk, 208, den, den);
 @include flag(dom, do, 214, dom, dom);
 @include flag(dza, dz, 12, alg, alg);
 @include flag(ecu, ec, 218, ecu, ecu);
@@ -112,7 +112,7 @@
 @include flag(gmb, gm, 270, gam, gam);
 @include flag(gnb, gw, 624, gbs, gnb);
 @include flag(gnq, gq, 226, geq, eqg);
-@include flag(grc, gr, 300, gre, gre);
+@include flag(gre, gr, 300, gre, gre);
 @include flag(grd, gd, 308, grn, grn);
 @include flag(grl, gl, 304, grl, grl);
 @include flag(gtm, gt, 320, gua, gua);
@@ -122,7 +122,7 @@
 @include flag(hkg, hk, 344, hkg, hkg);
 @include flag(hmd, hm, 334, null, null);
 @include flag(hnd, hn, 340, hon, hon);
-@include flag(hrv, hr, 191, cro, cro);
+@include flag(cro, hr, 191, cro, cro);
 @include flag(hti, ht, 332, hai, hai);
 @include flag(hun, hu, 348, hun, hun);
 @include flag(idn, id, 360, ina, idn);
@@ -130,7 +130,7 @@
 @include flag(ind, in, 356, ind, ind);
 @include flag(iot, io, 86, null, null);
 @include flag(irl, ie, 372, irl, irl);
-@include flag(irn, ir, 364, iri, irn);
+@include flag(iri, ir, 364, iri, irn);
 @include flag(irq, iq, 368, irq, irq);
 @include flag(isl, is, 352, isl, isl);
 @include flag(isr, il, 376, isr, isr);
@@ -157,7 +157,7 @@
 @include flag(lso, ls, 426, les, les);
 @include flag(ltu, lt, 440, ltu, ltu);
 @include flag(lux, lu, 442, lux, lux);
-@include flag(lva, lv, 428, lat, lva);
+@include flag(lat, lv, 428, lat, lva);
 @include flag(mac, mo, 446, mac, mac);
 @include flag(maf, mf, 663, null, null);
 @include flag(mar, ma, 504, mar, mar);
@@ -180,16 +180,16 @@
 @include flag(mtq, mq, 474, mrt, mtq);
 @include flag(mus, mu, 480, mri, mri);
 @include flag(mwi, mw, 454, maw, mwi);
-@include flag(mys, my, 458, mas, mas);
+@include flag(mas, my, 458, mas, mas);
 @include flag(myt, yt, 175, may, myt);
 @include flag(nam, na, 516, nam, nam);
 @include flag(ncl, nc, 540, ncd, ncl);
 @include flag(ner, ne, 562, nig, nig);
 @include flag(nfk, nf, 574, nfi, nfk);
-@include flag(nga, ng, 566, ngr, nga);
+@include flag(ngr, ng, 566, ngr, nga);
 @include flag(nic, ni, 558, nca, nca);
 @include flag(niu, nu, 570, niu, niu);
-@include flag(nld, nl, 528, ned, ned);
+@include flag(ned, nl, 528, ned, ned);
 @include flag(nor, no, 578, nor, nor);
 @include flag(npl, np, 524, nep, nep);
 @include flag(nru, nr, 520, nru, nru);
@@ -199,13 +199,13 @@
 @include flag(pan, pa, 591, pan, pan);
 @include flag(pcn, pn, 612, null, pcn);
 @include flag(per, pe, 604, per, per);
-@include flag(phl, ph, 608, phi, phi);
+@include flag(phi, ph, 608, phi, phi);
 @include flag(plw, pw, 585, plw, plw);
 @include flag(png, pg, 598, png, png);
 @include flag(pol, pl, 616, pol, pol);
-@include flag(pri, pr, 630, pur, pur);
+@include flag(pur, pr, 630, pur, pur);
 @include flag(prk, kp, 408, prk, prk);
-@include flag(prt, pt, 620, por, por);
+@include flag(por, pt, 620, por, por);
 @include flag(pry, py, 600, par, par);
 @include flag(pse, ps, 275, ple, ple);
 @include flag(pyf, pf, 258, fpo, tah2);
@@ -240,7 +240,7 @@
 @include flag(syr, sy, 760, syr, syr);
 @include flag(tca, tc, 796, tks, tca);
 @include flag(tcd, td, 148, cha, cha);
-@include flag(tgo, tg, 768, tog, tog);
+@include flag(tog, tg, 768, tog, tog);
 @include flag(tha, th, 764, tha, tha);
 @include flag(tjk, tj, 762, tjk, tjk);
 @include flag(tkl, tk, 772, null, tkl);
@@ -269,7 +269,7 @@
 @include flag(wlf, wf, 876, waf, wlf);
 @include flag(wsm, ws, 882, sam, sam);
 @include flag(yem, ye, 887, yem, yem);
-@include flag(zaf, za, 710, rsa, rsa);
+@include flag(rsa, za, 710, rsa, rsa);
 @include flag(zmb, zm, 894, zam, zam);
 @include flag(zwe, zw, 716, zim, zim);
 
