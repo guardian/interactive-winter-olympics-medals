@@ -165,7 +165,7 @@ const medalTable = medalTableJson.map((country, i) => {
             list: bronzeMedals,
             total: bronzeMedals.length //=== 0 ? '' : bronzeMedals.length
         },
-        rank: country.medalCount.total === 0 ? '–' : ranks[i],
+        rank: country.medalCount.total === 0 ? '●' : ranks[i],
         noMedals : country.medalCount.total === 0,
         preferableName: preferableName,
         lowerCaseAbbreviation: country.olympicCountry.abbreviation.toLowerCase()
@@ -201,8 +201,10 @@ export async function render() {
     })
 
     const html = "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
-        "otherCountries": medalTable.slice(6),
-        "topCountries": medalTable.slice(0, 6),
+        // "otherCountries": medalTable.slice(6),
+        "otherCountries": medalTable.slice(10),
+        // "topCountries": medalTable.slice(0, 6),
+        "topCountries": medalTable.slice(0, 10),
         "medalsByDiscipline": medalsWithUrls,
         "countriesByPeformance": countriesByPerformance
     }) + "</div>";

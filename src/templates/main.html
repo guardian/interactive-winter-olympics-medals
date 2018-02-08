@@ -11,7 +11,7 @@
 <div class="breaker"></div>
 <div class="block" data-title="Leaderboard">
     <div class=leaderboard-top>
-    {{#topCountries}}
+<!--     {{#topCountries}}
         <div class="country-block {{olympicCountry.abbreviation}}">
             <div class="country-header-wrapper">
 
@@ -58,7 +58,25 @@
 
             </div>
         </div>
-    {{/topCountries}}
+    {{/topCountries}} -->
+     <div class="other-country-block--full {{olympicCountry.abbreviation}}">
+        {{#topCountries}}
+            <div class="other-country-name">
+                {{rank}} {{olympicCountry.name}}
+            </div>
+            <div class="other-country-details">
+                <span class="flag flag-ioc-{{lowerCaseAbbreviation}} flag-medium"></span>
+                <span class="other-country-medals">
+                    <span class="medal-block medal-block--gold medal-block--small"></span>
+                    {{goldMedals.total}}
+                    <span class="medal-block medal-block--silver medal-block--small"></span>
+                    {{silverMedals.total}}
+                    <span class="medal-block medal-block--bronze medal-block--small"></span>
+                    {{bronzeMedals.total}}
+                </span>
+            </div>
+        {{/topCountries}}
+    </div>
     </div>
     <button class="expand-leaderboard">
         <img src="<%= path %>/assets/plus.svg" />
@@ -87,7 +105,7 @@
 <div class="breaker"></div>
 <div class="breaker"></div>
 <div class="breaker"></div>
-<div class="block" data-title="Medals by sport">
+<div class="block medals-by-sport" data-title="Medals by sport">
     <div class="spacer"></div>
     {{#medalsByDiscipline}}
     <div class="row row--header row--header--closed row-with-border">
@@ -161,12 +179,15 @@
         </div>
     </div>
     {{/medalsByDiscipline}}
+    {{^medalsByDiscipline}}
+        <div class="no-medals">No medals have been awarded yet</div>
+    {{/medalsByDiscipline}}
 </div>
 <div class="breaker"></div>
 <div class="breaker"></div>
 <div class="breaker"></div>
 <div class="breaker"></div>
-<div class="block" data-title="Who's up? Who's down?">
+<!-- <div class="block" data-title="Who's up? Who's down?">
     <div class="countries-performance">
         {{#countriesByPeformance}}
             <div class="performer">
@@ -178,7 +199,7 @@
             </div>
         {{/countriesByPeformance}}
     </div>
-</div>
+</div> -->
 <div class="breaker"></div>
 <div class="block schedule-block" data-title="More Olympics"></div>
 <div class="more-olympics">
