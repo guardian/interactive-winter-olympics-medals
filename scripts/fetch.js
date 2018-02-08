@@ -4,7 +4,6 @@ import rp from 'request-promise'
 import fs from 'fs'
 import Sema from "async-sema"
 import * as d3 from "d3"
-import schedule from "../src/assets/data/schedule.json"
 import mkdirp from 'mkdirp'
 import moment from 'moment'
 import Logger from './logger.js'
@@ -14,6 +13,8 @@ import possibleCountries from '../src/assets/data/possible_countries.json'
 
 const season = 2018
 const lastSeason = 2014
+
+var schedule;
 
 const rateLimit = (rps) => {
     const sema = new Sema(rps);
@@ -187,19 +188,25 @@ const generateSchedule = async(disciplineCombinations) => {
         return d;
     });
 
-    const sortedData = cleanedData.sort((a, b) => new Date(a.startDate[0].full) >= new Date(b.startDate[0].full) ? 1 : -1);
+    const sortedData = cleanedData.sort((a, b) => {
+        if(!a.startDate[0].hour) {
+            return false;
+        }
+        return new Date(a.startDate[0].full) >= new Date(b.startDate[0].full) ? 1 : -1;
+    });
+
+    schedule = sortedData;
 
     const deduped = _.flatten(d3.nest()
         .key(d => d.olympicEventId+d.startDate[0].full)
         .entries(sortedData)
-        // .filter(d => d.values.length > 1)
         .map(row => {
             if(row.values.length > 1) {
                 row.values = row.values.sort((a,b) => {
-                    return b.eventRound.name.length - a.eventRound.name.length;
-                }); 
+                    return Number(b.eventRound.eventRoundId) - Number(a.eventRound.eventRoundId);
+                });
             }
-            return row.values.slice(0, 1);            
+            return row.values.slice(0, 1);     
         }));
 
     const nestedByDay = d3.nest()
