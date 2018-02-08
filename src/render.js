@@ -115,6 +115,20 @@ const nestedMedalsByDiscipline = d3.nest()
 
 // fs.writeFileSync("./src/assets/data/test.json", JSON.stringify(nestedMedalsByDiscipline))
 
+const score = country => country.medalCount.gold + country.medalCount.silver/100 + country.medalCount.bronze/10000
+
+const rankReduce = (interm, cur, i, arr) => {
+
+    if(interm.length === 0) { return [i] }
+
+    const lastIndex = interm.slice(-1)[0]
+
+    return score(cur) < score(arr[lastIndex]) ? interm.concat(i) : interm.concat(lastIndex)
+
+}
+
+const ranks = medalTableJson.reduce(rankReduce, []).map(i => i + 1)
+
 const medalTable = medalTableJson.map((country, i) => {
     let goldMedals = [];
     let silverMedals = [];
@@ -133,17 +147,18 @@ const medalTable = medalTableJson.map((country, i) => {
     return Object.assign({}, country, {
         goldMedals: {
             list: goldMedals,
-            total: goldMedals.length
+            total: goldMedals.length === 0 ? '' : goldMedals.length
         },
         silverMedals: {
             list: silverMedals,
-            total: silverMedals.length
+            total: silverMedals.length === 0 ? '' : silverMedals.length
         },
         bronzeMedals: {
             list: bronzeMedals,
-            total: bronzeMedals.length
+            total: bronzeMedals.length === 0 ? '' : bronzeMedals.length
         },
-        rank: i + 1,
+        rank: country.medalCount.total === 0 ? '–' : ranks[i],
+        noMedals : country.medalCount.total === 0,
         preferableName: preferableName,
         lowerCaseAbbreviation: country.olympicCountry.abbreviation.toLowerCase()
     });
@@ -151,9 +166,6 @@ const medalTable = medalTableJson.map((country, i) => {
 
 export async function render() {
     const header = headerHTML;
-
-
-    console.log(medalTable)
 
     fs.writeFileSync('./src/assets/snap_medals.html', Mustache.render(snapTemplate, {
 

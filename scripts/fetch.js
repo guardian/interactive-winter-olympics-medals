@@ -11,7 +11,7 @@ import nations from '../src/assets/data/nations.json'
 import nationsLookup from '../src/assets/data/nations_lookup.json'
 import possibleCountries from '../src/assets/data/possible_countries.json'
 
-const season = 2018
+const season = 2014
 const lastSeason = 2014
 
 var schedule;
@@ -83,8 +83,6 @@ const generateMedalsTable = async() => {
 
         })
         .value()
-
-    console.log(table)
 
     fs.writeFileSync("./src/assets/data/medalsTable.json", JSON.stringify(table));
 }
