@@ -128,9 +128,9 @@
 		max-width: 70%;
 	}
 
- 	@include mq(leftCol) {
-		 padding-bottom: 80px;
-	 }
+ 	// @include mq(leftCol) {
+	// 	 padding-bottom: 80px;
+	//  }
   
 	@include mq(desktop) {
 		max-width: 410px;
