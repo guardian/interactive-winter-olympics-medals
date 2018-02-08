@@ -109,7 +109,7 @@
     <div class="spacer"></div>
     {{#medalsByDiscipline}}
     <div class="row row--header row--header--closed row-with-border">
-        <span class="discipline-header"><img src="<%= path %>/assets/sports/{{disciplineAbbreviation}}.svg" alt="" />{{key}}</span>
+        <span class="discipline-header"><img src="<%= path %>/assets/sports/{{disciplineAbbreviation}}.svg" alt="" />{{disciplineAbbreviation}} {{key}}</span>
         <button class="item-button item-button--expand">
             <img src="<%= path %>/assets/plus-black.svg" />
             <div></div>
@@ -173,9 +173,11 @@
             {{/values}}
         </div>
         <div class="sport-image">
-            <img src="{{url}}" id="{{key}}" alt="" />
-            <div class="img-athlete">{{captionLineTwo}}</div>
-            <div class="img-athlete">{{captionLineOne}}</div>
+            <div>
+                <img src="{{url}}" id="{{key}}" alt="" />
+                <strong><span class="img-athlete">{{captionLineTwo}}</span></strong>
+                <span class="img-athlete">{{captionLineOne}}</span>
+            </div>
         </div>
     </div>
     {{/medalsByDiscipline}}

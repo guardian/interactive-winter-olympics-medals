@@ -232,7 +232,7 @@ $highlight: #FFE500;
 
 .img-athlete {
     @include fs-textSans(3);
-    margin-top: -60px;
+    // margin-top: -60px;
     margin-left: 20px;
     max-width: 120px;
     background: $highlight;
@@ -365,9 +365,8 @@ $highlight: #FFE500;
     letter-spacing: 0;
     vertical-align: middle;
     padding: 0 20px 0 10px;
-    margin-left: 0px;
     margin-top: 20px;
-    border: 0;
+    border: none;
 }
 
 .expand-leaderboard img {
@@ -584,7 +583,7 @@ $highlight: #FFE500;
         margin-bottom: 4px;
         display: flex;
         // margin-bottom: 10px;
-        align-items: end;
+        align-items: start;
         flex-grow: 1;
     }
 }
