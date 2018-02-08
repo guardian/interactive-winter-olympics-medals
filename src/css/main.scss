@@ -76,18 +76,18 @@ $highlight: #FFE500;
     }
     &::before {
         content: attr(data-title);
-        display: block;
-        position: absolute;
+        display: inline-block;
         left: 0px;
         top: -8px;
         @include fs-headline(4);
-        width: 151px;
         font-weight: 700;
         color: #000;
         background-color: #ffe500;
         padding: 3px 5px 3px
     }
     @include mq(mobile) {
+        position: relative;
+        z-index: 10;
         padding-left: 20px;
         padding-top: 45px;
         margin-top: -8px;
@@ -207,7 +207,7 @@ $highlight: #FFE500;
         border-radius: 50%;
         margin-left: 20px;
         margin-top: -40px;
-        margin-bottom: 60px;
+        margin-bottom: 100px;
     }
     &--hide {
         display: none !important;
@@ -683,11 +683,7 @@ $highlight: #FFE500;
     @include mq(mobile) {
         background-color: #00B2FF;
         height: 250px;
-        // margin-top: -43px;
-        // width: 2000px;
-        // margin-left: -800px;
         margin-bottom: 40px;
-        // margin-top: -93px;
         width: 100%;
     }
 
@@ -696,7 +692,6 @@ $highlight: #FFE500;
         margin-top: -43px;
         width: 2000px;
         margin-left: -800px;
-        // margin-bottom: 40px;
         margin-top: -93px;
     }
 
@@ -756,9 +751,13 @@ $highlight: #FFE500;
 .schedule-mobile {
     @include mq(mobile) {
         display: block;
-        height: 250px;
         margin-left: -10px;
         margin-top: -5px;
+        height: 220px;
+    }
+
+    @include mq(mobileMedium) {
+        height: 250px;
     }
 
     @include mq(tablet) {
@@ -773,5 +772,11 @@ $highlight: #FFE500;
 
     @include mq(tablet) {
         display: block;
+    }
+}
+
+.spacer {
+    @include mq(leftCol) {
+        padding-bottom: 10px;
     }
 }
