@@ -155,15 +155,15 @@ const medalTable = medalTableJson.map((country, i) => {
     return Object.assign({}, country, {
         goldMedals: {
             list: goldMedals,
-            total: goldMedals.length === 0 ? '' : goldMedals.length
+            total: goldMedals.length //=== 0 ? '' : goldMedals.length
         },
         silverMedals: {
             list: silverMedals,
-            total: silverMedals.length === 0 ? '' : silverMedals.length
+            total: silverMedals.length //=== 0 ? '' : silverMedals.length
         },
         bronzeMedals: {
             list: bronzeMedals,
-            total: bronzeMedals.length === 0 ? '' : bronzeMedals.length
+            total: bronzeMedals.length //=== 0 ? '' : bronzeMedals.length
         },
         rank: country.medalCount.total === 0 ? '–' : ranks[i],
         noMedals : country.medalCount.total === 0,
@@ -182,6 +182,7 @@ export async function render() {
                 return {
                     rank : o.rank,
                     name : o.preferableName,
+                    code : o.lowerCaseAbbreviation,
                     gold : o.medalCount.gold,
                     silver : o.medalCount.silver,
                     bronze : o.medalCount.bronze,
