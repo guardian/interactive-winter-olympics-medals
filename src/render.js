@@ -223,10 +223,8 @@ export async function render() {
     });
 
     console.log(renderHeader)
-    
 
     const html = "<div class='page-wrapper'>" + renderHeader + Mustache.render(templateHTML, {
-        "countryCodes": countries,
         // "otherCountries": medalTable.slice(6),
         "otherCountries": medalTable.slice(10),
         // "topCountries": medalTable.slice(0, 6),
