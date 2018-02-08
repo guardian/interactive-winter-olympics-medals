@@ -6,7 +6,7 @@ do
     npm run deploylive
     echo "$SECONDS"
     echo "Waiting..."
-    SLEEP = 300-$SECONDS
+    SLEEP=300-$SECONDS
     sleep $SLEEP
     echo "Running..."
 done
