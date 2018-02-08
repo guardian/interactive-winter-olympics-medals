@@ -165,7 +165,7 @@ const medalTable = medalTableJson.map((country, i) => {
             list: bronzeMedals,
             total: bronzeMedals.length //=== 0 ? '' : bronzeMedals.length
         },
-        rank: country.medalCount.total === 0 ? '<span style="color: #00B2FF;">●</span>' : ranks[i],
+        rank: country.medalCount.total === 0 ? '<span style="color: #00B2FF; opacity: 0.4;">●</span>' : ranks[i],
         noMedals : country.medalCount.total === 0,
         preferableName: preferableName,
         lowerCaseAbbreviation: country.olympicCountry.abbreviation.toLowerCase()
