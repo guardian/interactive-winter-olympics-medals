@@ -235,6 +235,7 @@ $highlight: #FFE500;
 .pye-rank-dash {
     @include fs-headline(4);
     font-size: 116px;
+    transform: translateY(36px);
 }
 
 .number {
