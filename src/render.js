@@ -193,14 +193,28 @@ export async function render() {
     }))
 
     const images = await rp({ uri: "https://interactive.guim.co.uk/docsdata-test/1rLKvNSIY8MAn0ZSM6aHcR2b3t_beRdPEu-EEavcGQHM.json", json: true});
-    
+    const headerCopy = await rp({ uri: "https://interactive.guim.co.uk/docsdata-test/15uAmR0zJkUXcR-6_EeAtFWQXtDojjdwSwGQoDmWvwkw.json", json: true });
+    const headlineFirst = headerCopy.sheets.Sheet1[0].headline_first_row;
+    const headlineSecond = headerCopy.sheets.Sheet1[0].headline_second_row;
+    const standfirst = headerCopy.sheets.Sheet1[0].standfirst;
+
     const medalsWithUrls = nestedMedalsByDiscipline.map(discipline => {
         const matchAbbrev = images.sheets.Sheet1.find(item => item.abbreviation === discipline.disciplineAbbreviation);
 
         return matchAbbrev ? Object.assign({}, discipline, { url: matchAbbrev.url, captionLineOne: matchAbbrev.caption_line_1, captionLineTwo: matchAbbrev.caption_line_2 }) : discipline;
     })
 
-    const html = "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
+    const renderHeader = Mustache.render(header, {
+        "headlineFirst": headlineFirst,
+        "headlineSecond": headlineSecond,
+        "standfirst": standfirst
+    });
+
+    console.log(renderHeader)
+    
+
+    const html = "<div class='page-wrapper'>" + renderHeader + Mustache.render(templateHTML, {
+        "countryCodes": countries,
         // "otherCountries": medalTable.slice(6),
         "otherCountries": medalTable.slice(10),
         // "topCountries": medalTable.slice(0, 6),
