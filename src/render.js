@@ -16,13 +16,6 @@ const maxDiff = d3.max(countryPerformanceJson, d => Math.abs(d.diff));
 
 const scale = d3.scaleLinear().domain([0, maxDiff]).range([0, 50]);
 
-const countries = [
-    ["Great Britain", "GBR"],
-    ["Russia", "RUS"],
-    ["Norway", "NOR"],
-    ["Germany", "GER"]
-];
-
 const toTitleCase = (str, force) => {
     str = force ? str.toLowerCase() : str;
     return str.replace(/(^([a-zA-Z\p{M}]))|([ -][a-zA-Z\p{M}])/g,
@@ -207,7 +200,6 @@ export async function render() {
     })
 
     const html = "<div class='page-wrapper'>" + header + Mustache.render(templateHTML, {
-        "countryCodes": countries,
         "otherCountries": medalTable.slice(6),
         "topCountries": medalTable.slice(0, 6),
         "medalsByDiscipline": medalsWithUrls,

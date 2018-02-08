@@ -205,6 +205,14 @@ const generateSchedule = async(disciplineCombinations) => {
             return row.values.slice(0, 1);     
         }));
 
+    // fs.writeFileSync("./schedule-clean.json", JSON.stringify(deduped.map(event => {
+    //     return {
+    //         "disc": event.discipline.name,
+    //         "eventName": event.eventRound.name,
+    //         "eventId": event.eventId
+    //     }
+    // })));
+
     const nestedByDay = d3.nest()
         .key(d => d.startDate[0].date)
         .key(d => d.discipline.name)
@@ -212,6 +220,8 @@ const generateSchedule = async(disciplineCombinations) => {
         .sort((a,b) => {
             return Number(a.key) - Number(b.key);
         });
+
+
 
     fs.writeFileSync("./schedule.json", JSON.stringify(nestedByDay));
 }
