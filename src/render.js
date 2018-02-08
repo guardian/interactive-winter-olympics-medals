@@ -182,7 +182,7 @@ const medalTable = medalTableJson.map((country, i) => {
 export async function render() {
     const header = headerHTML;
 
-    fs.writeFileSync('./src/assets/snap_medals.html', Mustache.render(snapTemplate, {
+    const snapHtml = Mustache.render(snapTemplate, {
 
         snapTable : medalTable.slice(0, 3)
             .map( o => {
@@ -196,6 +196,18 @@ export async function render() {
                     total : o.medalCount.total
                 }
             })
+
+    })
+
+    fs.writeFileSync('./src/assets/snap_medals.html', snapHtml)
+    fs.writeFileSync('./snap_medals.json', JSON.stringify({
+
+        html : snapHtml,
+        previous : '',
+        refreshStatus : true,
+        url : '#',
+        headline : '',
+        trailText : ''
 
     }))
 

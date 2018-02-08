@@ -264,7 +264,7 @@ gulp.task('deploylive', ['build'], cb => {
     gulp.src(`${buildDir}/**/*`)
         .pipe(s3Upload('max-age=31536000', s3VersionPath))
         .on('end', () => {
-            gulp.src(['config.json', 'error.log', 'info.log', 'last_updated.log', 'last_rendered.log', 'schedule.json'])
+            gulp.src(['config.json', 'error.log', 'info.log', 'last_updated.log', 'last_rendered.log', 'schedule.json', 'snap_medals.json'])
                 .pipe(file('preview', version))
                 .pipe(file('live', version))
                 .pipe(s3Upload('max-age=30', s3Path))
