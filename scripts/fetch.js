@@ -11,7 +11,7 @@ import nations from '../src/assets/data/nations.json'
 import nationsLookup from '../src/assets/data/nations_lookup.json'
 import possibleCountries from '../src/assets/data/possible_countries.json'
 
-const season = 2014
+const season = 2018
 const lastSeason = 2014
 
 var schedule;
@@ -184,20 +184,18 @@ const generateSchedule = async(disciplineCombinations) => {
         // just getting rid of results to shrink the json size
         delete d["olympicResults"];
         return d;
-    });
+    }).sort((a, b) => {
+            if(!a.startDate[0].hour) {
+                return false;
+            }
+            return new Date(a.startDate[0].full) >= new Date(b.startDate[0].full) ? 1 : -1;
+        });
 
-    const sortedData = cleanedData.sort((a, b) => {
-        if(!a.startDate[0].hour) {
-            return false;
-        }
-        return new Date(a.startDate[0].full) >= new Date(b.startDate[0].full) ? 1 : -1;
-    });
-
-    schedule = sortedData;
+    schedule = cleanedData;
 
     const deduped = _.flatten(d3.nest()
         .key(d => d.olympicEventId+d.startDate[0].full)
-        .entries(sortedData)
+        .entries(cleanedData)
         .map(row => {
             if(row.values.length > 1) {
                 row.values = row.values.sort((a,b) => {
@@ -210,7 +208,10 @@ const generateSchedule = async(disciplineCombinations) => {
     const nestedByDay = d3.nest()
         .key(d => d.startDate[0].date)
         .key(d => d.discipline.name)
-        .entries(deduped);
+        .entries(deduped)
+        .sort((a,b) => {
+            return Number(a.key) - Number(b.key);
+        });
 
     fs.writeFileSync("./schedule.json", JSON.stringify(nestedByDay));
 }
