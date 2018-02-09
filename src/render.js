@@ -191,8 +191,7 @@ export async function render() {
             })
 
     })
-
-    fs.writeFileSync('./src/assets/snap_medals.html', snapHtml)
+    
     fs.writeFileSync('./snap_medals.json', JSON.stringify({
 
         html : snapHtml,
