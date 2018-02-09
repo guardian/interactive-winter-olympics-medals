@@ -229,6 +229,7 @@ export async function render() {
     const renderHeader = Mustache.render(header, {
         "headlineFirst": headlineFirst,
         "headlineSecond": headlineSecond,
+        "shareText": encodeURIComponent(headlineFirst + " " + headlineSecond),
         "standfirst": standfirst
     });
 
