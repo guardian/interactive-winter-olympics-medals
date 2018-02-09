@@ -179,6 +179,32 @@
 		}
 	}
 
+	.custom {
+		display: none;
+		@include mq(mobileLandscape) {
+			display: block;
+			position: absolute;
+			height: 260px;
+			top: 0px;
+			right: 0px;
+		}
+
+		@include mq(tablet) {
+			height: 386px;
+			top: 20px;
+			right: -40px
+		}
+
+		@include mq(desktop) {
+			height: 470px;
+			top: 40px;
+			right: -30px;
+		}
+		@include mq(leftCol) {
+			height: 496px;
+		}
+	}
+
 	@include mq(mobile) {
 		height: 232px;
 		width: 232px;
