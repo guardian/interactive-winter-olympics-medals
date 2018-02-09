@@ -16,7 +16,7 @@ import config from '../config.json'
 const season = 2018
 const lastSeason = 2014
 
-mkdirp('./src/assets/data')
+const ready = await new Promise((resolve, reject) => mkdirp('./src/assets/data', done => resolve(done)))
 
 fs.writeFileSync('./src/assets/data/season', season)
 
