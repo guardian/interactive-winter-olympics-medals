@@ -763,10 +763,8 @@ $highlight: #FFE500;
 }
 
 .schedule-mobile {
-    img {
-            width: 100%;
-        }
-        
+    width: 100%;
+
     @include mq(mobile) {
         display: block;
         margin-left: 0px;
