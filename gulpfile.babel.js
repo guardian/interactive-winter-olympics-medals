@@ -31,6 +31,8 @@ const cdnUrl = 'https://interactive.guim.co.uk';
 
 const isDeploy = gutil.env._.indexOf('deploy') > -1 || gutil.env._.indexOf('deploylive') > -1 || gutil.env._.indexOf('deploypreview') > -1;
 
+process.isDeploy = isDeploy
+
 const version = `v/${Date.now()}`;
 const s3Path = `atoms/${config.path}`;
 const s3VersionPath = `${s3Path}/${version}`;
@@ -197,7 +199,7 @@ gulp.task('deploy', ['build'], cb => {
         gulp.src(`${buildDir}/**/*`)
             .pipe(s3Upload('max-age=31536000', s3VersionPath))
             .on('end', () => {
-                gulp.src('config.json')
+                gulp.src(['config.json', 'error.log', 'info.log', 'last_updated.log', 'last_rendered.log', 'schedule.json', 'snap_medals.json'])
                     .pipe(file('preview', version))
                     .pipe(isLive ? file('live', version) : gutil.noop())
                     .pipe(s3Upload('max-age=30', s3Path))

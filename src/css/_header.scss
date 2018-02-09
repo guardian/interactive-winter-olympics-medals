@@ -3,6 +3,7 @@
 
 	@include mq(mobile) {
 		@include fs-headline(6);
+		line-height: 40px;
 		font-weight: 700;
 		margin-top: -12px;
 	}
@@ -10,7 +11,7 @@
 	@include mq(desktop) {
 		@include fs-headline(9);
 		font-size: 50px;
-		line-height: 54px;
+		line-height: 62px;
 		font-weight: 700;
 		margin-top: 20px;
 	}
@@ -30,26 +31,21 @@
 
 .headline-wrapper {
 	@include mq(mobile) {
-		max-width: 270px;
+		max-width: 320px;
 	}
 
 	@include mq(desktop) {
-		max-width: 420px;
+		max-width: 620px;
 	}
 }
 
-.subtitle-highlight {
+.ol-subtitle {
 	background-color: #ffe500;
 	padding: 0 5px 4px 10px;
 	box-decoration-break: clone;
 	-webkit-box-decoration-break: clone;
 	position: relative;
 	z-index: 2;
-
-	& >span {
-		position: relative;
-		z-index: 1;
-	}
 }
 
 .share-buttons {

@@ -2,7 +2,7 @@ import fs from "fs"
 import * as d3 from "d3"
 import mergeByKey from "array-merge-by-key"
 
-const prevMedals = JSON.parse(fs.readFileSync("./src/assets/data/medalsList2014.json", "utf-8"));
+const prevMedals = JSON.parse(fs.readFileSync("./src/lookups/medalsList2014.json", "utf-8"));
 const currMedals = JSON.parse(fs.readFileSync("./src/assets/data/medalsList.json", "utf-8"));
 
 const prevMedalsThatHaveBeenAwardedSoFar = prevMedals.filter(p => {

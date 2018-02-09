@@ -1,24 +1,24 @@
 <div class="ol-header">
 	<div class="ol-logo">
-			<img src="<%= path %>/assets/ol-blue-logo.svg">
+			<a href="https://www.theguardian.com/sport/winter-olympics-2018" border="0"><img src="<%= path %>/assets/ol-blue-logo.svg" border="0"></a>
     </div>
     <div class="ol-wrapper">
-        <span class="ol-title">{{headlineFirst}}</span><br/>
-        <div class="headline-wrapper"><h1 class="ol-subtitle"><span class="subtitle-highlight"><span>{{headlineSecond}}</span></span></h1></div>
-        <p class="ol-standfirst">{{standfirst}}</p>
+<!--         <span class="ol-title">{{headlineFirst}}</span><br/> -->
+        <div class="headline-wrapper"><h1 class="ol-subtitle">{{headlineSecond}}</h1></div>
+        <p class="ol-standfirst">{{{standfirst}}}</p>
         <div class="share-buttons">
             <div class="breaker breaker--short"></div>
             <div class="breaker breaker--short"></div>
             <div class="breaker breaker--short"></div>
             <div class="breaker breaker--short"></div>
-            <a href="https://www.facebook.com/dialog/share?app_id=180444840287&href=https://gu.com/p/83yy2" target="_blank" title="Facebook">
+            <a href="https://www.facebook.com/dialog/share?app_id=180444840287&href=https://gu.com/p/836p6?CMP=share_btn_fb" target="_blank" title="Facebook">
                 <img src="<%= path %>/assets/facebook.png" alt="" />
             </a>
-            <a href="https://twitter.com/intent/tweet?text=Who's%20winning%20in%20Pyeongchang?&url=https://gu.com/p/83yy2" target="_blank"
+            <a href="https://twitter.com/intent/tweet?text={{shareText}}&url=https://gu.com/p/836p6?CMP=share_btn_tw" target="_blank"
                 title="Twitter">
                 <img src="<%= path %>/assets/twitter.png" alt="">
             </a>
-            <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&su=Who's%20winning%20in%20Pyeongchang?&body=href=https://gu.com/p/83yy2"
+            <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&su={{shareText}}&body=href=https://gu.com/p/836p6"
                 target="_blank" title="Email">
                 <img src="<%= path %>/assets/email.png" alt="">
             </a>
