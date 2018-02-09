@@ -11,7 +11,7 @@ import nations from '../src/lookups/nations.json'
 import nationsLookup from '../src/lookups/nations_lookup.json'
 import possibleCountries from '../src/lookups/possible_countries.json'
 
-const season = 2018
+const season = 2014
 const lastSeason = 2014
 
 var schedule;
