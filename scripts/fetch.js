@@ -7,9 +7,9 @@ import * as d3 from "d3"
 import mkdirp from 'mkdirp'
 import moment from 'moment'
 import Logger from './logger.js'
-import nations from '../src/assets/data/nations.json'
-import nationsLookup from '../src/assets/data/nations_lookup.json'
-import possibleCountries from '../src/assets/data/possible_countries.json'
+import nations from '../src/lookups/nations.json'
+import nationsLookup from '../src/lookups/nations_lookup.json'
+import possibleCountries from '../src/lookups/possible_countries.json'
 
 const season = 2018
 const lastSeason = 2014

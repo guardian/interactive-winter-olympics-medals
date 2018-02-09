@@ -5,6 +5,7 @@ import snapTemplate from './src/templates/snap_medals.html!text'
 import medalTableJson from "../src/assets/data/medalsTable.json"
 import medalListByDisciplineJson from "../src/assets/data/medalsList.json"
 import countryPerformanceJson from "../src/assets/data/performance.json"
+import nameLookup from '../src/lookups/name_lookup.json'
 import rp from "request-promise"
 import Mustache from "mustache"
 import * as d3 from "d3"
@@ -167,7 +168,7 @@ const medalTable = medalTableJson.map((country, i) => {
         },
         rank: country.medalCount.total === 0 ? '<span style="color: #00B2FF; opacity: 0.4;">●</span>' : ranks[i],
         noMedals : country.medalCount.total === 0,
-        preferableName: preferableName,
+        preferableName: nameLookup[country.olympicCountry.abbreviation],
         lowerCaseAbbreviation: country.olympicCountry.abbreviation.toLowerCase()
     });
 });
