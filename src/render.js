@@ -97,8 +97,6 @@ topUnderPerforming.map(country => {
 
 const countriesByPerformance = [].concat.apply([], topOverPerforming.map((e, i) => [e, topUnderPerforming[i]]));
 
-console.log(countriesByPerformance)
-
 const mappedDisciplines = medalListByDisciplineJson.map(discip => {
         discip.lowerCaseAbbreviation = discip.abbreviation.toLowerCase();
         discip.firstName = discip.firstName ? `${toTitleCase(discip.firstName)}` : 'Team';
@@ -233,8 +231,6 @@ export async function render() {
         "headlineSecond": headlineSecond,
         "standfirst": standfirst
     });
-
-    console.log(renderHeader)
 
     const html = "<div class='page-wrapper'>" + renderHeader + Mustache.render(templateHTML, {
         // "otherCountries": medalTable.slice(6),
