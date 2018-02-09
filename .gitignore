@@ -5,4 +5,6 @@ bower_components/
 yarn.lock
 .DS_Store
 *.log
-src/assets/data
+src/assets/data/
+snap_medals.json
+schedule.json

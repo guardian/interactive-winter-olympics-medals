@@ -15,7 +15,7 @@
     "fetchSchedule": "babel-node scripts/schedule.js",
     "cleanHistoric": "babel-node scripts/historicMedalsCleaner.js",
     "performance": "babel-node scripts/performance.js",
-    "nations" : "babel-node scripts/get_nations.js"
+    "nations": "babel-node scripts/get_nations.js"
   },
   "author": "",
   "license": "ISC",
@@ -56,6 +56,7 @@
     "array-merge-by-key": "^1.0.1",
     "async": "^2.6.0",
     "async-sema": "^1.2.0",
+    "csv-stringify": "^2.0.2",
     "d3": "^4.12.0",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
