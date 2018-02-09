@@ -16,10 +16,6 @@ import config from '../config.json'
 const season = 2018
 const lastSeason = 2014
 
-const ready = await new Promise((resolve, reject) => mkdirp('./src/assets/data', done => resolve(done)))
-
-fs.writeFileSync('./src/assets/data/season', season)
-
 var schedule;
 
 const rateLimit = (rps) => {
@@ -255,6 +251,10 @@ const loadScheduleData = (disciplineCombinations) => {
 }
 
 const generator = async() => {
+
+    const ready = await new Promise((resolve, reject) => mkdirp('./src/assets/data', done => resolve(done)))
+    fs.writeFileSync('./src/assets/data/season', season)
+
     // get the list of disciplines and the days those disciplines have events
     const scheduleResp = await rp({uri: `http://api.stats.com/v1/stats/oly/wntr_oly/schedule/?season=${season}&accept=json&api_key=gmqfer9bzzufxr2w84v52xqt&sig=b340ae69d5e6ba22c7a9dc1e9afab79ba24c210c39544ff423f4e2036fea7a94`, json: true});
     const disciplineData = scheduleResp.apiResults[0].league.season.schedule[0].disciplines;
@@ -271,5 +271,3 @@ const generator = async() => {
 }
 
 generator();
-
-const log = () => {}
