@@ -214,8 +214,8 @@ export async function render() {
 
     }))
 
-    const images = await rp({ uri: "https://interactive.guim.co.uk/docsdata-test/1rLKvNSIY8MAn0ZSM6aHcR2b3t_beRdPEu-EEavcGQHM.json", json: true});
-    const headerCopy = await rp({ uri: "https://interactive.guim.co.uk/docsdata-test/15uAmR0zJkUXcR-6_EeAtFWQXtDojjdwSwGQoDmWvwkw.json", json: true });
+    const images = await rp({ uri: "https://interactive.guim.co.uk/docsdata/1rLKvNSIY8MAn0ZSM6aHcR2b3t_beRdPEu-EEavcGQHM.json", json: true});
+    const headerCopy = await rp({ uri: "https://interactive.guim.co.uk/docsdata/15uAmR0zJkUXcR-6_EeAtFWQXtDojjdwSwGQoDmWvwkw.json", json: true });
     const headlineFirst = headerCopy.sheets.Sheet1[0].headline_first_row;
     const headlineSecond = headerCopy.sheets.Sheet1[0].headline_second_row;
     const standfirst = headerCopy.sheets.Sheet1[0].standfirst;
