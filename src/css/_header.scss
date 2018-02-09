@@ -38,18 +38,13 @@
 	}
 }
 
-.subtitle-highlight {
+.ol-subtitle {
 	background-color: #ffe500;
 	padding: 0 5px 4px 10px;
 	box-decoration-break: clone;
 	-webkit-box-decoration-break: clone;
 	position: relative;
 	z-index: 2;
-
-	& >span {
-		position: relative;
-		z-index: 1;
-	}
 }
 
 .share-buttons {
