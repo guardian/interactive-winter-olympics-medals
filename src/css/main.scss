@@ -761,7 +761,6 @@ $highlight: #FFE500;
 }
 
 .schedule-mobile {
-    width: 100%;
 
     @include mq(mobile) {
         display: block;
