@@ -31,6 +31,8 @@ const cdnUrl = 'https://interactive.guim.co.uk';
 
 const isDeploy = gutil.env._.indexOf('deploy') > -1 || gutil.env._.indexOf('deploylive') > -1 || gutil.env._.indexOf('deploypreview') > -1;
 
+process.isDeploy = isDeploy
+
 const version = `v/${Date.now()}`;
 const s3Path = `atoms/${config.path}`;
 const s3VersionPath = `${s3Path}/${version}`;

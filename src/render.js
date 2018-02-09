@@ -12,6 +12,7 @@ import * as d3 from "d3"
 import fs from "fs"
 import _filter from 'lodash/filter'
 import Logger from '../scripts/logger.js'
+import config from '../config.json'
 
 const maxDiff = d3.max(countryPerformanceJson, d => Math.abs(d.diff));
 
@@ -24,6 +25,17 @@ const toTitleCase = (str, force) => {
     );
 }
 
+let season;
+
+try {
+    season = fs.readFileSync('./src/assets/data/season', 'utf-8')
+} catch (err) {
+    throw new Error('No season file detected. Please `npm run fetch` and then run this script again.')
+}
+
+if(process.isDeploy && config.path === '2018/02/winter-olympics-medals' && Number(season) === 2014) {
+    throw new Error('You\'re loading 2014 data, but config.json would deploy to live. Stop!')
+}
 
 const countryPerformanceJsonToRender = countryPerformanceJson.map((country) => {
     // country.percentage = scale(Math.abs(country.diff));
