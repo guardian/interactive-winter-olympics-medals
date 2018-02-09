@@ -12,8 +12,7 @@
   background-repeat: no-repeat;
   position: relative;
   display: inline-block;
-  // width: $flag-width;
-  // line-height: $flag-line-height;
+  background-size: cover;
   border: 1px solid #CCF0FF;
 }
 .flag:before {
@@ -30,7 +29,6 @@
 .flag-small {
   width: 22px;
   height: 12px;
-  // height: 18px;
 }
 
 .flag-medium {
