@@ -181,7 +181,7 @@ $highlight: #FFE500;
         width: calc(100vw - 20px);
     }
     @include mq(leftCol) {
-        padding-top: 0;
+        padding-top: 20px;
         width: calc(90vw);
         justify-content: flex-start;
     }
@@ -269,6 +269,10 @@ $highlight: #FFE500;
 
 .country-header-wrapper {
     display: flex;
+}
+
+.medal-total-small {
+    padding-right: 9px;
 }
 
 .medal-block {
@@ -626,23 +630,88 @@ $highlight: #FFE500;
     }
 }
 
-.other-country-name {
-    @include fs-headline(5);
-    font-weight: 700;
-    margin-top: 9px;
-
+.rank-flag {
     @include mq(mobile) {
-        width: 90vw;
-        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    @include mq(tablet) {
+        flex-direction: row;
+    }
+
+}
+
+.flag-margin {
+    @include mq(mobile) {
+        margin-left: -10px;
+    }
+    @include mq(tablet) {
+        margin-left: 0;
     }
 }
 
-.other-country-details {
+.other-country {
     display: flex;
-    align-items: flex-end;
-    @include fs-textSans(1);
+    align-items: baseline;
+}
+
+.other-country-name {
+    @include fs-headline(5);
     font-weight: 700;
-    margin-bottom: 20px;
+    width: 220px;
+    padding-right: 40px;
+    // margin-top: 9px;
+
+    @include mq(mobile) {
+        padding-left: 10px;
+        // width: 90vw;
+        // margin-bottom: 5px;
+    }
+
+     @include mq(tablet) {
+         padding-left: 0;
+     }
+}
+
+.other-country-medals {
+    @include mq(mobile) {
+        display: flex;
+        flex-direction: row;
+        padding-top: 3px;
+    }
+    @include mq(tablet) {
+        padding-top: 0;
+    }
+}
+
+.medal-pair {
+    width: 40px;
+}
+
+.other-country-rank {
+    @include fs-headline(5);
+    font-weight: 700;
+    width: 38px;
+}
+
+.other-country-details {
+    @include mq(mobile) {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+        align-items: flex-start;
+        @include fs-textSans(1);
+        font-weight: 700;
+        margin-bottom: 20px;
+        margin-left: -20px;
+        
+    }
+    @include mq(tablet) {
+        flex-direction: row;
+        align-items: center;
+        margin-left: 0;
+    }
 }
 
 .other-country-block {
