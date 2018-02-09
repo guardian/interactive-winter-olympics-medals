@@ -208,7 +208,7 @@ export async function render() {
         html : snapHtml,
         previous : '',
         refreshStatus : true,
-        url : 'https://gu.com/p/836p6',
+        url : 'https://www.theguardian.com/sport/ng-interactive/2018/feb/09/winter-olympics-latest-medal-table-for-pyeongchang-2018',
         headline : '',
         trailText : ''
 
