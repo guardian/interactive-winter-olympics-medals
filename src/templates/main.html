@@ -5,7 +5,7 @@
         {{/countryCodes}}
     </select>
 </div> -->
-<div class="breaker"></div>
+<div class="breaker top-breaker"></div>
 <div class="breaker"></div>
 <div class="breaker"></div>
 <div class="breaker"></div>
@@ -173,10 +173,10 @@
             {{/values}}
         </div>
         <div class="sport-image">
-            <div>
-                <img src="{{url}}" id="{{key}}" alt="" />
-                <strong><span class="img-athlete">{{captionLineTwo}}</span></strong>
-                <span class="img-athlete">{{captionLineOne}}</span>
+            <img src="{{url}}" id="{{key}}" alt="" />
+            <div class="caption-wrapper">
+                <strong><span class="img-athlete">{{captionLineOne}}</span></strong><br/>
+                <span class="img-athlete">{{captionLineTwo}}</span>
             </div>
         </div>
     </div>
