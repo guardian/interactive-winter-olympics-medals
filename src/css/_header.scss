@@ -31,11 +31,11 @@
 
 .headline-wrapper {
 	@include mq(mobile) {
-		max-width: 320px;
+		width: 280px;
 	}
 
 	@include mq(desktop) {
-		max-width: 620px;
+		width: 420px;
 	}
 }
 
@@ -132,7 +132,7 @@
 }
 
 .ol-wrapper {
-	max-width: 500px;
+	max-width: 350px;
 	padding-top: 93px;
 
 	@include mq(leftCol) {
