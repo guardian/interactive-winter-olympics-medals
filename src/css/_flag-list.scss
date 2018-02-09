@@ -92,7 +92,7 @@
 @include flag(egy, eg, 818, egy, egy);
 @include flag(eri, er, 232, eri, eri);
 @include flag(esh, eh, 732, null, sah);
-@include flag(esp, es, 724, esp, esp);
+@include flag(spa, es, 724, esp, esp);
 @include flag(est, ee, 233, est, est);
 @include flag(eth, et, 231, eth, eth);
 @include flag(fin, fi, 246, fin, fin);
@@ -148,7 +148,7 @@
 @include flag(kor, kr, 410, kor, kor);
 @include flag(kwt, kw, 414, kuw, kuw);
 @include flag(lao, la, 418, lao, lao);
-@include flag(lbn, lb, 422, lib, lib);
+@include flag(lib, lb, 422, lbn, lib);
 @include flag(lbr, lr, 430, lbr, lbr);
 @include flag(lby, ly, 434, lba, lby);
 @include flag(lca, lc, 662, lca, lca);
@@ -161,9 +161,9 @@
 @include flag(mac, mo, 446, mac, mac);
 @include flag(maf, mf, 663, null, null);
 @include flag(mar, ma, 504, mar, mar);
-@include flag(mco, mc, 492, mon, mon);
+@include flag(mnc, mc, 492, mon, mon);
 @include flag(mda, md, 498, mda, mda);
-@include flag(mdg, mg, 450, mad, mad);
+@include flag(mad, mg, 450, mad, mad);
 @include flag(mdv, mv, 462, mdv, mdv);
 @include flag(mex, mx, 484, mex, mex);
 @include flag(mhl, mh, 584, msh, mhl);
@@ -171,7 +171,7 @@
 @include flag(mli, ml, 466, mli, mli);
 @include flag(mlt, mt, 470, mlt, mlt);
 @include flag(mmr, mm, 104, mya, mya);
-@include flag(mne, me, 499, mgo, mne);
+@include flag(mne, me, 499, mne, mne);
 @include flag(mng, mn, 496, mgl, mng);
 @include flag(mnp, mp, 580, nma, nmi);
 @include flag(moz, mz, 508, moz, moz);
@@ -217,7 +217,7 @@
 @include flag(sau, sa, 682, ksa, ksa);
 @include flag(sdn, sd, 729, sud, sud);
 @include flag(sen, sn, 686, sen, sen);
-@include flag(sgp, sg, 702, 'sin', 'sin');
+@include flag(sin, sg, 702, sgp, sin);
 @include flag(sgs, gs, 239, null, null);
 @include flag(shn, sh, 654, hel, shn);
 @include flag(sjm, sj, 744, null, null);
@@ -246,7 +246,7 @@
 @include flag(tkl, tk, 772, null, tkl);
 @include flag(tkm, tm, 795, tkm, tkm);
 @include flag(tls, tl, 626, tls, tls);
-@include flag(ton, to, 776, tga, tga);
+@include flag(tga, to, 776, tga, tga); 
 @include flag(tto, tt, 780, tto, tri);
 @include flag(tun, tn, 788, tun, tun);
 @include flag(tur, tr, 792, tur, tur);

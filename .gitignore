@@ -7,3 +7,4 @@ yarn.lock
 *.log
 src/assets/data/
 snap_medals.json
+schedule.json

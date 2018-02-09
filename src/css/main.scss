@@ -17,6 +17,16 @@ $highlight: #FFE500;
     margin: 0 !important;
     overflow-x: hidden;
 }
+.top-breaker {
+
+    @include mq(mobile) {
+        margin-top: 20px;
+    }
+ 	@include mq(leftCol) {
+		 margin-top: 170px;
+     }
+    
+}
 
 .breaker {
     border-top: 1px dotted #7BD7FF;
@@ -207,7 +217,7 @@ $highlight: #FFE500;
         border-radius: 50%;
         margin-left: 20px;
         margin-top: -40px;
-        margin-bottom: 100px;
+        margin-bottom: -27px;
     }
     &--hide {
         display: none !important;
@@ -235,6 +245,7 @@ $highlight: #FFE500;
     // margin-top: -60px;
     margin-left: 20px;
     max-width: 120px;
+    line-height: 14px;
     background: $highlight;
 }
 
@@ -459,6 +470,8 @@ $highlight: #FFE500;
     border-radius: 50%;
     height: 33px;
     width: 33px;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+    -webkit-tap-highlight-color: transparent;
     // margin-top: 7px;
     &--expand {
         background: #fff;
@@ -685,6 +698,7 @@ $highlight: #FFE500;
         height: 250px;
         margin-bottom: 40px;
         width: 100%;
+        margin-top: -20px;
     }
 
     @include mq(tablet) {
@@ -749,15 +763,20 @@ $highlight: #FFE500;
 }
 
 .schedule-mobile {
+    img {
+            width: 100%;
+        }
+        
     @include mq(mobile) {
         display: block;
-        margin-left: -10px;
+        margin-left: 0px;
         margin-top: -5px;
-        height: 220px;
+        height: 200px;
+
     }
 
     @include mq(mobileMedium) {
-        height: 250px;
+        height: 220px;
     }
 
     @include mq(tablet) {
@@ -772,6 +791,7 @@ $highlight: #FFE500;
 
     @include mq(tablet) {
         display: block;
+        margin-top: -13px;
     }
 }
 
@@ -794,4 +814,10 @@ $highlight: #FFE500;
 //enable footer
 .l-footer {
     display: block !important;
+}
+
+.caption-wrapper {
+    max-width: 240px;
+    line-height: 0;
+    margin-left: 20px;
 }
