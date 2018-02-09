@@ -208,7 +208,7 @@ export async function render() {
         html : snapHtml,
         previous : '',
         refreshStatus : true,
-        url : 'https://gu.com/p/83yy2',
+        url : 'https://gu.com/p/836p6',
         headline : '',
         trailText : ''
 
