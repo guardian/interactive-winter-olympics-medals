@@ -128,10 +128,6 @@
 		max-width: 70%;
 	}
 
- 	// @include mq(leftCol) {
-	// 	 padding-bottom: 80px;
-	//  }
-
 	@include mq(desktop) {
 		max-width: 410px;
 		font-size: 20px;
@@ -160,6 +156,12 @@
 	z-index: 0;
 
 	img {
+		position:absolute;
+    top:0;
+    animation-name: fade;
+    animation-iteration-count: infinite;
+    animation-duration: 12.5s;
+		opacity: 0;
 		@include mq(mobile) {
 			position: absolute;
 			height: 240px;
@@ -176,32 +178,6 @@
 			height: 500px;
 			top: 60px;
 			right: -50px;
-		}
-	}
-
-	.custom {
-		display: none;
-		@include mq(mobileLandscape) {
-			display: block;
-			position: absolute;
-			height: 260px;
-			top: 0px;
-			right: 0px;
-		}
-
-		@include mq(tablet) {
-			height: 386px;
-			top: 20px;
-			right: -40px
-		}
-
-		@include mq(desktop) {
-			height: 470px;
-			top: 40px;
-			right: -30px;
-		}
-		@include mq(leftCol) {
-			height: 496px;
 		}
 	}
 
@@ -230,6 +206,30 @@
 		left: 750px;
 	}
 }
+
+@keyframes fade {
+    0% {opacity: 0;}
+    14% {opacity: 1;}
+    20% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+#i1 {
+}
+#i2 {
+    animation-delay: 2.5s;
+}
+#i3 {
+    animation-delay: 5s;
+}
+#i4 {
+    animation-delay: 7.5s;
+}
+#i5 {
+    animation-delay: 10s;
+}
+
+
 
 .ol-logo {
 	position: absolute;
