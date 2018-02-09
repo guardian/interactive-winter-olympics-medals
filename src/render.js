@@ -12,6 +12,7 @@ import * as d3 from "d3"
 import fs from "fs"
 import _filter from 'lodash/filter'
 import Logger from '../scripts/logger.js'
+import config from '../config.json'
 
 const maxDiff = d3.max(countryPerformanceJson, d => Math.abs(d.diff));
 
@@ -24,6 +25,17 @@ const toTitleCase = (str, force) => {
     );
 }
 
+let season;
+
+try {
+    season = fs.readFileSync('./src/assets/data/season', 'utf-8')
+} catch (err) {
+    throw new Error('No season file detected. Please `npm run fetch` and then run this script again.')
+}
+
+if(process.isDeploy && config.path === '2018/02/winter-olympics-medals' && Number(season) === 2014) {
+    throw new Error('You\'re loading 2014 data, but config.json would deploy to live. Stop!')
+}
 
 const countryPerformanceJsonToRender = countryPerformanceJson.map((country) => {
     // country.percentage = scale(Math.abs(country.diff));
@@ -84,8 +96,6 @@ topUnderPerforming.map(country => {
 });
 
 const countriesByPerformance = [].concat.apply([], topOverPerforming.map((e, i) => [e, topUnderPerforming[i]]));
-
-console.log(countriesByPerformance)
 
 const mappedDisciplines = medalListByDisciplineJson.map(discip => {
         discip.lowerCaseAbbreviation = discip.abbreviation.toLowerCase();
@@ -198,14 +208,14 @@ export async function render() {
         html : snapHtml,
         previous : '',
         refreshStatus : true,
-        url : 'https://gu.com/p/83yy2',
+        url : 'https://www.theguardian.com/sport/ng-interactive/2018/feb/09/winter-olympics-latest-medal-table-for-pyeongchang-2018',
         headline : '',
         trailText : ''
 
     }))
 
-    const images = await rp({ uri: "https://interactive.guim.co.uk/docsdata-test/1rLKvNSIY8MAn0ZSM6aHcR2b3t_beRdPEu-EEavcGQHM.json", json: true});
-    const headerCopy = await rp({ uri: "https://interactive.guim.co.uk/docsdata-test/15uAmR0zJkUXcR-6_EeAtFWQXtDojjdwSwGQoDmWvwkw.json", json: true });
+    const images = await rp({ uri: "https://interactive.guim.co.uk/docsdata/1rLKvNSIY8MAn0ZSM6aHcR2b3t_beRdPEu-EEavcGQHM.json", json: true});
+    const headerCopy = await rp({ uri: "https://interactive.guim.co.uk/docsdata/15uAmR0zJkUXcR-6_EeAtFWQXtDojjdwSwGQoDmWvwkw.json", json: true });
     const headlineFirst = headerCopy.sheets.Sheet1[0].headline_first_row;
     const headlineSecond = headerCopy.sheets.Sheet1[0].headline_second_row;
     const standfirst = headerCopy.sheets.Sheet1[0].standfirst;
@@ -219,10 +229,9 @@ export async function render() {
     const renderHeader = Mustache.render(header, {
         "headlineFirst": headlineFirst,
         "headlineSecond": headlineSecond,
+        "shareText": encodeURIComponent(headlineSecond),
         "standfirst": standfirst
     });
-
-    console.log(renderHeader)
 
     const html = "<div class='page-wrapper'>" + renderHeader + Mustache.render(templateHTML, {
         // "otherCountries": medalTable.slice(6),

@@ -10,9 +10,15 @@ import Logger from './logger.js'
 import nations from '../src/lookups/nations.json'
 import nationsLookup from '../src/lookups/nations_lookup.json'
 import possibleCountries from '../src/lookups/possible_countries.json'
+import config from '../config.json'
 
-const season = 2014
+
+const season = 2018
 const lastSeason = 2014
+
+mkdirp('./src/assets/data')
+
+fs.writeFileSync('./src/assets/data/season', season)
 
 var schedule;
 

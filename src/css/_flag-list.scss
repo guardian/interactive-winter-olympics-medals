@@ -13,7 +13,7 @@
       background-image: unquote("url(#{$flag-css-path}/#{$alpha3}.png)");
     }
   } @else {
-    .flag-#{$alpha3}, .flag-#{$alpha2}, .flag-#{$numeric}, .flag-ioc-#{$ioc}, .flag-fifa-#{$fifa} {
+    .flag-ioc-#{$ioc} {
       background-image: unquote("url(#{$flag-css-path}/#{$alpha3}.png)");
     }
   }
@@ -290,14 +290,22 @@
   background-image: unquote("url(#{$flag-css-path}/nir.png)");
 }
 
-.flag-ico-tpe, .flag-fifa-tpe {
-  background-image: unquote("url(#{$flag-css-path}/tpe.png)");
-}
-
 .flag-fifa-sco {
   background-image: unquote("url(#{$flag-css-path}/sco.png)");
 }
 
 .flag-fifa-wal {
   background-image: unquote("url(#{$flag-css-path}/wal.png)");
+}
+
+.flag-ioc-oar {
+  background-image: unquote("url(#{$flag-css-path}/oar.png)");
+}
+
+.flag-ioc-cor {
+  background-image: unquote("url(#{$flag-css-path}/kuf.png)"); // was named differently, but correct flag 
+}
+
+.flag-ioc-tpe {
+  background-image: unquote("url(#{$flag-css-path}/tpe.png)");
 }
