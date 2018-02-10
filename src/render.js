@@ -106,8 +106,6 @@ const mappedDisciplines = medalListByDisciplineJson.map(discip => {
 ).filter(entry => entry.abbreviation !== 'RUS'); // get rid of the damn Russians
 
 
-console.log(mappedDisciplines)
-
 const nestedMedalsByDiscipline = (d3.nest()
     .key(d => d.discipline.name)
     // .key(d => d.discipline.abbreviation)
