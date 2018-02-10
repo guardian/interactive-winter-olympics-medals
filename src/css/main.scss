@@ -692,7 +692,7 @@ $highlight: #FFE500;
 }
 
 .medal-pair {
-    width: 40px;
+    min-width: 40px;
 }
 
 .other-country-rank {
@@ -923,4 +923,31 @@ $highlight: #FFE500;
     position: fixed;
     top: 3000px;
     left: -2000px;
+}
+
+.medal-stack {
+    width: 100px;
+    display: inline;
+    white-space: nowrap;
+    margin-left: 8px;
+
+    .medal-block {
+        display: inline-block;
+        margin-left: 0;
+        position: relative;
+        // z-index: 
+
+        &.medal-block--gold {
+            z-index: 3;
+        }
+
+        &.medal-block--silver {
+            margin-left: -8px;
+            z-index: 2;
+        }
+
+        &.medal-block--bronze {
+            margin-left: -8px;
+        }
+    }
 }

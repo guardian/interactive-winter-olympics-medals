@@ -160,6 +160,7 @@ const medalTable = medalTableJson.map((country, i) => {
             type === 'gold' && goldMedals.push(type);
             type === 'silver' && silverMedals.push(type);
             type === 'bronze' && bronzeMedals.push(type);
+
         });
     });
     
@@ -175,6 +176,9 @@ const medalTable = medalTableJson.map((country, i) => {
         bronzeMedals: {
             list: bronzeMedals,
             total: bronzeMedals.length //=== 0 ? '' : bronzeMedals.length
+        },
+        allMedals: {
+            total: bronzeMedals.length + silverMedals.length + goldMedals.length
         },
         rank: country.medalCount.total === 0 ? '<span style="color: #00B2FF; opacity: 0.4;">●</span>' : ranks[i],
         noMedals : country.medalCount.total === 0,
