@@ -55,6 +55,12 @@ $highlight: #FFE500;
     display: none !important;
 }
 
+.ad-slot--inline, .ad-slot--container-inline {
+    @include mq($until: tablet) {
+        margin-left: 0 !important;
+    }
+}
+
 .page-wrapper {
     max-width: 1300px;
     background-color: #fff;
