@@ -239,6 +239,7 @@ export async function render() {
         // "topCountries": medalTable.slice(0, 6),
         "topCountries": medalTable.slice(0, 10),
         "medalsByDiscipline": medalsWithUrls,
+        "medalsComingThrough": medalsWithUrls.length > 0,
         "countriesByPeformance": countriesByPerformance
     }) + "</div>";
 
