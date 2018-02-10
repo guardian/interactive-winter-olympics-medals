@@ -103,13 +103,17 @@ const mappedDisciplines = medalListByDisciplineJson.map(discip => {
         discip.lastName = discip.lastName ? `${toTitleCase(discip.lastName)}` : `${discip.displayName}`;
         return discip
     }
-);
+).filter(entry => entry.abbreviation !== 'RUS'); // get rid of the damn Russians
+
+
+console.log(mappedDisciplines)
 
 const nestedMedalsByDiscipline = (d3.nest()
     .key(d => d.discipline.name)
     // .key(d => d.discipline.abbreviation)
     .key(d => d.olympicEvent.name)
     .rollup(leaves => {
+
         return {
             "gold": leaves.filter(d => d.medalWon === "gold"),
             "silver": leaves.filter(d => d.medalWon === "silver"),
