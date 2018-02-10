@@ -167,7 +167,7 @@ const medalTable = medalTableJson.map((country, i) => {
 
         });
     });
-    
+
     return Object.assign({}, country, {
         goldMedals: {
             list: goldMedals,
@@ -210,7 +210,7 @@ export async function render() {
             })
 
     })
-    
+
     fs.writeFileSync('./snap_medals.json', JSON.stringify({
 
         html : snapHtml,

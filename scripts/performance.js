@@ -37,6 +37,6 @@ const allMedalsByCountry = mergeByKey("key", currMedalsByCountry, prevMedalsByCo
 		d.diff = d.currMedalsCount - d.prevMedalsCount;
 		return d;
 	});
-
-fs.writeFileSync("./src/assets/data/performance.json", JSON.stringify(allMedalsByCountry));
-
+//fs.writeFileSync("./src/assets/data/performance.json", JSON.stringify(allMedalsByCountry));
+//feilding edited, but should look at more
+fs.writeFileSync("./src/assets/data/performance.json", JSON.stringify(currMedalsByCountry));
