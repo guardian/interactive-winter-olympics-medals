@@ -1038,17 +1038,7 @@ $highlight: #FFE500;
     @include mq(mobile) {
         @include fs-textSans(1);
         color: grey;
-        margin-left: 10px;
         margin-top: 20px;
         padding-bottom: 10px;
     }
-
-    @include mq(leftCol) {
-        margin-left: 170px;
-    }
-
-    @include mq(wide) {
-        margin-left: 250px;
-    }
-
 }
