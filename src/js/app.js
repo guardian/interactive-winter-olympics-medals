@@ -21,7 +21,7 @@ firstRowHeader.className = 'row row--header row--header--open';
 
 fullBoardButton.addEventListener('click', () => {
 	document.querySelector('.other-country-block').className = 'other-country-block';
-	fullBoardButton.className = 'expand leaderboard hidden';
+	fullBoardButton.className = 'expand-leaderboard hidden';
 });
 
 console.log('attached listener')
