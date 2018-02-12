@@ -740,8 +740,11 @@ $highlight: #FFE500;
          width: 180px;
      }
 
+     @include mq(leftCol) {
+         width: 200px;
+     }
      @include mq(wide) {
-         width: 205px;
+         width: 195px;
      }
 }
 
