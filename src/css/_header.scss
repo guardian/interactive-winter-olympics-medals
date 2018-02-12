@@ -120,6 +120,10 @@
 		font-size: 18px;
 	}
 
+	@include mq(mobileMedium) {
+		max-width: 65%;
+	}
+
 	@include mq(tablet) {
 		max-width: 70%;
 	}
@@ -181,25 +185,50 @@
 		height: 232px;
 		width: 232px;
 		top: 148px;
-		left: 54%;
+		left: 180px;
+	}
+
+	@include mq(mobileMedium) {
+		left: 240px;
 	}
 
 	@include mq(tablet) {
 		height: 340px;
 		width: 340px;
 		top: -20px;
-		left: 50%
+		left: 370px;
 	}
 
 	@include mq(desktop) {
 		height: 440px;
 		width: 440px;
 		top: -36px;
-		left: 560px;
+		left: 500px;
 	}
 
 	@include mq(leftCol) {
-		left: 750px;
+		left: 650px;
+	}
+}
+
+.anton-ohno {
+	@include mq(mobile) {
+	  	right: 34px !important;
+	}
+
+	@include mq(mobileMedium) {
+		right: -10px;
+	}
+
+	@include mq(tablet) {
+		height: 380px;
+		right: -40px
+	}
+
+	@include mq(desktop) {
+		height: 500px;
+		top: 60px;
+		right: -50px;
 	}
 }
 
