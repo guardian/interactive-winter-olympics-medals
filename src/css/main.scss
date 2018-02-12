@@ -55,6 +55,10 @@ $highlight: #FFE500;
     display: none !important;
 }
 
+.interactive-ad-banner {
+    padding-top: 10px !important;
+}
+
 .ad-slot--inline, .ad-slot--container-inline {
     @include mq($until: tablet) {
         margin-left: 0 !important;
@@ -171,6 +175,37 @@ $highlight: #FFE500;
     }
 }
 
+.top-country-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @include mq(tablet) {
+        padding-bottom: 3px;
+    }
+}
+
+.second-tier-mobile {
+    @include mq(mobile) {
+        display: block;
+        margin-top: 20px;
+        margin-bottom: -20px;
+    }
+
+    @include mq(tablet) {
+        display: none;
+    }
+}
+
+.second-tier-desktop {
+    @include mq(mobile) {
+        display: none;
+    }
+    
+    @include mq(tablet) {
+        display: block;
+    }
+}
+
 .leaderboard-top {
     display: flex;
     flex-wrap: wrap;
@@ -185,34 +220,41 @@ $highlight: #FFE500;
     }
     @include mq(desktop) {
         width: calc(100vw - 20px);
+        justify-content: flex-start;
     }
     @include mq(leftCol) {
         padding-top: 20px;
         width: calc(90vw);
         justify-content: flex-start;
     }
+    
     @include mq(wide) {
-        width: 100%
-    }
-
-    @include mq(wide) {
-        width: 100%
+        justify-content: space-around;
+        width: 100%;
     }
 }
 
 .country-block {
     width: 300px;
     margin-top: 20px;
-    padding-right: 10px;
     display: inline-block;
     vertical-align: top;
 
     @include mq(mobile) {
         width: 90vw;
+        padding-right: 10px;
     }
     
     @include mq(tablet) {
         width: 300px;
+    }
+
+    @include mq(desktop) {
+        padding-right: 20px;
+    }
+
+    @include mq(leftCol) {
+        padding-right: 20px;
     }
 }
 
@@ -665,18 +707,27 @@ $highlight: #FFE500;
 .other-country-name {
     @include fs-headline(5);
     font-weight: 700;
-    width: 220px;
     padding-right: 40px;
     // margin-top: 9px;
 
     @include mq(mobile) {
         padding-left: 10px;
-        // width: 90vw;
+        width: 80vw;
         // margin-bottom: 5px;
+        // padding-bottom:5px;
     }
 
      @include mq(tablet) {
          padding-left: 0;
+         width: 250px;
+     }
+
+     @include mq(desktop) {
+         width: 180px;
+     }
+
+     @include mq(wide) {
+         width: 215px;
      }
 }
 
@@ -721,7 +772,7 @@ $highlight: #FFE500;
 }
 
 .other-country-block {
-    margin-top: 16px;
+    margin-top: 24px;
 }
 
 .countries-performance {
@@ -923,6 +974,11 @@ $highlight: #FFE500;
     position: fixed;
     top: 3000px;
     left: -2000px;
+}
+
+.big-total {
+    @include fs-textSans(3);
+    font-weight: 700;
 }
 
 .medal-stack {

@@ -240,10 +240,11 @@ export async function render() {
     });
 
     const html = "<div class='page-wrapper'>" + renderHeader + Mustache.render(templateHTML, {
-        // "otherCountries": medalTable.slice(6),
-        "otherCountries": medalTable.slice(10),
-        // "topCountries": medalTable.slice(0, 6),
-        "topCountries": medalTable.slice(0, 10),
+        "otherCountries": medalTable.slice(6),
+        // "otherCountries": medalTable.slice(10),
+        "topCountries": medalTable.slice(0, 3),
+        "secondTierCountries": medalTable.slice(3, 6),
+        // "topCountries": medalTable.slice(0, 10),
         "medalsByDiscipline": medalsWithUrls,
         "medalsComingThrough": medalsWithUrls.length > 0,
         "countriesByPeformance": countriesByPerformance
