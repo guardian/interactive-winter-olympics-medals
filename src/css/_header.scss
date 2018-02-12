@@ -209,6 +209,10 @@
 	@include mq(leftCol) {
 		left: 650px;
 	}
+
+	@include mq(wide) {
+		left: 740px;
+	}
 }
 
 .anton-ohno {
