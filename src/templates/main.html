@@ -55,7 +55,11 @@
                     <span class="medals-total">{{total}}</span>
                     {{/bronzeMedals}}
                 </div>
-                <div class="big-total">Total: {{allMedals.total}}</div>
+                <img class="big-total" src="<%= path %>/assets/T.svg" alt="">
+                <span class="medals-total">
+                     {{allMedals.total}}
+                </span>
+                <!-- <div class="big-total"><span>{{allMedals.total}}</span></div> -->
             </div>
         </div>
     {{/topCountries}}
@@ -98,7 +102,10 @@
                     <span class="medals-total">{{total}}</span>
                     {{/bronzeMedals}}
                 </div>
-                <div class="big-total">Total: {{allMedals.total}}</div>
+                <img class="big-total" src="<%= path %>/assets/T.svg" alt="">
+                <span class="medals-total">
+                    {{allMedals.total}}
+                </span>
             </div>
         </div>
     </div>
@@ -369,3 +376,4 @@
         <img class="schedule-mobile" src="<%= path %>/assets/wo-event-link-mobile.svg" alt="">
     </a>
 </div>
+<!-- <div class="image-credits">Images by Getty Images, AP</div> -->
