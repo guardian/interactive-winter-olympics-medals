@@ -253,11 +253,11 @@ $highlight: #FFE500;
     }
 
     @include mq(desktop) {
-        padding-right: 20px;
+        padding-right: 40px;
     }
 
     @include mq(leftCol) {
-        padding-right: 20px;
+        padding-right: 40px;
     }
 }
 
