@@ -28,6 +28,72 @@ $highlight: #FFE500;
     
 }
 
+.pye-stream {
+
+    @include mq($until: desktop) {
+
+        width: 100%;
+        overflow-x: scroll;
+
+        & iframe {
+            min-width: 860px !important;
+        }
+        
+    }
+}
+
+.pye-stream-block {
+   
+    @include mq($from: tablet, $until: leftCol) {
+         padding-right: 10px !important;
+    }
+}
+
+@keyframes test {
+    from {
+        margin-left: 20px;
+    }
+    to {
+        margin-left: 0px;
+    }
+}
+
+.pye-swipe-arrow {
+
+    opacity: 1;
+
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    z-index: 2000;
+
+    top: 85px;
+    left: 10px;
+
+    animation: test 0.8s linear 0s infinite alternate;
+
+    border-radius: 50%;
+    transform: rotate(180deg);
+    display: inline-block;
+    content: '';
+    background-image: url(https://uploads.guim.co.uk/2018/02/06/arrow.svg);
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+
+    @include mq($from: nohover) {
+
+        display: none;
+    }
+
+    transition: opacity 0.4s linear;
+
+    &.pye-swipe-arrow--hidden {
+        opacity: 0;
+    }
+}
+
 .breaker {
     border-top: 1px dotted #7BD7FF;
     margin-bottom: 3px;
@@ -88,7 +154,7 @@ $highlight: #FFE500;
 }
 
 .block {
-    width: 1300px;
+    //width: 1300px;
     box-sizing: border-box;
     margin-bottom: 40px;
     h1 {
@@ -97,6 +163,7 @@ $highlight: #FFE500;
         font-size: 50px;
         line-height: 54px;
     }
+
     &::before {
         content: attr(data-title);
         display: inline-block;

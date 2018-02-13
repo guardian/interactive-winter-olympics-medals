@@ -14,7 +14,6 @@ firstCategory.className = 'sports-category sports-category--show';
 firstRowHeader.className = 'row row--header row--header--open';
 
 } catch (err) {
-	console.log('caught this:', err)
 }
 
 
@@ -23,8 +22,6 @@ fullBoardButton.addEventListener('click', () => {
 	document.querySelector('.other-country-block').className = 'other-country-block';
 	fullBoardButton.className = 'expand-leaderboard hidden';
 });
-
-console.log('attached listener')
 
 rowHeaders.forEach(header => header.addEventListener('click', e => {
 	const button = e.currentTarget.getElementsByTagName('button')[0];
@@ -48,3 +45,12 @@ rowHeaders.forEach(header => header.addEventListener('click', e => {
 		selectedSportsCategory.className = 'sports-category sports-category--hide';
 	}
 }));
+
+const $ = sel => document.querySelector(sel)
+
+const figure = $('.pye-stream')
+const arrow = $('.pye-swipe-arrow')
+
+figure.addEventListener('scroll', () => {
+	arrow.classList.add('pye-swipe-arrow--hidden')
+})
