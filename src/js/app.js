@@ -51,6 +51,25 @@ const $ = sel => document.querySelector(sel)
 const figure = $('.pye-stream')
 const arrow = $('.pye-swipe-arrow')
 
+try {
+
+const isAndroidApp = window.location.origin === "file://" && /(android)/i.test(navigator.userAgent)
+
+figure.addEventListener('touchstart', () => {
+
+	if (isAndroidApp && window.GuardianJSInterface.registerRelatedCardsTouch) {
+	    window.GuardianJSInterface.registerRelatedCardsTouch(true);
+	}
+})
+
+figure.addEventListener('touchend', () => {
+	if (isAndroidApp && window.GuardianJSInterface.registerRelatedCardsTouch) {
+    	window.GuardianJSInterface.registerRelatedCardsTouch(false);
+    }
+})
+
+} catch (err) {}
+
 figure.addEventListener('scroll', () => {
 	arrow.classList.add('pye-swipe-arrow--hidden')
 })
