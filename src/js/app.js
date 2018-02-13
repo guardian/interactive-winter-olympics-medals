@@ -48,28 +48,27 @@ rowHeaders.forEach(header => header.addEventListener('click', e => {
 
 const $ = sel => document.querySelector(sel)
 
-const figure = $('.pye-stream')
-const arrow = $('.pye-swipe-arrow')
-
 try {
+	const figure = $('.pye-stream')
+	const arrow = $('.pye-swipe-arrow')
 
-const isAndroidApp = window.location.origin === "file://" && /(android)/i.test(navigator.userAgent)
+	const isAndroidApp = window.location.origin === "file://" && /(android)/i.test(navigator.userAgent)
 
-figure.addEventListener('touchstart', () => {
+	figure.addEventListener('touchstart', () => {
 
-	if (isAndroidApp && window.GuardianJSInterface.registerRelatedCardsTouch) {
-	    window.GuardianJSInterface.registerRelatedCardsTouch(true);
-	}
-})
+		if (isAndroidApp && window.GuardianJSInterface.registerRelatedCardsTouch) {
+		    window.GuardianJSInterface.registerRelatedCardsTouch(true);
+		}
+	})
 
-figure.addEventListener('touchend', () => {
-	if (isAndroidApp && window.GuardianJSInterface.registerRelatedCardsTouch) {
-    	window.GuardianJSInterface.registerRelatedCardsTouch(false);
-    }
-})
+	figure.addEventListener('touchend', () => {
+		if (isAndroidApp && window.GuardianJSInterface.registerRelatedCardsTouch) {
+	    	window.GuardianJSInterface.registerRelatedCardsTouch(false);
+	    }
+	})
 
-} catch (err) {}
+	figure.addEventListener('scroll', () => {
+		arrow.classList.add('pye-swipe-arrow--hidden')
+	})
 
-figure.addEventListener('scroll', () => {
-	arrow.classList.add('pye-swipe-arrow--hidden')
-})
+} catch (err) { console.log(err) }
