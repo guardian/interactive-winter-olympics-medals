@@ -254,7 +254,7 @@ $highlight: #FFE500;
 .second-tier-mobile {
     @include mq(mobile) {
         display: block;
-        margin-top: 20px;
+        margin-top: -10px;
         margin-bottom: -20px;
     }
 
@@ -279,11 +279,13 @@ $highlight: #FFE500;
     @include mq(mobile) {
         flex-direction: column;
         width: 100%;
+        margin-bottom: 0;
     }
     @include mq(tablet) {
         flex-direction: row;
         width: 700px;
         justify-content: space-between;
+        margin-bottom: -40px;
     }
     @include mq(desktop) {
         width: calc(100vw - 20px);
@@ -303,25 +305,26 @@ $highlight: #FFE500;
 
 .country-block {
     width: 300px;
-    margin-top: 20px;
     display: inline-block;
     vertical-align: top;
 
     @include mq(mobile) {
         width: 90vw;
         padding-right: 10px;
+        margin-bottom: 25px;
     }
     
     @include mq(tablet) {
         width: 300px;
+        margin-bottom: 45px;
     }
 
     @include mq(desktop) {
-        padding-right: 20px;
+        padding-right: 40px;
     }
 
     @include mq(leftCol) {
-        padding-right: 20px;
+        padding-right: 40px;
     }
 }
 
@@ -491,19 +494,30 @@ $highlight: #FFE500;
 }
 
 .expand-leaderboard {
-    display: flex;
-    align-items: center;
-    @include fs-textSans(1);
-    height: 42px;
-    color: #FFFFFF;
-    background: #121212;
-    border-radius: 100px;
-    font-weight: 700;
-    letter-spacing: 0;
-    vertical-align: middle;
-    padding: 0 20px 0 10px;
-    margin-top: 20px;
-    border: none;
+    @include mq(mobile) {
+        display: flex;
+        margin-top: 20px;
+        align-items: center;
+        @include fs-textSans(1);
+        height: 42px;
+        color: #FFFFFF;
+        background: #121212;
+        border-radius: 100px;
+        font-weight: 700;
+        letter-spacing: 0;
+        vertical-align: middle;
+        padding: 0 20px 0 10px;
+        border: none;
+    }
+
+    @include mq(tablet) {
+        margin-top: 20px;
+    }
+
+    @include mq(wide) {
+        margin-left: 10px;
+    }
+
 }
 
 .expand-leaderboard img {
@@ -793,8 +807,11 @@ $highlight: #FFE500;
          width: 180px;
      }
 
+     @include mq(leftCol) {
+         width: 200px;
+     }
      @include mq(wide) {
-         width: 215px;
+         width: 195px;
      }
 }
 
@@ -840,6 +857,10 @@ $highlight: #FFE500;
 
 .other-country-block {
     margin-top: 24px;
+
+    @include mq(wide) {
+        margin-left: 10px;
+    }
 }
 
 .countries-performance {
@@ -1044,8 +1065,13 @@ $highlight: #FFE500;
 }
 
 .big-total {
-    @include fs-textSans(3);
-    font-weight: 700;
+    @include mq(mobile) {
+        height: 15px;
+        display: inline;
+    }
+    @include mq(tablet) {
+        height: 19px;
+    }
 }
 
 .medal-stack {
@@ -1072,5 +1098,14 @@ $highlight: #FFE500;
         &.medal-block--bronze {
             margin-left: -10px;
         }
+    }
+}
+
+.image-credits {
+    @include mq(mobile) {
+        @include fs-textSans(1);
+        color: grey;
+        margin-top: 20px;
+        padding-bottom: 10px;
     }
 }
