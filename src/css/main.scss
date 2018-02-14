@@ -54,6 +54,8 @@ $highlight: #FFE500;
     @include mq($from: tablet, $until: leftCol) {
          padding-right: 10px !important;
     }
+
+    padding-left: 10px !important;
 }
 
 @keyframes test {
