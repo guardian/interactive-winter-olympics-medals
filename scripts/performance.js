@@ -10,6 +10,22 @@ const prevMedalsThatHaveBeenAwardedSoFar = prevMedals.filter(p => {
 	return matches.length > 0;
 });
 
+Set.prototype.difference = function(setB) {
+    var difference = new Set(this);
+    for (var elem of setB) {
+        difference.delete(elem);
+    }
+    return difference;
+}
+
+const lookup = {}
+currMedals.forEach(obj => lookup[obj.olympicEvent.olympicEventId] = obj.olympicEvent)
+
+const x = new Set(prevMedals.map( obj => obj.olympicEvent.olympicEventId ))
+const y = new Set(currMedals.map( obj => obj.olympicEvent.olympicEventId ))
+
+console.log(Array.from(y.difference(x)).map(code => lookup[code]))
+
 const currMedalsByCountry = d3.nest()
 	.key(d => d.displayName)
 	// .rollup(leaves => leaves.length)

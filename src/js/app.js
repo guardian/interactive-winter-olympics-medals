@@ -46,9 +46,10 @@ rowHeaders.forEach(header => header.addEventListener('click', e => {
 	}
 }));
 
+console.log('hello this is outside everything')
+
 const $ = sel => document.querySelector(sel)
 
-try {
 	const figure = $('.pye-stream')
 	const arrow = $('.pye-swipe-arrow')
 
@@ -62,6 +63,7 @@ try {
 	})
 
 	figure.addEventListener('touchend', () => {
+
 		if (isAndroidApp && window.GuardianJSInterface.registerRelatedCardsTouch) {
 	    	window.GuardianJSInterface.registerRelatedCardsTouch(false);
 	    }
@@ -70,5 +72,3 @@ try {
 	figure.addEventListener('scroll', () => {
 		arrow.classList.add('pye-swipe-arrow--hidden')
 	})
-
-} catch (err) { console.log(err) }

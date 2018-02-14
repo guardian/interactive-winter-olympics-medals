@@ -30,10 +30,17 @@ $highlight: #FFE500;
 
 .pye-stream {
 
+    & iframe {
+        pointer-events: none;
+    }
+
     @include mq($until: desktop) {
 
         width: 100%;
         overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+
+        margin-left: 0 !important;
 
         & iframe {
             min-width: 860px !important;
@@ -62,12 +69,12 @@ $highlight: #FFE500;
 
     opacity: 1;
 
-    height: 100px;
-    width: 100px;
+    height: 60px;
+    width: 60px;
     position: absolute;
     z-index: 2000;
 
-    top: 85px;
+    top: 100px;
     left: 10px;
 
     animation: test 1s linear 0s infinite alternate;
