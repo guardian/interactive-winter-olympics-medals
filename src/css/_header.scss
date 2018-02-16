@@ -215,26 +215,26 @@
 	}
 }
 
-.anton-ohno {
-	@include mq(mobile) {
-	  	right: 34px !important;
-	}
-
-	@include mq(mobileMedium) {
-		right: -10px;
-	}
-
-	@include mq(tablet) {
-		height: 380px;
-		right: -40px
-	}
-
-	@include mq(desktop) {
-		height: 500px;
-		top: 60px;
-		right: -50px;
-	}
-}
+// .anton-ohno {
+// 	@include mq(mobile) {
+// 	  	right: 34px !important;
+// 	}
+//
+// 	@include mq(mobileMedium) {
+// 		right: -10px;
+// 	}
+//
+// 	@include mq(tablet) {
+// 		height: 380px;
+// 		right: -40px
+// 	}
+//
+// 	@include mq(desktop) {
+// 		height: 500px;
+// 		top: 60px;
+// 		right: -50px;
+// 	}
+// }
 
 @keyframes fade {
     0% {opacity: 0;}
